@@ -638,6 +638,26 @@ period, all blocks); landscape groups assigned by hand (`LANDSCAPE` dict). ROC o
   features stage on 2026-10-20 01:48 and resumed (cached S2 reused, 14 min): mean risk 0.042 (High),
   122 ha above threshold, 807 ha in active decline, 12 hotspots in forest, mostly attributed "post-drought".
 
+#### D-023 — Pre-registration (2026-10-21): texture (A10a) and red-edge (A10b) feature tests (user question:
+"have we considered pixelation or texture ... shrub species and if it has dried out")
+* Motivation. A8 texture was only a 3×3 NDVI standard deviation. Shrub die-back / drying is seen only through
+  NDMI and greenness; Sentinel-2 red-edge bands (B05–B07), which track chlorophyll loss before NDVI falls, were
+  never downloaded (S2_BANDS = B02, B03, B04, B08, B11, B12). Species identification is NOT attempted (10–20 m
+  pixels mix shrubs and soil; needs VHR/hyperspectral + field plots) — documented as out of scope.
+* A10a texture (`care_ew/texture.py`, no new download): per month on the 10 m causal NDVI grid, 8-level
+  equal-probability quantisation (AOI 2017–2020 quantiles), symmetric GLCM over offsets (0,1),(1,0) in a 7×7 px
+  (70 m) window → Haralick contrast, homogeneity, entropy, correlation; multi-scale local SD of NDVI at 3, 9 and
+  27 px and the log scale ratio ln(SD27/SD3); 5×5 local SD of NDMI and BSI. Each layer → 12-month causal mean
+  (`*12`) and change vs its 2017–2020 mean (`*_chg`, same documented baseline as A8). Stored in
+  `texture.parquet` beside `table.parquet` (joined on pix, time) so the base table is untouched.
+* A10b red-edge (`care_ew/rededge.py`): B04, B05, B06, B07, B8A, SCL at native 20 m from the SAME scene
+  selection rule as the base composite; monthly medians of NDRE = (B8A−B05)/(B8A+B05), CIre = B07/B05 − 1,
+  IRECI = (B07−B04)/(B05/B06). Features: value, 3-month change, 12-month mean, anomaly vs 2017–2020 same-month mean.
+* Comparison: A6 (operational) vs A6 + A10a, A6 + A10b, A6 + A10a + A10b, same splits / weights / LightGBM
+  parameters. **Decision rule (fixed now): a variant replaces A6 only if its VALIDATION AP ≥ A6 + 0.005; the
+  test set is reported regardless and is not used to choose.** If rejected, the features may still be used
+  for hotspot attribution (as A8).
+
 ## 12. Ground-reference inventory (2026-10-19; three search agents; all endpoints actually queried)
 Files: `data/ground_ref/` — `photo_sources_inventory.json`, `field_sources_inventory.json`,
 `vhr_sources_inventory.json`, per-source subfolders, `inventory_queries.py` (re-runnable).
