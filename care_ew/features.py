@@ -215,6 +215,11 @@ FEATURE_GROUPS = {
                      "nl_kappa", "nl_bistable", "nl_noise_ratio", "nl_dfa48", "nl_pe36",
                      "nl_brain36", "nl_r2rain36", "nl_dbrain12",
                      "nl_sp_skew21", "nl_sp_moran21", "nl_patch_vegfrac", "nl_patch_largest", "nl_patch_alpha"],
+    # A10a texture (D-023): GLCM contrast/homogeneity/entropy/correlation, multi-scale NDVI SD, NDMI/BSI texture
+    "A10a_texture": [f"tx_{k}{s}" for k in ("con", "hom", "ent", "cor", "sd3", "sd27", "lsr", "ndmi_sd", "bsi_sd")
+                     for s in ("12", "_chg")],
+    # A10b red-edge chlorophyll (D-023): NDRE, CIre, IRECI value / 3-mo change / 12-mo mean / anomaly
+    "A10b_rededge": [f"re_{k}{s}" for k in ("ndre", "cire", "ireci") for s in ("", "_d3", "_m12", "_anom")],
     "A7_heat": ["lst_z", "lst_z3", "dT_z", "dT_z3", "heat_HD1", "heat_HD3", "heat_TMAX1", "heat_VPD1", "heat_VPD3"],
 }
 HEAT_COLS = ["HD1", "HD3", "TMAX1", "VPD1", "VPD3"]

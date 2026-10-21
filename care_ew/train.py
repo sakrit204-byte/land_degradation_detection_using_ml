@@ -46,6 +46,10 @@ def load_all(aois=None, neg_keep=None):
         if not f.exists():
             continue
         d = pd.read_parquet(f)
+        for extra in ("texture.parquet", "rededge.parquet"):          # A10a / A10b side tables (D-023)
+            fx = PROC / a.key / extra
+            if fx.exists():
+                d = d.merge(pd.read_parquet(fx), on=["pix", "time"], how="left")
         for c in d.columns:
             if d[c].dtype == np.float64:
                 d[c] = d[c].astype(np.float32)
@@ -449,6 +453,45 @@ def loso(df, log):
     log["leave_one_site_out"] = out
 
 
+def a10(df, log):
+    """D-023 (pre-registered): A6 vs A6+texture, A6+red-edge, A6+both on identical rows/splits/parameters.
+    A variant is adopted only if its VALIDATION AP >= A6 + 0.005; test metrics are reported regardless."""
+    tr, es, cal, te = splits(df)
+    base = feature_set(df, "A6_spatial")
+    variants = {"A6_spatial": base,
+                "A6+A10a_texture": base + [c for c in FEATURE_GROUPS["A10a_texture"] if c in df],
+                "A6+A10b_rededge": base + [c for c in FEATURE_GROUPS["A10b_rededge"] if c in df],
+                "A6+A10a+A10b": base + [c for c in FEATURE_GROUPS["A10a_texture"] + FEATURE_GROUPS["A10b_rededge"] if c in df]}
+    out, seen = {}, set()
+    for name, cols in variants.items():
+        if tuple(cols) in seen:                                    # group not available yet (e.g. red-edge still downloading)
+            continue
+        seen.add(tuple(cols))
+        m, ev = fit_lgb(tr, es, cols)
+        p = m.predict(te[cols], num_iteration=m.best_iteration)
+        r = metrics(te.y, p)
+        r.update(n_features=len(cols), best_iter=int(m.best_iteration), val_pr_auc=float(max(ev["val"]["average_precision"])))
+        r.update(cluster_bootstrap(te, p))
+        gain = pd.Series(m.feature_importance("gain"), index=cols)
+        r["new_feature_gain_share"] = float(gain[[c for c in cols if c not in base]].sum() / gain.sum()) if len(cols) > len(base) else 0.0
+        r["top_new_features"] = gain[[c for c in cols if c not in base]].sort_values(ascending=False).head(6).round(1).to_dict()
+        out[name] = r
+        print("A10", name, "val", round(r["val_pr_auc"], 4), "test", round(r["pr_auc"], 4), "roc", round(r["roc_auc"], 3), flush=True)
+    bv = out["A6_spatial"]["val_pr_auc"]
+    best = max(out, key=lambda k: out[k]["val_pr_auc"])
+    out["decision"] = dict(rule="adopt only if val AP >= A6 + 0.005", a6_val=bv, best=best,
+                           best_val=out[best]["val_pr_auc"], adopted=best if out[best]["val_pr_auc"] >= bv + 0.005 else "A6_spatial")
+    # within-site univariate AUC of each new feature on validation rows (does it carry ANY signal?)
+    va = df[df.period == "val"]
+    uni = {}
+    for c in [c for c in FEATURE_GROUPS["A10a_texture"] + FEATURE_GROUPS["A10b_rededge"] if c in df]:
+        aucs = [roc_auc_score(g.y, g[c].fillna(g[c].median())) for _, g in va.groupby("aoi") if g.y.nunique() == 2 and g[c].notna().any()]
+        uni[c] = float(np.mean(aucs)) if aucs else None
+    out["univariate_within_site_auc_val"] = uni
+    log["a10"] = out
+    print("A10 decision", out["decision"], flush=True)
+
+
 def main(what=("ablation", "final", "loco", "lc", "vc", "wf")):
     """Pieces can be run in separate processes (memory): 'ablation final' starts a fresh metrics.json; any other
     piece (vc, lc, wf, loco, sens) loads the existing file and adds its section (D-022)."""
@@ -469,6 +512,7 @@ def main(what=("ablation", "final", "loco", "lc", "vc", "wf")):
     if "loco" in what: loco(df, log)
     if "sens" in what: label_sensitivity(df, log)
     if "loso" in what: loso(df, log)
+    if "a10" in what: a10(df, log)
     json.dump(log, open(RES / "metrics.json", "w"), indent=2, default=str)
     return log
 

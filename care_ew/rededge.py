@@ -138,7 +138,48 @@ def load10(aoi_key):
     return out, pd.DatetimeIndex(ds.time.values)
 
 
+RE_FEATURES = [f"re_{k.lower()}{s}" for k in RE_INDICES for s in ("", "_d3", "_m12", "_anom")]
+
+
+def features_aoi(aoi_key):
+    """A10b features for the pixels/months of table.parquet -> data/processed/<aoi>/rededge.parquet.
+    value (short gaps <= 2 months filled causally), 3-month change, 12-month causal mean, anomaly vs the
+    2017-2020 mean of the same calendar month (documented baseline, as mu in features.py)."""
+    from . import tsops as ts
+    d = PROC / aoi_key
+    tab = pd.read_parquet(d / "table.parquet", columns=["pix", "time", "row", "col"])
+    ds = xr.open_dataset(d / "s2_rededge.nc")
+    times = pd.DatetimeIndex(ds.time.values)
+    px = tab.drop_duplicates("pix").sort_values("pix")
+    pix = px["pix"].values
+    r2, c2 = px["row"].values.astype(int) // 2, px["col"].values.astype(int) // 2
+    cal = (times.year >= 2017) & (times.year <= 2020)
+    F = {}
+    for k in RE_INDICES:
+        v = ds[k].values[:, r2, c2]
+        Y = np.where(v == -32768, np.nan, v / SCALE[k]).astype(np.float32)
+        Yc, _ = ts.causal_interp_short_gaps(Y, 2)
+        clim = np.stack([np.nanmean(Yc[cal & (times.month == m)], 0) for m in range(1, 13)])
+        n = "re_" + k.lower()
+        F[n] = Yc
+        F[n + "_d3"] = Yc - ts.lag(Yc, 3)
+        F[n + "_m12"] = ts.roll_mean(Yc, 12, minp=4)
+        F[n + "_anom"] = Yc - clim[times.month.values - 1]
+    ti = times.get_indexer(pd.to_datetime(tab["time"]))
+    pi = np.searchsorted(pix, tab["pix"].values)
+    assert (ti >= 0).all()
+    out = pd.DataFrame({k: v[ti, pi].astype(np.float32) for k, v in F.items()})
+    out.insert(0, "time", tab["time"].values); out.insert(0, "pix", tab["pix"].values)
+    out.to_parquet(d / "rededge.parquet", index=False)
+    return len(out)
+
+
 if __name__ == "__main__":
     logging.basicConfig(level=logging.WARNING)
-    for k in sys.argv[1:]:
-        build(k)
+    args = sys.argv[1:]
+    if args and args[0] == "features":
+        for k in args[1:]:
+            print(k, features_aoi(k), flush=True)
+    else:
+        for k in args:
+            build(k)
