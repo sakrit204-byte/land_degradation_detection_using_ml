@@ -1,0 +1,1021 @@
+{
+ "type": "FeatureCollection",
+ "metadata": {
+  "source": "CARE-EW",
+  "model_version": "careew-lgbm-v1",
+  "latest_month": "2026-09",
+  "exported_at": "2026-10-19T14:20:00.660Z",
+  "mock": false,
+  "disclaimer": "EO-proxy based probabilities, not field-verified. status=abstain means the model is uncertain: field inspection needed."
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.939872,
+       -12.178601
+      ],
+      [
+       -45.930406,
+       -12.178633
+      ],
+      [
+       -45.93044,
+       -12.188579
+      ],
+      [
+       -45.939907,
+       -12.188547
+      ],
+      [
+       -45.939872,
+       -12.178601
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "warning",
+    "risk_mean": 0.165,
+    "risk_max": 0.564,
+    "area_ha": 57.55,
+    "landcover": "crop",
+    "first_warning": "2026-07",
+    "drivers": "MODIS variance (5 yr) (0.628); Share of last 12 mo below expectation (0.519); Seasonal baseline NDVI (0.188); Residual R (6-mo mean) (0.17); Change in AC1 (12 mo) (0.133)",
+    "months_below": 0,
+    "resid_mean": 0.24,
+    "ndvi_now": 0.793,
+    "ndvi_baseline": 0.792,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 0.41,
+    "id": 1,
+    "label": "H1",
+    "show_label": true,
+    "chip_before": "chips/H1_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H1_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.935156,
+    "centroid_lat": -12.18359
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.937942,
+       -12.204649
+      ],
+      [
+       -45.924338,
+       -12.204695
+      ],
+      [
+       -45.924379,
+       -12.21672
+      ],
+      [
+       -45.937984,
+       -12.216674
+      ],
+      [
+       -45.937942,
+       -12.204649
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "warning",
+    "risk_mean": 0.067,
+    "risk_max": 0.226,
+    "area_ha": 52.75,
+    "landcover": "crop",
+    "first_warning": null,
+    "drivers": "Share of last 12 mo below expectation (0.34); NDVI trend (36 mo) (0.24); Residual R (6-mo mean) (0.208); Residual R (12-mo mean) (0.208); Autocorrelation AC1 (24 mo) (0.128)",
+    "months_below": 0,
+    "resid_mean": -0.28,
+    "ndvi_now": 0.129,
+    "ndvi_baseline": 0.168,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 2.72,
+    "id": 2,
+    "label": "H2",
+    "show_label": true,
+    "chip_before": "chips/H2_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H2_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.931161,
+    "centroid_lat": -12.210684
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.944208,
+       -12.183016
+      ],
+      [
+       -45.939336,
+       -12.183033
+      ],
+      [
+       -45.939359,
+       -12.189363
+      ],
+      [
+       -45.94423,
+       -12.189346
+      ],
+      [
+       -45.944208,
+       -12.183016
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "warning",
+    "risk_mean": 0.157,
+    "risk_max": 0.564,
+    "area_ha": 16.58,
+    "landcover": "tree",
+    "first_warning": "2026-08",
+    "drivers": "MODIS variance (5 yr) (0.53); Autocorrelation AC1 (24 mo) (0.273); Share of last 12 mo below expectation (0.26); Seasonal baseline NDVI (0.229); Residual R (6-mo mean) (0.176)",
+    "months_below": 0,
+    "resid_mean": -0.3,
+    "ndvi_now": 0.558,
+    "ndvi_baseline": 0.628,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 0.28,
+    "id": 3,
+    "label": "H3",
+    "show_label": true,
+    "chip_before": "chips/H3_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H3_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.941783,
+    "centroid_lat": -12.18619
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.919743,
+       -12.205162
+      ],
+      [
+       -45.915883,
+       -12.205175
+      ],
+      [
+       -45.915907,
+       -12.212318
+      ],
+      [
+       -45.919768,
+       -12.212305
+      ],
+      [
+       -45.919743,
+       -12.205162
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "warning",
+    "risk_mean": 0.097,
+    "risk_max": 0.248,
+    "area_ha": 10.04,
+    "landcover": "crop",
+    "first_warning": null,
+    "drivers": "Share of last 12 mo below expectation (0.529); NDVI trend (36 mo) (0.231); Residual R (12-mo mean) (0.215); Residual R (6-mo mean) (0.198); Autocorrelation AC1 (24 mo) (0.128)",
+    "months_below": 0,
+    "resid_mean": -0.62,
+    "ndvi_now": 0.151,
+    "ndvi_baseline": 0.225,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 3.28,
+    "id": 4,
+    "label": "H4",
+    "show_label": true,
+    "chip_before": "chips/H4_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H4_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.917825,
+    "centroid_lat": -12.20874
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.921429,
+       -12.187524
+      ],
+      [
+       -45.916741,
+       -12.18754
+      ],
+      [
+       -45.916753,
+       -12.190976
+      ],
+      [
+       -45.921441,
+       -12.19096
+      ],
+      [
+       -45.921429,
+       -12.187524
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "warning",
+    "risk_mean": 0.11,
+    "risk_max": 0.352,
+    "area_ha": 7.52,
+    "landcover": "crop",
+    "first_warning": "2026-09",
+    "drivers": "Share of last 12 mo below expectation (0.719); Residual R (12-mo mean) (0.22); Residual R (6-mo mean) (0.21); NDVI trend (36 mo) (0.146); Change in AC1 (12 mo) (0.133)",
+    "months_below": 0,
+    "resid_mean": -0.51,
+    "ndvi_now": 0.128,
+    "ndvi_baseline": 0.179,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 2.14,
+    "id": 5,
+    "label": "H5",
+    "show_label": true,
+    "chip_before": "chips/H5_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H5_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.919091,
+    "centroid_lat": -12.18925
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.921882,
+       -12.212208
+      ],
+      [
+       -45.918756,
+       -12.212218
+      ],
+      [
+       -45.918779,
+       -12.218638
+      ],
+      [
+       -45.921904,
+       -12.218628
+      ],
+      [
+       -45.921882,
+       -12.212208
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "warning",
+    "risk_mean": 0.097,
+    "risk_max": 0.191,
+    "area_ha": 7.73,
+    "landcover": "crop",
+    "first_warning": "2026-09",
+    "drivers": "Share of last 12 mo below expectation (0.776); NDVI trend (36 mo) (0.245); Residual R (12-mo mean) (0.24); Residual R (6-mo mean) (0.173); Residual R (6-mo min) (0.101)",
+    "months_below": 0,
+    "resid_mean": -0.68,
+    "ndvi_now": 0.136,
+    "ndvi_baseline": 0.217,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 3.43,
+    "id": 6,
+    "label": "H6",
+    "show_label": true,
+    "chip_before": "chips/H6_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H6_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.92033,
+    "centroid_lat": -12.215423
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.918428,
+       -12.196938
+      ],
+      [
+       -45.914292,
+       -12.196952
+      ],
+      [
+       -45.914307,
+       -12.201473
+      ],
+      [
+       -45.918444,
+       -12.201459
+      ],
+      [
+       -45.918428,
+       -12.196938
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "warning",
+    "risk_mean": 0.07,
+    "risk_max": 0.177,
+    "area_ha": 10.42,
+    "landcover": "crop",
+    "first_warning": null,
+    "drivers": "Share of last 12 mo below expectation (0.354); NDVI trend (36 mo) (0.228); Autocorrelation AC1 (24 mo) (0.208); Residual R (6-mo mean) (0.207); Residual R (12-mo mean) (0.173)",
+    "months_below": 0,
+    "resid_mean": -0.48,
+    "ndvi_now": 0.096,
+    "ndvi_baseline": 0.168,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 2.8,
+    "id": 7,
+    "label": "H7",
+    "show_label": true,
+    "chip_before": "chips/H7_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H7_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.916368,
+    "centroid_lat": -12.199205
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.927631,
+       -12.200162
+      ],
+      [
+       -45.924046,
+       -12.200174
+      ],
+      [
+       -45.924062,
+       -12.204695
+      ],
+      [
+       -45.927647,
+       -12.204683
+      ],
+      [
+       -45.927631,
+       -12.200162
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "warning",
+    "risk_mean": 0.073,
+    "risk_max": 0.144,
+    "area_ha": 9,
+    "landcover": "crop",
+    "first_warning": null,
+    "drivers": "Share of last 12 mo below expectation (0.324); Residual R (12-mo mean) (0.236); NDVI trend (36 mo) (0.23); Autocorrelation AC1 (24 mo) (0.207); Residual R (6-mo mean) (0.204)",
+    "months_below": 0,
+    "resid_mean": -0.61,
+    "ndvi_now": 0.103,
+    "ndvi_baseline": 0.183,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 2.21,
+    "id": 8,
+    "label": "H8",
+    "show_label": true,
+    "chip_before": "chips/H8_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H8_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.925846,
+    "centroid_lat": -12.202428
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.925622,
+       -12.177473
+      ],
+      [
+       -45.922589,
+       -12.177483
+      ],
+      [
+       -45.922595,
+       -12.179292
+      ],
+      [
+       -45.925628,
+       -12.179282
+      ],
+      [
+       -45.925622,
+       -12.177473
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "warning",
+    "risk_mean": 0.134,
+    "risk_max": 0.42,
+    "area_ha": 4.09,
+    "landcover": "grass",
+    "first_warning": "2026-09",
+    "drivers": "Share of last 12 mo below expectation (0.798); Residual R (6-mo mean) (0.344); MODIS variance (5 yr) (0.32); Residual R (12-mo mean) (0.257); Residual R (6-mo min) (0.135)",
+    "months_below": 0,
+    "resid_mean": -0.27,
+    "ndvi_now": 0.158,
+    "ndvi_baseline": 0.182,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 1.64,
+    "id": 9,
+    "label": "H9",
+    "show_label": true,
+    "chip_before": "chips/H9_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H9_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.924109,
+    "centroid_lat": -12.178383
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.925003,
+       -12.211022
+      ],
+      [
+       -45.921878,
+       -12.211032
+      ],
+      [
+       -45.921896,
+       -12.216277
+      ],
+      [
+       -45.925021,
+       -12.216266
+      ],
+      [
+       -45.925003,
+       -12.211022
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "warning",
+    "risk_mean": 0.066,
+    "risk_max": 0.248,
+    "area_ha": 7.04,
+    "landcover": "crop",
+    "first_warning": null,
+    "drivers": "Share of last 12 mo below expectation (0.425); Residual R (12-mo mean) (0.236); NDVI trend (36 mo) (0.232); Residual R (6-mo mean) (0.188); Autocorrelation AC1 (24 mo) (0.187)",
+    "months_below": 0,
+    "resid_mean": -0.11,
+    "ndvi_now": 0.175,
+    "ndvi_baseline": 0.2,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 3.34,
+    "id": 10,
+    "label": "H10",
+    "show_label": true,
+    "chip_before": "chips/H10_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H10_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.92345,
+    "centroid_lat": -12.213649
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.944182,
+       -12.175692
+      ],
+      [
+       -45.909532,
+       -12.175809
+      ],
+      [
+       -45.909558,
+       -12.183585
+      ],
+      [
+       -45.944209,
+       -12.183469
+      ],
+      [
+       -45.944182,
+       -12.175692
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "active_degradation",
+    "risk_mean": null,
+    "risk_max": null,
+    "area_ha": 86.09,
+    "landcover": "shrub",
+    "first_warning": null,
+    "drivers": "",
+    "months_below": 17,
+    "resid_mean": -2.99,
+    "ndvi_now": 0.242,
+    "ndvi_baseline": 0.423,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 1,
+    "id": 11,
+    "label": "H11",
+    "show_label": false,
+    "chip_before": "chips/H11_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H11_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.92687,
+    "centroid_lat": -12.179638
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.919784,
+       -12.190333
+      ],
+      [
+       -45.917027,
+       -12.190342
+      ],
+      [
+       -45.91705,
+       -12.197033
+      ],
+      [
+       -45.919807,
+       -12.197024
+      ],
+      [
+       -45.919784,
+       -12.190333
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "active_degradation",
+    "risk_mean": null,
+    "risk_max": null,
+    "area_ha": 12.32,
+    "landcover": "crop",
+    "first_warning": null,
+    "drivers": "",
+    "months_below": 7,
+    "resid_mean": -1.7,
+    "ndvi_now": 0.088,
+    "ndvi_baseline": 0.17,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 2.31,
+    "id": 12,
+    "label": "H12",
+    "show_label": false,
+    "chip_before": "chips/H12_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H12_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.918417,
+    "centroid_lat": -12.193683
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.931367,
+       -12.190836
+      ],
+      [
+       -45.927139,
+       -12.190851
+      ],
+      [
+       -45.927152,
+       -12.194558
+      ],
+      [
+       -45.93138,
+       -12.194544
+      ],
+      [
+       -45.931367,
+       -12.190836
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "active_degradation",
+    "risk_mean": null,
+    "risk_max": null,
+    "area_ha": 9.34,
+    "landcover": "crop",
+    "first_warning": null,
+    "drivers": "",
+    "months_below": 6,
+    "resid_mean": -1.39,
+    "ndvi_now": 0.067,
+    "ndvi_baseline": 0.165,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 1.23,
+    "id": 13,
+    "label": "H13",
+    "show_label": false,
+    "chip_before": "chips/H13_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H13_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.92926,
+    "centroid_lat": -12.192697
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.920232,
+       -12.21366
+      ],
+      [
+       -45.917658,
+       -12.213669
+      ],
+      [
+       -45.917676,
+       -12.218732
+      ],
+      [
+       -45.92025,
+       -12.218724
+      ],
+      [
+       -45.920232,
+       -12.21366
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "active_degradation",
+    "risk_mean": null,
+    "risk_max": null,
+    "area_ha": 8.33,
+    "landcover": "crop",
+    "first_warning": null,
+    "drivers": "",
+    "months_below": 7,
+    "resid_mean": -1.52,
+    "ndvi_now": 0.118,
+    "ndvi_baseline": 0.211,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 3.39,
+    "id": 14,
+    "label": "H14",
+    "show_label": false,
+    "chip_before": "chips/H14_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H14_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.918954,
+    "centroid_lat": -12.216196
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.919018,
+       -12.208058
+      ],
+      [
+       -45.916536,
+       -12.208066
+      ],
+      [
+       -45.916555,
+       -12.213582
+      ],
+      [
+       -45.919037,
+       -12.213574
+      ],
+      [
+       -45.919018,
+       -12.208058
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "active_degradation",
+    "risk_mean": null,
+    "risk_max": null,
+    "area_ha": 6.18,
+    "landcover": "crop",
+    "first_warning": null,
+    "drivers": "",
+    "months_below": 7,
+    "resid_mean": -1.38,
+    "ndvi_now": 0.123,
+    "ndvi_baseline": 0.236,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 3.43,
+    "id": 15,
+    "label": "H15",
+    "show_label": false,
+    "chip_before": "chips/H15_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H15_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.917787,
+    "centroid_lat": -12.21082
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.922232,
+       -12.207053
+      ],
+      [
+       -45.918739,
+       -12.207064
+      ],
+      [
+       -45.918749,
+       -12.210048
+      ],
+      [
+       -45.922242,
+       -12.210036
+      ],
+      [
+       -45.922232,
+       -12.207053
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "active_degradation",
+    "risk_mean": null,
+    "risk_max": null,
+    "area_ha": 5.95,
+    "landcover": "crop",
+    "first_warning": null,
+    "drivers": "",
+    "months_below": 7,
+    "resid_mean": -1.37,
+    "ndvi_now": 0.118,
+    "ndvi_baseline": 0.234,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 3.04,
+    "id": 16,
+    "label": "H16",
+    "show_label": false,
+    "chip_before": "chips/H16_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H16_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.92049,
+    "centroid_lat": -12.208551
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.940912,
+       -12.186645
+      ],
+      [
+       -45.938981,
+       -12.186651
+      ],
+      [
+       -45.938995,
+       -12.190539
+      ],
+      [
+       -45.940925,
+       -12.190533
+      ],
+      [
+       -45.940912,
+       -12.186645
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "active_degradation",
+    "risk_mean": null,
+    "risk_max": null,
+    "area_ha": 4.33,
+    "landcover": "crop",
+    "first_warning": null,
+    "drivers": "",
+    "months_below": 8,
+    "resid_mean": -1.85,
+    "ndvi_now": 0.519,
+    "ndvi_baseline": 0.651,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 0.14,
+    "id": 17,
+    "label": "H17",
+    "show_label": false,
+    "chip_before": "chips/H17_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H17_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.939953,
+    "centroid_lat": -12.188592
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       -45.941177,
+       -12.183569
+      ],
+      [
+       -45.939246,
+       -12.183576
+      ],
+      [
+       -45.939257,
+       -12.18665
+      ],
+      [
+       -45.941187,
+       -12.186644
+      ],
+      [
+       -45.941177,
+       -12.183569
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "BRA_matopiba",
+    "country": "Brazil",
+    "status": "active_degradation",
+    "risk_mean": null,
+    "risk_max": null,
+    "area_ha": 3.19,
+    "landcover": "crop",
+    "first_warning": null,
+    "drivers": "",
+    "months_below": 8,
+    "resid_mean": -1.58,
+    "ndvi_now": 0.5,
+    "ndvi_baseline": 0.609,
+    "rain_anom_6m": -0.96,
+    "dist_river_km": 0.12,
+    "id": 18,
+    "label": "H18",
+    "show_label": false,
+    "chip_before": "chips/H18_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H18_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": -45.940216,
+    "centroid_lat": -12.185109
+   }
+  }
+ ]
+}

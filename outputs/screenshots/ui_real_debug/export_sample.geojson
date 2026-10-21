@@ -1,0 +1,69 @@
+{
+ "type": "FeatureCollection",
+ "metadata": {
+  "source": "CARE-EW",
+  "model_version": "careew-lgbm-v1",
+  "latest_month": "2026-09",
+  "exported_at": "2026-10-19T09:46:56.069Z",
+  "mock": false,
+  "disclaimer": "EO-proxy based probabilities, not field-verified. status=abstain means the model is uncertain: field inspection needed."
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       85.943565,
+       27.030116
+      ],
+      [
+       85.947093,
+       27.030143
+      ],
+      [
+       85.947115,
+       27.027796
+      ],
+      [
+       85.943587,
+       27.027769
+      ],
+      [
+       85.943565,
+       27.030116
+      ]
+     ]
+    ]
+   },
+   "properties": {
+    "aoi": "NPL_chure",
+    "country": "Nepal",
+    "status": "active_degradation",
+    "risk_mean": null,
+    "risk_max": null,
+    "area_ha": 2.26,
+    "landcover": "tree",
+    "first_warning": null,
+    "drivers": "",
+    "months_below": 7,
+    "resid_mean": -4.61,
+    "ndvi_now": 0.418,
+    "ndvi_baseline": 0.483,
+    "rain_anom_6m": -0.76,
+    "dist_river_km": 0.09,
+    "id": 1,
+    "label": "H1",
+    "show_label": true,
+    "chip_before": "chips/H1_before_2024-09.png",
+    "chip_before_month": "2024-09",
+    "chip_after": "chips/H1_after_2026-09.png",
+    "chip_after_month": "2026-09",
+    "centroid_lon": 85.94534,
+    "centroid_lat": 27.028956
+   }
+  }
+ ]
+}

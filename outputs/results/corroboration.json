@@ -1,0 +1,270 @@
+{
+  "NPL_chure": {
+    "landsat": {
+      "n_event": 4180,
+      "n_control": 3918,
+      "z_event_median": 0.3903176486492157,
+      "z_control_median": 1.0157602429389954,
+      "frac_event_below_minus1": 0.18349282296650718,
+      "frac_control_below_minus1": 0.0737621235324145,
+      "auc_agreement": 0.6138948626264256
+    },
+    "modis": {
+      "n_event": 5676,
+      "n_control": 5874,
+      "z_event_median": 0.7267411351203918,
+      "z_control_median": 0.7424823045730591,
+      "frac_event_below_minus1": 0.007928118393234672,
+      "frac_control_below_minus1": 0.020258767449778687,
+      "auc_agreement": 0.49211159268289234
+    }
+  },
+  "IND_bundelkhand": {
+    "landsat": {
+      "n_event": 4196,
+      "n_control": 3760,
+      "z_event_median": 0.8677879273891449,
+      "z_control_median": 2.009451389312744,
+      "frac_event_below_minus1": 0.16801715919923738,
+      "frac_control_below_minus1": 0.06941489361702127,
+      "auc_agreement": 0.6789597298845912
+    },
+    "modis": {
+      "n_event": 5712,
+      "n_control": 5908,
+      "z_event_median": 1.2493300437927246,
+      "z_control_median": 1.41892671585083,
+      "frac_event_below_minus1": 0.005427170868347339,
+      "frac_control_below_minus1": 0.001861882193635748,
+      "auc_agreement": 0.5340424380652735
+    }
+  },
+  "ETH_tigray": {
+    "landsat": {
+      "n_event": 4463,
+      "n_control": 3735,
+      "z_event_median": -0.41448307037353516,
+      "z_control_median": 0.7362186908721924,
+      "frac_event_below_minus1": 0.3726193143625364,
+      "frac_control_below_minus1": 0.18714859437751005,
+      "auc_agreement": 0.6861762682967286
+    },
+    "modis": {
+      "n_event": 5620,
+      "n_control": 5909,
+      "z_event_median": 0.7780694961547852,
+      "z_control_median": 1.0188066959381104,
+      "frac_event_below_minus1": 0.08202846975088968,
+      "frac_control_below_minus1": 0.0541546793027585,
+      "auc_agreement": 0.5761241070831695
+    }
+  },
+  "KEN_baringo": {
+    "landsat": {
+      "n_event": 4511,
+      "n_control": 3700,
+      "z_event_median": -1.7685770988464355,
+      "z_control_median": -0.17433767765760422,
+      "frac_event_below_minus1": 0.6375526490800266,
+      "frac_control_below_minus1": 0.3164864864864865,
+      "auc_agreement": 0.7333565698263105
+    },
+    "modis": {
+      "n_event": 5793,
+      "n_control": 5915,
+      "z_event_median": 0.6190289258956909,
+      "z_control_median": 0.6830352544784546,
+      "frac_event_below_minus1": 0.015363369583980666,
+      "frac_control_below_minus1": 0.01267962806424345,
+      "auc_agreement": 0.521692560715785
+    }
+  },
+  "SEN_ferlo": {
+    "landsat": {
+      "n_event": 4391,
+      "n_control": 3733,
+      "z_event_median": 1.3303111791610718,
+      "z_control_median": 1.0942704677581787,
+      "frac_event_below_minus1": 0.017535868822591665,
+      "frac_control_below_minus1": 0.011518885614787035,
+      "auc_agreement": 0.46372981336846675
+    },
+    "modis": {
+      "n_event": 5505,
+      "n_control": 5907,
+      "z_event_median": 0.28358155488967896,
+      "z_control_median": 0.4357287883758545,
+      "frac_event_below_minus1": 0.11353315168029064,
+      "frac_control_below_minus1": 0.026578635517183005,
+      "auc_agreement": 0.5680816199379821
+    }
+  },
+  "ESP_murcia": {
+    "landsat": {
+      "n_event": 4193,
+      "n_control": 3794,
+      "z_event_median": -1.9551810026168823,
+      "z_control_median": -0.06556566432118416,
+      "frac_event_below_minus1": 0.6484617219174815,
+      "frac_control_below_minus1": 0.28149710068529255,
+      "auc_agreement": 0.7471171861730541
+    },
+    "modis": {
+      "n_event": 5938,
+      "n_control": 5866,
+      "z_event_median": 0.07583274692296982,
+      "z_control_median": 0.10188236460089684,
+      "frac_event_below_minus1": 0.2041091276524082,
+      "frac_control_below_minus1": 0.15291510398908967,
+      "auc_agreement": 0.5240190802171364
+    }
+  },
+  "BRA_matopiba": {
+    "landsat": {
+      "n_event": 4895,
+      "n_control": 3705,
+      "z_event_median": -7.272963523864746,
+      "z_control_median": -0.09780222177505493,
+      "frac_event_below_minus1": 0.9364657814096017,
+      "frac_control_below_minus1": 0.32388663967611336,
+      "auc_agreement": 0.9313038311973852
+    },
+    "modis": {
+      "n_event": 5997,
+      "n_control": 5901,
+      "z_event_median": -0.8194282054901123,
+      "z_control_median": 0.17227888107299805,
+      "frac_event_below_minus1": 0.41504085376021344,
+      "frac_control_below_minus1": 0.08625656668361295,
+      "auc_agreement": 0.7448900691660862
+    }
+  },
+  "MNG_steppe": {
+    "landsat": {
+      "n_event": 290,
+      "n_control": 3693,
+      "z_event_median": 0.5504476428031921,
+      "z_control_median": 0.7280049324035645,
+      "frac_event_below_minus1": 0.1793103448275862,
+      "frac_control_below_minus1": 0.06661251015434606,
+      "auc_agreement": 0.5659682344043251
+    },
+    "modis": {
+      "n_event": 891,
+      "n_control": 5560,
+      "z_event_median": 1.198047161102295,
+      "z_control_median": 0.8898164927959442,
+      "frac_event_below_minus1": 0.06172839506172839,
+      "frac_control_below_minus1": 0.03201438848920863,
+      "auc_agreement": 0.48012448626957027
+    }
+  },
+  "AUS_murraydarling": {
+    "landsat": {
+      "n_event": 4209,
+      "n_control": 3793,
+      "z_event_median": 1.3824119567871094,
+      "z_control_median": 3.407602071762085,
+      "frac_event_below_minus1": 0.022095509622238062,
+      "frac_control_below_minus1": 0.0002636435539151068,
+      "auc_agreement": 0.8300892147487303
+    },
+    "modis": {
+      "n_event": 5983,
+      "n_control": 5894,
+      "z_event_median": 1.7871519327163696,
+      "z_control_median": 1.8693280220031738,
+      "frac_event_below_minus1": 0.0,
+      "frac_control_below_minus1": 0.0,
+      "auc_agreement": 0.5268416462864668
+    }
+  },
+  "NPL_chure_dang": {
+    "modis": {
+      "n_event": 5961,
+      "n_control": 5905,
+      "z_event_median": 1.0929148197174072,
+      "z_control_median": 1.3216331005096436,
+      "frac_event_below_minus1": 0.012581781580271767,
+      "frac_control_below_minus1": 0.017104149026248943,
+      "auc_agreement": 0.5638714159678327
+    }
+  },
+  "NPL_chure_sarlahi": {
+    "modis": {
+      "n_event": 5909,
+      "n_control": 5912,
+      "z_event_median": 0.5486516356468201,
+      "z_control_median": 0.7263326346874237,
+      "frac_event_below_minus1": 0.13521746488407513,
+      "frac_control_below_minus1": 0.09150879566982409,
+      "auc_agreement": 0.5502801739783193
+    }
+  },
+  "NPL_kavre": {
+    "modis": {
+      "n_event": 5814,
+      "n_control": 5917,
+      "z_event_median": 0.22326576709747314,
+      "z_control_median": 0.7659644484519958,
+      "frac_event_below_minus1": 0.15376676986584106,
+      "frac_control_below_minus1": 0.04732127767449721,
+      "auc_agreement": 0.6460106551359859
+    }
+  },
+  "NPL_surkhet": {
+    "modis": {
+      "n_event": 5925,
+      "n_control": 5924,
+      "z_event_median": 0.3837350606918335,
+      "z_control_median": 0.6200526058673859,
+      "frac_event_below_minus1": 0.10329113924050633,
+      "frac_control_below_minus1": 0.08575286968264687,
+      "auc_agreement": 0.5632541161320467
+    }
+  },
+  "IND_banni": {
+    "modis": {
+      "n_event": 5788,
+      "n_control": 5935,
+      "z_event_median": 0.6568018198013306,
+      "z_control_median": 1.1765331029891968,
+      "frac_event_below_minus1": 0.046821008984105045,
+      "frac_control_below_minus1": 0.013479359730412805,
+      "auc_agreement": 0.6246824764248025
+    }
+  },
+  "IND_jharia": {
+    "modis": {
+      "n_event": 5972,
+      "n_control": 5948,
+      "z_event_median": 0.43872690200805664,
+      "z_control_median": 1.1803085803985596,
+      "frac_event_below_minus1": 0.24413931681178835,
+      "frac_control_below_minus1": 0.0410221923335575,
+      "auc_agreement": 0.6509997506858953
+    }
+  },
+  "IND_chambal": {
+    "modis": {
+      "n_event": 2228,
+      "n_control": 3518,
+      "z_event_median": 0.6849978566169739,
+      "z_control_median": 0.6615472435951233,
+      "frac_event_below_minus1": 0.009874326750448833,
+      "frac_control_below_minus1": 0.009096077316657191,
+      "auc_agreement": 0.49085690876262933
+    }
+  },
+  "IND_thar": {
+    "modis": {
+      "n_event": 5699,
+      "n_control": 5936,
+      "z_event_median": 0.5116087794303894,
+      "z_control_median": 0.5142812430858612,
+      "frac_event_below_minus1": 0.07562730303562028,
+      "frac_control_below_minus1": 0.06047843665768194,
+      "auc_agreement": 0.509613850895485
+    }
+  }
+}

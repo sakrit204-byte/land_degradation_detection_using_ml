@@ -1,0 +1,2 @@
+﻿aoi,country,id,label,status,risk_mean,risk_max,area_ha,first_warning,landcover,centroid_lat,centroid_lon,west,south,east,north,ndvi_now,ndvi_baseline,rain_anom_6m,dist_river_km,top_driver,model_version,mock,caveat
+NPL_chure,Nepal,1,H1,active_degradation,,,2.26,,tree,27.028956,85.945340,85.943565,27.027769,85.947115,27.030143,0.418,0.483,-0.76,0.09,,careew-lgbm-v1,false,"EO-proxy probability, not field-verified; abstain = field inspection needed"
