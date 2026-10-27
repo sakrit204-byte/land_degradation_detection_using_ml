@@ -555,6 +555,55 @@ def a10_seeds(df, log, seeds=(1, 2, 3, 4, 5)):
     print("SEEDS mean gain", round(d, 4), flush=True)
 
 
+def sites(df, log):
+    """D-025 (pre-registered): A6 trained on the 17 original sites vs on all 23 (E-008 adds 6). Both early-stop and
+    are scored on the SAME validation rows of the 17 original sites; adopt 23 only if val AP >= 17-site val AP + 0.005.
+    Reported regardless: test on the original 17 and on the 6 new sites; leave-one-site-out with/without siblings."""
+    from .config import NEW_SITES_E008
+    new = set(NEW_SITES_E008)
+    tr, es, cal, te = splits(df)
+    old = lambda d: d[~d.aoi.isin(new)]
+    cols = feature_set(df, "A6_spatial")
+    es0 = old(es)
+    out = {}
+    for name, trn in (("17_sites", old(tr)), ("23_sites", tr)):
+        m, ev = fit_lgb(trn, es0, cols)
+        r = dict(train_rows=int(len(trn)), train_pos=int(trn.y.sum()), best_iter=int(m.best_iteration),
+                 val_pr_auc_original17=float(max(ev["val"]["average_precision"])))
+        t0 = old(te); p0 = m.predict(t0[cols], num_iteration=m.best_iteration)
+        r["test_original17"] = {**metrics(t0.y, p0), **cluster_bootstrap(t0, p0)}
+        t1 = te[te.aoi.isin(new)]
+        if t1.y.nunique() == 2:
+            p1 = m.predict(t1[cols], num_iteration=m.best_iteration)
+            r["test_new6"] = metrics(t1.y, p1)
+            r["test_new6_per_site"] = {a: metrics(g.y, p1[(t1.aoi == a).values]) for a, g in t1.groupby("aoi") if g.y.nunique() == 2}
+        out[name] = r
+        print("SITES", name, "rows", len(trn), "val17", round(r["val_pr_auc_original17"], 4), "test17", round(r["test_original17"]["pr_auc"], 4),
+              "roc17", round(r["test_original17"]["roc_auc"], 3), "test_new6", round(r.get("test_new6", {}).get("pr_auc", float("nan")), 4), flush=True)
+    a, b = out["17_sites"]["val_pr_auc_original17"], out["23_sites"]["val_pr_auc_original17"]
+    out["decision"] = dict(rule="adopt 23 sites only if val AP (original 17) >= 17-site val AP + 0.005", val_17=a, val_23=b,
+                           adopted="23_sites" if b >= a + 0.005 else "17_sites")
+    # secondary: does a sibling help a held-out site? (train without the site; with vs without its new sibling)
+    sib = {"IND_jharia": ["IND_singrauli"], "NPL_chure": ["NPL_chure_udayapur", "NPL_chure_kailali", "IND_shivalik"],
+           "NPL_kavre": ["NPL_sindhupalchok"], "IND_bundelkhand": ["IND_marathwada"], "NPL_surkhet": ["NPL_chure_kailali", "IND_shivalik"]}
+    loso2 = {}
+    for site, sibs in sib.items():
+        tt = df[(df.period == "test") & (df.aoi == site)]
+        if tt.y.nunique() < 2:
+            continue
+        rr = {}
+        for lab, drop in (("without_new_sibling", [site] + sibs), ("with_new_sibling", [site])):
+            trn = df[(df.period == "train") & (df.space == "train") & ~df.aoi.isin(drop)]
+            esn = df[(df.period == "val") & (df.space == "val") & ~df.aoi.isin(drop)]
+            m, _ = fit_lgb(trn, esn, cols)
+            rr[lab] = metrics(tt.y, m.predict(tt[cols], num_iteration=m.best_iteration))
+        loso2[site] = rr
+        print("SIBLING", site, {k: (round(v["pr_auc"], 4), round(v["roc_auc"], 3)) for k, v in rr.items()}, flush=True)
+    out["sibling_loso"] = loso2
+    log["sites_e008"] = out
+    print("SITES decision", out["decision"], flush=True)
+
+
 def main(what=("ablation", "final", "loco", "lc", "vc", "wf")):
     """Pieces can be run in separate processes (memory): 'ablation final' starts a fresh metrics.json; any other
     piece (vc, lc, wf, loco, sens) loads the existing file and adds its section (D-022)."""
@@ -581,6 +630,7 @@ def main(what=("ablation", "final", "loco", "lc", "vc", "wf")):
     if "loso" in what: loso(df, log)
     if "a10" in what: a10(df, log)
     if "a10seeds" in what: a10_seeds(df, log)
+    if "sites" in what: sites(df, log)
     json.dump(log, open(RES / "metrics.json", "w"), indent=2, default=str)
     return log
 
