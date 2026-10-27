@@ -248,27 +248,29 @@ para("Section II reviews related work. Section III describes the data, the syste
 # ============================================================================ II. Related work
 heading("Related Work")
 subheading("Retrospective trend and residual methods")
-para("RESTREND regresses vegetation index on rainfall and treats a declining residual as human-induced degradation [4]. "
-     "Local Net Production Scaling compares each pixel with land-cover peers in the same region [5]. BFAST decomposes a "
-     "time series into trend and season and detects breaks [13], and Trends.Earth packages trend, land-cover and carbon "
-     "sub-indicators for SDG reporting [3]. All are designed to detect change that has already happened.")
+para("Time-series residual trend analysis regresses vegetation index on climate and attributes the remaining trend to human "
+     "activity; applied to global drylands it separates climate-driven from human-driven desertification [4]. Machine-learning "
+     "classifiers on Sentinel-2 indices map current desertification classes with high accuracy [5], transformer networks on "
+     "Sentinel-2 time series detect forest disturbance after it occurs [13], and global syntheses trace multiple degradation "
+     "pathways from such indicators [3]. All are designed to detect change that has already happened.")
 subheading("Machine-learning disturbance mapping")
-para("Large-scale forest products use decision trees on Landsat to map annual tree-cover loss [14], and radar alerts from "
+para("Spatio-temporal deep learning on Landsat time series classifies land use after deforestation across the tropics [14], and radar alerts from "
      "Sentinel-1 flag disturbance in humid tropical forests within weeks [15]. These systems are accurate for abrupt "
      "clearing but react to disturbance under way and are mostly limited to forests.")
 subheading("Resilience and early-warning signals")
-para("Critical-slowing-down theory predicts rising autocorrelation and variance before a transition [6], [7]. "
-     "Satellite studies found lower resilience in drought-sensitive tropical forests [8], widespread resilience loss "
-     "since the early 2000s [9], [10], declining forest resilience under climate change [34], and spatial-pattern indicators of desertification [16]. These are descriptive; "
+para("Critical-slowing-down theory predicts rising autocorrelation and variance before a transition, and deep networks can "
+     "learn such signals from time series [6], [7]. "
+     "A satellite resilience-sensing system for the biosphere has been proposed [8], and studies found widespread resilience loss "
+     "since the early 2000s [9], [10], declining forest resilience under climate change [34], and aridity thresholds beyond which drylands shift abruptly [16]. These are descriptive; "
      "whether they improve held-out forecasts is rarely tested.")
 table("Comparison of Prior Work",
       ["Work", "Method", "Data / region", "Outcome", "Gap for early warning"],
-      [["[4]", "Rainfall–NDVI residual trend", "AVHRR, S. Africa", "Separates human vs. rain effects", "Retrospective, annual"],
-       ["[5]", "Peer scaling (LNS)", "MODIS, Zimbabwe", "Relative productivity loss", "Retrospective"],
-       ["[13]", "Trend–season breaks", "MODIS NDVI", "Abrupt and gradual breaks", "Detects after change"],
-       ["[14]", "Decision trees", "Landsat, global", "Annual tree-cover loss", "Forest only, after loss"],
+      [["[4]", "Climate–NDVI residual trend", "GIMMS NDVI, global drylands", "Separates human vs. climate effects", "Retrospective, annual"],
+       ["[5]", "RF / XGBoost classifiers", "Sentinel-2, Turkmenistan", "Desertification classes mapped", "Current state only"],
+       ["[13]", "Transformer, time series", "Sentinel-2, C. Europe", "Forest disturbance maps", "Detects after change"],
+       ["[14]", "Deep learning (CNN + LSTM)", "Landsat, pan-tropical", "Land use after deforestation", "Forest only, after loss"],
        ["[15]", "Radar change detection", "Sentinel-1, tropics", "Near-real-time alerts", "Disturbance under way"],
-       ["[8]", "AC1 resilience", "AVHRR, tropics", "Low resilience before drought impact", "No pixel forecast"],
+       ["[8]", "Resilience sensing (AC1)", "Satellite, global", "Monitoring framework", "No pixel forecast"],
        ["[9]", "AC1 trends", "AVHRR/MODIS, global", "Resilience loss mapped", "Descriptive"],
        ["**Ours**", "LightGBM + residual + resilience + conformal", "Sentinel-2, 23 sites, 9 countries",
         "ROC 0.805, PR-AUC 0.144 (5.7×) on space–time hold-out", "Precision 0.22; cropland weak"]],
@@ -290,8 +292,8 @@ para("**Study areas.** The model is trained on 17 areas of 5.12 × 5.12 km (512 
      "independent test sites.")
 para("**Sources.** All inputs are open: Sentinel-2 L2A [23] (10–20 m, 2017–2026), MODIS MOD13Q1 NDVI [25] (250 m, 2000–), "
      "ERA5 [27] / ERA5-Land [24] climate (precipitation, temperature, soil moisture, reference evapotranspiration), ESA WorldCover "
-     "2021 [17], NASADEM terrain, JRC surface water [33] and HydroRIVERS. Landsat 8/9 [28] is used only to check labels. Data are read "
-     "from the Microsoft Planetary Computer catalogue; the same workflow can run on Google Earth Engine [29].")
+     "2021 [17] (the deep-learning Dynamic World product [35] is an alternative), NASADEM terrain, JRC surface water (Landsat-based water mapping [33]) and HydroRIVERS. Landsat 8/9 [28] is used only to check labels. Data are read "
+     "from the Microsoft Planetary Computer catalogue [37]; the same workflow can run on Google Earth Engine [29].")
 para("**Preprocessing.** For each month the four least-cloudy Sentinel-2 scenes of one MGRS tile are used. Duplicate "
      "processings are removed, and the bottom-of-atmosphere offset of processing baseline 04.00 and later is corrected. "
      "Pixels outside the vegetation, soil and water scene classes are masked. NDVI, NDMI, NBR and BSI are computed per scene "
@@ -340,13 +342,14 @@ equation("AC1 = Σ(x", ("t", True, "sub"), " − x̄)(x", ("t−1", True, "sub")
          ("t", True, "sub"), " − x̄)", ("2", False, "sup"))
 para("together with months since the last dip, recovery fraction and MODIS 60-month variance and autocorrelation.", indent=False)
 subheading("Model, calibration and abstention")
-para("LightGBM [18] minimises the weighted logistic loss with an L2 penalty on leaf values *v*:")
+para("LightGBM, a gradient-boosted tree ensemble (tree ensembles remain the strongest model family on tabular "
+     "data [18]), minimises the weighted logistic loss with an L2 penalty on leaf values *v*:")
 equation("L = −Σ", ("i", True, "sub"), " w", ("i", True, "sub"), "[y", ("i", True, "sub"), " ln p", ("i", True, "sub"),
          " + (1−y", ("i", True, "sub"), ")ln(1−p", ("i", True, "sub"), ")] + ½λΣ", ("j", True, "sub"), " v",
          ("j", True, "sub"), ("2", False, "sup"))
 para("Each pixel contributes about 40 strongly autocorrelated monthly rows, so deep trees memorise pixels. Trees are "
      "therefore kept small (Table III). Scores are calibrated by isotonic regression [19] on a disjoint calibration set. A "
-     "Mondrian split-conformal predictor [20], [21] with α = 0.10 returns the prediction set:")
+     "Mondrian split-conformal predictor [20], [21], as used for land-cover maps [36], with α = 0.10 returns the prediction set:")
 equation("Γ(x) = {y : s", ("y", True, "sub"), "(x) ≤ q̂", ("y", True, "sub"), "}")
 para("A set {0, 1} is reported as *abstain*. The warning threshold maximises F1 on the calibration set.", indent=False)
 subheading("Training setup")
@@ -360,7 +363,7 @@ table("Training Setup and Hyperparameters",
        ["Validation / calibration", "2023-03 … 2023-12; 169,049 / 378,057 rows"],
        ["Test (locked)", "months ≥ 2024-12 on test blocks; 132,230 rows"],
        ["Embargo", "≥ 11-month gaps = label look-ahead (no leakage)"],
-       ["Software", "Python; LightGBM [18], scikit-learn [31], SHAP [32]"],
+       ["Software", "Python; LightGBM, scikit-learn, SHAP [32]"],
        ["Hardware", "Intel Core 5 210H, 16 GB RAM, CPU only; final fit 14 s"],
        ["Decision rule", "a change is adopted only if validation AP gains ≥ 0.005 (5 seeds)"]],
       [1.15, 2.3], size=7)
@@ -396,7 +399,7 @@ para("Fig. 3 and Fig. 4 compare CARE-EW with three non-deep baselines on the sam
 figure(FIG / "ablation.png", "Cumulative ablation on the locked test set (uncalibrated scores). Grey: baselines; light blue: "
        "groups that add no skill; dark blue: residual, resilience and context.")
 para("Further pre-registered experiments were rejected because they did not raise validation AP by at least 0.005: "
-     "GLCM texture, red-edge chlorophyll indices, doubling the pixels per site, confident-learning label cleaning [22], "
+     "GLCM texture (a hand-crafted stand-in for the spatial filters a CNN learns [31]), red-edge chlorophyll indices, doubling the pixels per site, confident-learning label cleaning [22], "
      "a five-seed ensemble and training on all 23 sites.")
 subheading("Over- and under-fitting")
 para("Fig. 5(a) varies tree size from 3 to 255 leaves. Validation PR-AUC stays within 0.13–0.15 and training AP never runs "
@@ -462,7 +465,7 @@ bullets([
     "change was seen at 19.6 % of warnings and 24.5 % of safe pixels (difference −4.9 points, 95 % CI −15 to +6). The "
     "pilot was underpowered and mostly showed abrupt events rather than gradual thinning.",
     "**Short baseline and coarse climate.** The Sentinel-2 baseline covers only 2017–2020, climate is at 9–25 km, and ERA5 "
-    "rainfall is weaker than gauge-blended products such as CHIRPS [26] over convective tropics.",
+    "rainfall is weaker than gauge-blended products over convective tropics, where deep-learning retrievals are improving [26].",
     "**Single validation year.** Model selection used one validation year, whose seed noise is close to the decision margin.",
 ])
 
@@ -484,65 +487,43 @@ bullets([
 # ============================================================================ References
 heading("References", numbered=False)
 REFS = [
-    "M. Cherlet et al., Eds., *World Atlas of Desertification*, 3rd ed. Luxembourg: Publications Office of the EU, 2018.",
-    "N. C. Sims et al., “Good practice guidance: SDG indicator 15.3.1, version 2.0,” UNCCD, Bonn, Germany, 2021.",
-    "M. Gonzalez-Roglich et al., “Synergizing global tools to monitor progress towards land degradation neutrality: Trends.Earth "
-    "and the World Overview of Conservation Approaches and Technologies sustainable land management database,” *Environ. Sci. "
-    "Policy*, vol. 93, pp. 34–42, 2019.",
-    "K. J. Wessels et al., “Can human-induced land degradation be distinguished from the effects of rainfall variability? A case "
-    "study in South Africa,” *J. Arid Environ.*, vol. 68, no. 2, pp. 271–297, 2007.",
-    "S. D. Prince, I. Becker-Reshef, and K. Rishmawi, “Detection and mapping of long-term land degradation using local net "
-    "production scaling: Application to Zimbabwe,” *Remote Sens. Environ.*, vol. 113, no. 5, pp. 1046–1057, 2009.",
-    "M. Scheffer et al., “Early-warning signals for critical transitions,” *Nature*, vol. 461, pp. 53–59, 2009.",
-    "V. Dakos et al., “Methods for detecting early warnings of critical transitions in time series illustrated using simulated "
-    "ecological data,” *PLoS ONE*, vol. 7, no. 7, e41010, 2012.",
-    "J. Verbesselt et al., “Remotely sensed resilience of tropical forests,” *Nature Clim. Change*, vol. 6, pp. 1028–1031, 2016.",
-    "T. Smith, D. Traxl, and N. Boers, “Empirical evidence for recent global shifts in vegetation resilience,” *Nature Clim. "
-    "Change*, vol. 12, pp. 477–484, 2022.",
-    "C. A. Boulton, T. M. Lenton, and N. Boers, “Pronounced loss of Amazon rainforest resilience since the early 2000s,” "
-    "*Nature Clim. Change*, vol. 12, pp. 271–278, 2022.",
-    "P. Ploton et al., “Spatial validation reveals poor predictive performance of large-scale ecological mapping models,” "
-    "*Nature Commun.*, vol. 11, 4540, 2020.",
-    "H. Meyer and E. Pebesma, “Predicting into unknown space? Estimating the area of applicability of spatial prediction "
-    "models,” *Methods Ecol. Evol.*, vol. 12, no. 9, pp. 1620–1633, 2021.",
-    "J. Verbesselt, R. Hyndman, G. Newnham, and D. Culvenor, “Detecting trend and seasonal changes in satellite image time "
-    "series,” *Remote Sens. Environ.*, vol. 114, no. 1, pp. 106–115, 2010.",
-    "M. C. Hansen et al., “High-resolution global maps of 21st-century forest cover change,” *Science*, vol. 342, "
-    "pp. 850–853, 2013.",
-    "J. Reiche et al., “Forest disturbance alerts for the Congo Basin using Sentinel-1,” *Environ. Res. Lett.*, vol. 16, "
-    "no. 2, 024005, 2021.",
-    "S. Kéfi et al., “Spatial vegetation patterns and imminent desertification in Mediterranean arid ecosystems,” "
-    "*Nature*, vol. 449, pp. 213–217, 2007.",
-    "D. Zanaga et al., “ESA WorldCover 10 m 2021 v200,” Zenodo, 2022, doi: 10.5281/zenodo.7254221.",
-    "G. Ke et al., “LightGBM: A highly efficient gradient boosting decision tree,” in *Proc. NeurIPS*, 2017, pp. 3146–3154.",
-    "B. Zadrozny and C. Elkan, “Transforming classifier scores into accurate multiclass probability estimates,” in *Proc. "
-    "ACM SIGKDD*, 2002, pp. 694–699.",
-    "V. Vovk, A. Gammerman, and G. Shafer, *Algorithmic Learning in a Random World*. New York, NY, USA: Springer, 2005.",
-    "A. N. Angelopoulos and S. Bates, “Conformal prediction: A gentle introduction,” *Found. Trends Mach. Learn.*, vol. 16, "
-    "no. 4, pp. 494–591, 2023.",
-    "C. Northcutt, L. Jiang, and I. Chuang, “Confident learning: Estimating uncertainty in dataset labels,” *J. Artif. "
-    "Intell. Res.*, vol. 70, pp. 1373–1411, 2021.",
-    "M. Drusch et al., “Sentinel-2: ESA's optical high-resolution mission for GMES operational services,” *Remote Sens. "
-    "Environ.*, vol. 120, pp. 25–36, 2012.",
-    "J. Muñoz-Sabater et al., “ERA5-Land: A state-of-the-art global reanalysis dataset for land applications,” *Earth "
-    "Syst. Sci. Data*, vol. 13, pp. 4349–4383, 2021.",
-    "K. Didan, “MOD13Q1 MODIS/Terra vegetation indices 16-day L3 global 250 m SIN grid V061,” NASA EOSDIS Land Processes "
-    "DAAC, 2021, doi: 10.5067/MODIS/MOD13Q1.061.",
-    "C. Funk et al., “The climate hazards infrared precipitation with stations—a new environmental record for monitoring "
-    "extremes,” *Sci. Data*, vol. 2, 150066, 2015.",
-    "H. Hersbach et al., “The ERA5 global reanalysis,” *Q. J. R. Meteorol. Soc.*, vol. 146, no. 730, pp. 1999–2049, 2020.",
-    "M. A. Wulder et al., “Fifty years of Landsat science and impacts,” *Remote Sens. Environ.*, vol. 280, 113195, 2022.",
-    "N. Gorelick et al., “Google Earth Engine: Planetary-scale geospatial analysis for everyone,” *Remote Sens. Environ.*, "
-    "vol. 202, pp. 18–27, 2017.",
-    "L. Poggio et al., “SoilGrids 2.0: Producing soil information for the globe with quantified spatial uncertainty,” *SOIL*, "
-    "vol. 7, pp. 217–240, 2021.",
-    "F. Pedregosa et al., “Scikit-learn: Machine learning in Python,” *J. Mach. Learn. Res.*, vol. 12, pp. 2825–2830, 2011.",
-    "S. M. Lundberg and S.-I. Lee, “A unified approach to interpreting model predictions,” in *Proc. NeurIPS*, 2017, "
-    "pp. 4765–4774.",
-    "J.-F. Pekel, A. Cottam, N. Gorelick, and A. S. Belward, “High-resolution mapping of global surface water and its "
-    "long-term changes,” *Nature*, vol. 540, pp. 418–422, 2016.",
-    "G. Forzieri, V. Dakos, N. G. McDowell, A. Ramdane, and A. Cescatti, “Emerging signals of declining forest resilience "
-    "under climate change,” *Nature*, vol. 608, pp. 534–539, 2022.",
+    'UNCCD, *Global Land Outlook*, 2nd ed., “Land Restoration for Recovery and Resilience.” Bonn, Germany: United Nations Convention to Combat Desertification, 2022.',
+    'N. C. Sims et al., “Good practice guidance: SDG indicator 15.3.1, version 2.0,” UNCCD, Bonn, Germany, 2021.',
+    'R. Prăvălie, “Exploring the multiple land degradation pathways across the planet,” *Earth-Sci. Rev.*, vol. 220, Art. no. 103689, 2021, doi: 10.1016/j.earscirev.2021.103689.',
+    'A. L. Burrell, J. P. Evans, and M. G. De Kauwe, “Anthropogenic climate change has driven over 5 million km² of drylands towards desertification,” *Nature Commun.*, vol. 11, Art. no. 3853, 2020, doi: 10.1038/s41467-020-17710-7.',
+    'A. Berdyyev, Y. A. Al-Masnay, M. Juliev, and J. Abuduwaili, “Desertification monitoring using machine learning techniques with multiple indicators derived from Sentinel-2 in Turkmenistan,” *Remote Sens.*, vol. 16, no. 23, Art. no. 4525, 2024, doi: 10.3390/rs16234525.',
+    'T. M. Bury et al., “Deep learning for early warning signals of tipping points,” *Proc. Natl. Acad. Sci. USA*, vol. 118, no. 39, Art. no. e2106140118, 2021, doi: 10.1073/pnas.2106140118.',
+    'V. Dakos et al., “Tipping point detection and early warnings in climate, ecological, and human systems,” *Earth Syst. Dyn.*, vol. 15, no. 4, pp. 1117–1135, 2024, doi: 10.5194/esd-15-1117-2024.',
+    'T. M. Lenton et al., “A resilience sensing system for the biosphere,” *Phil. Trans. R. Soc. B*, vol. 377, no. 1857, Art. no. 20210383, 2022, doi: 10.1098/rstb.2021.0383.',
+    'T. Smith, D. Traxl, and N. Boers, “Empirical evidence for recent global shifts in vegetation resilience,” *Nature Clim. Change*, vol. 12, pp. 477–484, 2022.',
+    'C. A. Boulton, T. M. Lenton, and N. Boers, “Pronounced loss of Amazon rainforest resilience since the early 2000s,” *Nature Clim. Change*, vol. 12, pp. 271–278, 2022.',
+    'P. Ploton et al., “Spatial validation reveals poor predictive performance of large-scale ecological mapping models,” *Nature Commun.*, vol. 11, 4540, 2020.',
+    'H. Meyer and E. Pebesma, “Predicting into unknown space? Estimating the area of applicability of spatial prediction models,” *Methods Ecol. Evol.*, vol. 12, no. 9, pp. 1620–1633, 2021.',
+    'C. Schiller, J. Költzow, S. Schwarz, F. Schiefer, and F. E. Fassnacht, “Forest disturbance detection in Central Europe using transformers and Sentinel-2 time series,” *Remote Sens. Environ.*, vol. 315, Art. no. 114475, 2024, doi: 10.1016/j.rse.2024.114475.',
+    'R. N. Masolele et al., “Spatial and temporal deep learning methods for deriving land-use following deforestation: A pan-tropical case study using Landsat time series,” *Remote Sens. Environ.*, vol. 264, Art. no. 112600, 2021, doi: 10.1016/j.rse.2021.112600.',
+    'J. Reiche et al., “Forest disturbance alerts for the Congo Basin using Sentinel-1,” *Environ. Res. Lett.*, vol. 16, no. 2, 024005, 2021.',
+    'M. Berdugo et al., “Global ecosystem thresholds driven by aridity,” *Science*, vol. 367, no. 6479, pp. 787–790, 2020, doi: 10.1126/science.aay5958.',
+    'D. Zanaga et al., “ESA WorldCover 10 m 2021 v200,” Zenodo, 2022, doi: 10.5281/zenodo.7254221.',
+    'L. Grinsztajn, E. Oyallon, and G. Varoquaux, “Why do tree-based models still outperform deep learning on typical tabular data?” in *Proc. NeurIPS Datasets and Benchmarks Track*, vol. 35, 2022, pp. 507–520.',
+    'T. Silva Filho et al., “Classifier calibration: A survey on how to assess and improve predicted class probabilities,” *Mach. Learn.*, vol. 112, no. 9, pp. 3211–3260, 2023, doi: 10.1007/s10994-023-06336-7.',
+    'V. Vovk, A. Gammerman, and G. Shafer, *Algorithmic Learning in a Random World*, 2nd ed. Cham, Switzerland: Springer, 2022, doi: 10.1007/978-3-031-06649-8.',
+    'A. N. Angelopoulos and S. Bates, “Conformal prediction: A gentle introduction,” *Found. Trends Mach. Learn.*, vol. 16, no. 4, pp. 494–591, 2023.',
+    'C. Northcutt, L. Jiang, and I. Chuang, “Confident learning: Estimating uncertainty in dataset labels,” *J. Artif. Intell. Res.*, vol. 70, pp. 1373–1411, 2021.',
+    'D. Phiri et al., “Sentinel-2 data for land cover/use mapping: A review,” *Remote Sens.*, vol. 12, no. 14, Art. no. 2291, 2020, doi: 10.3390/rs12142291.',
+    'J. Muñoz-Sabater et al., “ERA5-Land: A state-of-the-art global reanalysis dataset for land applications,” *Earth Syst. Sci. Data*, vol. 13, pp. 4349–4383, 2021.',
+    'K. Didan, “MOD13Q1 MODIS/Terra vegetation indices 16-day L3 global 250 m SIN grid V061,” NASA EOSDIS Land Processes DAAC, 2021, doi: 10.5067/MODIS/MOD13Q1.061.',
+    'Q. Yuan et al., “Deep learning in environmental remote sensing: Achievements and challenges,” *Remote Sens. Environ.*, vol. 241, Art. no. 111716, 2020, doi: 10.1016/j.rse.2020.111716.',
+    'H. Hersbach et al., “The ERA5 global reanalysis,” *Q. J. R. Meteorol. Soc.*, vol. 146, no. 730, pp. 1999–2049, 2020.',
+    'M. A. Wulder et al., “Fifty years of Landsat science and impacts,” *Remote Sens. Environ.*, vol. 280, 113195, 2022.',
+    'M. Amani et al., “Google Earth Engine cloud computing platform for remote sensing big data applications: A comprehensive review,” *IEEE J. Sel. Topics Appl. Earth Observ. Remote Sens.*, vol. 13, pp. 5326–5350, 2020, doi: 10.1109/JSTARS.2020.3021052.',
+    'L. Poggio et al., “SoilGrids 2.0: Producing soil information for the globe with quantified spatial uncertainty,” *SOIL*, vol. 7, pp. 217–240, 2021.',
+    'T. Kattenborn, J. Leitloff, F. Schiefer, and S. Hinz, “Review on convolutional neural networks (CNN) in vegetation remote sensing,” *ISPRS J. Photogramm. Remote Sens.*, vol. 173, pp. 24–49, 2021, doi: 10.1016/j.isprsjprs.2020.12.010.',
+    'S. M. Lundberg et al., “From local explanations to global understanding with explainable AI for trees,” *Nature Mach. Intell.*, vol. 2, no. 1, pp. 56–67, 2020, doi: 10.1038/s42256-019-0138-9.',
+    'A. H. Pickens et al., “Mapping and sampling to characterize global inland water dynamics from 1999 to 2018 with full Landsat time-series,” *Remote Sens. Environ.*, vol. 243, Art. no. 111792, 2020, doi: 10.1016/j.rse.2020.111792.',
+    'G. Forzieri, V. Dakos, N. G. McDowell, A. Ramdane, and A. Cescatti, “Emerging signals of declining forest resilience under climate change,” *Nature*, vol. 608, pp. 534–539, 2022.',
+    'C. F. Brown et al., “Dynamic World, near real-time global 10 m land use land cover mapping,” *Sci. Data*, vol. 9, Art. no. 251, 2022, doi: 10.1038/s41597-022-01307-4.',
+    'D. Valle, R. Izbicki, and R. V. Leite, “Quantifying uncertainty in land-use land-cover classification using conformal statistics,” *Remote Sens. Environ.*, vol. 295, Art. no. 113682, 2023, doi: 10.1016/j.rse.2023.113682.',
+    'Microsoft Open Source et al., “microsoft/PlanetaryComputer: October 2022,” version 2022.10.28, Zenodo, 2022, doi: 10.5281/zenodo.7261897.',
 ]
 for i, r in enumerate(REFS, 1):
     p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
