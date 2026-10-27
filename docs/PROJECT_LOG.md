@@ -708,6 +708,16 @@ IND_singrauli (mining; sibling for Jharia). Same pipeline, label rule, splits an
   regardless. Secondary (reported, not used to choose): leave-one-site-out ROC for Jharia with/without
   Singrauli and for the Nepal sites.
 
+#### D-026 — Pre-registration (2026-10-27): training-label cleaning by confident learning ("better labels")
+Satellite labels are noisy (residual cloud in monthly medians, gap-filled months, phenology shifts). Confident
+learning (Northcutt, Jiang & Chuang 2021, JAIR 70): out-of-fold A6 probabilities p for every TRAINING row (5 folds
+grouped by site × 1 km block, so a pixel never scores itself); per-class thresholds t1 = mean p of labelled
+positives, t0 = mean p of labelled negatives; a labelled-1 row with p ≤ t0 or a labelled-0 row with p ≥ t1 is a
+suspected label error and is removed from TRAINING only. Validation, calibration and test labels are untouched,
+so the comparison measures whether cleaner training labels predict the unchanged reference labels better.
+**Rule (fixed now, after the R-017 seed lesson): 5 LightGBM seeds each; adopt only if the mean validation AP gain
+≥ 0.005.** Test reported regardless. If E-008 sites are adopted first, the test is repeated on 23 sites.
+
 ## 12. Ground-reference inventory (2026-10-19; three search agents; all endpoints actually queried)
 Files: `data/ground_ref/` — `photo_sources_inventory.json`, `field_sources_inventory.json`,
 `vhr_sources_inventory.json`, per-source subfolders, `inventory_queries.py` (re-runnable).

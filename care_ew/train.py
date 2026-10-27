@@ -604,6 +604,49 @@ def sites(df, log):
     print("SITES decision", out["decision"], flush=True)
 
 
+def cl_flags(tr, cols, k=5):
+    """Confident-learning label-issue flags for training rows (D-026). Out-of-fold A6 probabilities, folds grouped by
+    (site, block); t1 / t0 = mean OOF probability of labelled positives / negatives."""
+    grp = (tr.aoi.astype(str) + "_" + tr.block.astype(str)).values
+    ug = np.unique(grp)
+    fold_of = dict(zip(ug, np.random.default_rng(SEED).permutation(len(ug)) % k))
+    f = np.array([fold_of[g] for g in grp])
+    oof = np.zeros(len(tr))
+    for i in range(k):
+        a, b = tr[f != i], tr[f == i]
+        m, _ = fit_lgb(a, b, cols)                       # early stopping on the held-out fold
+        oof[f == i] = m.predict(b[cols], num_iteration=m.best_iteration)
+    y = tr.y.values
+    t1, t0 = oof[y == 1].mean(), oof[y == 0].mean()
+    flag = ((y == 1) & (oof <= t0)) | ((y == 0) & (oof >= t1))
+    return flag, oof, float(t0), float(t1)
+
+
+def label_clean(df, log, seeds=(1, 2, 3, 4, 5)):
+    """D-026 (pre-registered): train A6 on confident-learning-cleaned TRAINING labels vs the original labels;
+    5 seeds each, same validation rows; adopt only if the mean val AP gain >= 0.005."""
+    tr, es, cal, te = splits(df)
+    cols = feature_set(df, "A6_spatial")
+    flag, oof, t0, t1 = cl_flags(tr, cols)
+    trc = tr[~flag]
+    out = dict(t0=t0, t1=t1, flagged_pos=int((flag & (tr.y.values == 1)).sum()), pos=int(tr.y.sum()),
+               flagged_neg=int((flag & (tr.y.values == 0)).sum()), neg=int((tr.y == 0).sum()),
+               flagged_by_site={a: float(flag[(tr.aoi == a).values].mean()) for a in sorted(tr.aoi.unique())})
+    print("CL flagged", out["flagged_pos"], "of", out["pos"], "positives;", out["flagged_neg"], "of", out["neg"], "negatives", flush=True)
+    for name, trn in (("original_labels", tr), ("cleaned_labels", trc)):
+        v, tp = [], []
+        for sd in seeds:
+            m, ev = fit_lgb(trn, es, cols, params=dict(seed=sd))
+            v.append(float(max(ev["val"]["average_precision"])))
+            tp.append(float(average_precision_score(te.y, m.predict(te[cols], num_iteration=m.best_iteration))))
+        out[name] = dict(val_ap=v, val_mean=float(np.mean(v)), val_sd=float(np.std(v, ddof=1)), test_ap=tp, test_mean=float(np.mean(tp)))
+        print("CL", name, "val", round(np.mean(v), 4), "+-", round(np.std(v, ddof=1), 4), "test", round(np.mean(tp), 4), flush=True)
+    g = out["cleaned_labels"]["val_mean"] - out["original_labels"]["val_mean"]
+    out["decision"] = dict(rule="adopt if mean val AP gain over 5 seeds >= 0.005", gain=g, adopted="cleaned" if g >= 0.005 else "original")
+    log["label_cleaning"] = out
+    print("CL decision", out["decision"], flush=True)
+
+
 def main(what=("ablation", "final", "loco", "lc", "vc", "wf")):
     """Pieces can be run in separate processes (memory): 'ablation final' starts a fresh metrics.json; any other
     piece (vc, lc, wf, loco, sens) loads the existing file and adds its section (D-022)."""
@@ -631,6 +674,7 @@ def main(what=("ablation", "final", "loco", "lc", "vc", "wf")):
     if "a10" in what: a10(df, log)
     if "a10seeds" in what: a10_seeds(df, log)
     if "sites" in what: sites(df, log)
+    if "clean" in what: label_clean(df, log)
     json.dump(log, open(RES / "metrics.json", "w"), indent=2, default=str)
     return log
 
