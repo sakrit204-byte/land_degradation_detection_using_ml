@@ -825,6 +825,15 @@ events (protocol to be written), (b) spatial agreement with expert maps (IND atl
 visits. A "combined satellite + field-imagery" model can be trained with permissively licensed VHR only in
 ESP and BRA unless NICFI or Esri permission is obtained.
 
+## Open to-do list (kept current; newest first)
+- [ ] **Independent human pass of the blind VHR check (D-029) — result of record.** A reviewer who did not build the
+      model (e.g. a forest officer) opens `/review.html`, enters their name and answers every pair (Y/N/U/X); then
+      `python scripts/vhr_campaign.py analyze`. The AI assistant's pass is a pilot only.
+- [ ] AI pilot pass of D-029 (blind: key.json not opened until all answers are saved), then analysis and report.
+- [ ] Prospective test D-028 once months after 2025-10 have labels (17-site vs 23-site vs ensemble, 5 seeds).
+- [ ] Paper draft update with the A8–A10, LOSO, label-cleaning, new-site and VHR results.
+- [ ] Optional: crop-aware labels / more cropland sites; Landsat thermal, burned area, glacier, livestock modules.
+
 ## 9. How to reproduce
 ```
 .venv/Scripts/python scripts/run_s2_all.py          # S2 cubes (bandwidth-bound, hours)
