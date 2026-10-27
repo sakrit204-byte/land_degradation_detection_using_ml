@@ -647,6 +647,26 @@ def label_clean(df, log, seeds=(1, 2, 3, 4, 5)):
     print("CL decision", out["decision"], flush=True)
 
 
+def seed_ensemble(df, log, seeds=(1, 2, 3, 4, 5)):
+    """D-027 (pre-registered): AP of the mean prediction of 5 seed models vs the mean AP of the single models."""
+    tr, es, cal, te = splits(df)
+    cols = feature_set(df, "A6_spatial")
+    pv, pt, sv, st = [], [], [], []
+    for sd in seeds:
+        m, _ = fit_lgb(tr, es, cols, params=dict(seed=sd))
+        a = m.predict(es[cols], num_iteration=m.best_iteration); b = m.predict(te[cols], num_iteration=m.best_iteration)
+        pv.append(a); pt.append(b)
+        sv.append(float(average_precision_score(es.y, a))); st.append(float(average_precision_score(te.y, b)))
+    ev_ = float(average_precision_score(es.y, np.mean(pv, 0))); et = np.mean(pt, 0)
+    out = dict(single_val=sv, single_val_mean=float(np.mean(sv)), ensemble_val=ev_, single_test=st,
+               single_test_mean=float(np.mean(st)), ensemble_test={**metrics(te.y, et), **cluster_bootstrap(te, et)})
+    g = ev_ - out["single_val_mean"]
+    out["decision"] = dict(rule="adopt if ensemble val AP >= mean single val AP + 0.005", gain=g, adopted="ensemble" if g >= 0.005 else "single")
+    log["seed_ensemble"] = out
+    print("ENS single val", round(np.mean(sv), 4), "ensemble val", round(ev_, 4), "| single test", round(np.mean(st), 4),
+          "ensemble test", round(out["ensemble_test"]["pr_auc"], 4), out["decision"], flush=True)
+
+
 def main(what=("ablation", "final", "loco", "lc", "vc", "wf")):
     """Pieces can be run in separate processes (memory): 'ablation final' starts a fresh metrics.json; any other
     piece (vc, lc, wf, loco, sens) loads the existing file and adds its section (D-022)."""
@@ -675,6 +695,7 @@ def main(what=("ablation", "final", "loco", "lc", "vc", "wf")):
     if "a10seeds" in what: a10_seeds(df, log)
     if "sites" in what: sites(df, log)
     if "clean" in what: label_clean(df, log)
+    if "ens" in what: seed_ensemble(df, log)
     json.dump(log, open(RES / "metrics.json", "w"), indent=2, default=str)
     return log
 

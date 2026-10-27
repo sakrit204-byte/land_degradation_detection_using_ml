@@ -718,6 +718,18 @@ so the comparison measures whether cleaner training labels predict the unchanged
 **Rule (fixed now, after the R-017 seed lesson): 5 LightGBM seeds each; adopt only if the mean validation AP gain
 ≥ 0.005.** Test reported regardless. If E-008 sites are adopted first, the test is repeated on 23 sites.
 
+#### R-018 — Confident-learning label cleaning (D-026), run 2026-10-27 (17 sites, 16 min)
+Flagged as suspected label errors: 2 588 of 16 987 training positives (15.2 %) and 22 103 of 783 797 negatives
+(2.8 %). Five seeds each: validation AP original 0.1397 ± 0.0059, cleaned 0.1392 ± 0.0026 (gain −0.0005);
+test 0.1484 vs 0.1504. **Rejected.** Side observation: cleaned labels halve the seed-to-seed spread, i.e. the
+suspected errors are what makes single models unstable — but removing them does not raise skill on the
+unchanged reference labels.
+
+#### D-027 — Pre-registration (2026-10-27): 5-seed prediction ensemble
+Average the predictions of 5 A6 models that differ only in seed (bagging / feature sampling / extra-trees draws).
+Comparison on the same validation rows, AP of the averaged score vs the mean AP of the 5 single models.
+**Adopt only if the gain ≥ 0.005.** Test reported regardless.
+
 ## 12. Ground-reference inventory (2026-10-19; three search agents; all endpoints actually queried)
 Files: `data/ground_ref/` — `photo_sources_inventory.json`, `field_sources_inventory.json`,
 `vhr_sources_inventory.json`, per-source subfolders, `inventory_queries.py` (re-runnable).
