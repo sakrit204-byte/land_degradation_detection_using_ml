@@ -72,7 +72,7 @@ if "a10" in m:
                              fx(r["roc_auc"]), fx(r["pr_auc_lift"], 1), pct(r["new_feature_gain_share"]),
                              ", ".join(r["top_new_features"]) or "–"]) + " |")
     d = a10["decision"]
-    w(f"\n**Decision (pre-registered):** A6 val AP {fx(d['a6_val'], 4)}; best {d['best']} {fx(d['best_val'], 4)}; adopted → **{d['adopted']}**.\n")
+    w(f"\n**Decision (pre-registered):** A6 val AP {fx(d['a6_val'], 4)}; best {d['best']} {fx(d['best_val'], 4)}; literal rule result → **{d['adopted']}** (see seed check below).\n")
     uni = {k: v for k, v in a10.get("univariate_within_site_auc_val", {}).items() if v is not None}
     if uni:
         w("Within-site univariate AUC of each new feature on validation rows (0.5 = no signal; below 0.5 = signal with inverted sign):\n")

@@ -77,7 +77,7 @@ Generated from `outputs/results/metrics.json` (run 2026-10-21 03:29; 4,294,330 p
 | A6+A10b_rededge | 76 | 0.1370 | 0.146 | 0.119–0.181 | 0.789 | 5.8 | 9.8 % | re_ndre_m12, re_ireci, re_ndre_d3, re_ndre, re_ndre_anom, re_cire |
 | A6+A10a+A10b | 94 | 0.1438 | 0.151 | 0.117–0.193 | 0.792 | 6.0 | 22.4 % | tx_sd2712, re_cire_m12, tx_ent12, tx_ndmi_sd12, tx_hom12, re_ndre_m12 |
 
-**Decision (pre-registered):** A6 val AP 0.1384; best A6+A10a+A10b 0.1438; adopted → **A6+A10a+A10b**.
+**Decision (pre-registered):** A6 val AP 0.1384; best A6+A10a+A10b 0.1438; literal rule result → **A6+A10a+A10b** (see seed check below).
 
 Within-site univariate AUC of each new feature on validation rows (0.5 = no signal; below 0.5 = signal with inverted sign):
 
