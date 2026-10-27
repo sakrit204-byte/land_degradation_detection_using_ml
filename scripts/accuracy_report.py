@@ -93,6 +93,38 @@ if "plus_pixels" in m:
         r = pp[k]
         w(f"| {k.split('_')[0]} | {r['train_rows']:,} | {fx(r['val_pr_auc'], 4)} | {fx(r['pr_auc'])} | {fx(r['pr_auc_ci'][0])}–{fx(r['pr_auc_ci'][1])} | {fx(r['roc_auc'])} |")
     w(f"\nDecision: **{pp['decision']['adopted']}** (validation did not improve; evaluation rows identical for both).\n")
+if "label_cleaning" in m or "seed_ensemble" in m:
+    w("\n### 4d. Label cleaning and seed ensemble (5 seeds each; D-026, D-027)\n")
+    w("| variant | val AP (mean of 5) | test AP | gain | decision |\n|---|---|---|---|---|")
+    lc = m.get("label_cleaning")
+    if lc:
+        w(f"| original training labels | {fx(lc['original_labels']['val_mean'], 4)} ± {fx(lc['original_labels']['val_sd'], 4)} | {fx(lc['original_labels']['test_mean'])} | | |")
+        w(f"| confident-learning cleaned labels ({lc['flagged_pos']:,} of {lc['pos']:,} positives, {lc['flagged_neg']:,} negatives removed) | "
+          f"{fx(lc['cleaned_labels']['val_mean'], 4)} ± {fx(lc['cleaned_labels']['val_sd'], 4)} | {fx(lc['cleaned_labels']['test_mean'])} | {fx(lc['decision']['gain'], 4)} | {lc['decision']['adopted']} |")
+    se = m.get("seed_ensemble")
+    if se:
+        w(f"| single model (mean of 5 seeds) | {fx(se['single_val_mean'], 4)} | {fx(se['single_test_mean'])} | | |")
+        w(f"| 5-seed prediction ensemble | {fx(se['ensemble_val'], 4)} | {fx(se['ensemble_test']['pr_auc'])} | {fx(se['decision']['gain'], 4)} | {se['decision']['adopted']} |")
+if "sites_e008" in m:
+    s8 = m["sites_e008"]
+    w("\n## 4e. Six new sites never used in training (E-008, D-025)\n")
+    w("The operational 17-site model applied to six NEW Nepal/India sites chosen before any result (independent transfer test, test period):\n")
+    w("| new site | landscape | PR-AUC | lift | ROC-AUC | base rate |\n|---|---|---|---|---|---|")
+    for a, r in sorted(s8["17_sites"].get("test_new6_per_site", {}).items(), key=lambda kv: -kv[1]["roc_auc"]):
+        w(f"| {a} | {LANDSCAPE.get(a, '–')} | {fx(r['pr_auc'])} | {fx(r['pr_auc_lift'], 1)} | {fx(r['roc_auc'])} | {fx(r['base_rate'], 4)} |")
+    r6 = s8["17_sites"].get("test_new6")
+    if r6:
+        w(f"| **all six** | | **{fx(r6['pr_auc'])}** | **{fx(r6['pr_auc_lift'], 1)}** | **{fx(r6['roc_auc'])}** | {fx(r6['base_rate'], 4)} |")
+    sc = s8.get("seed_check")
+    if sc:
+        w("\nShould the six sites also be used for TRAINING? (5 seeds each; validation = original-17 rows)\n")
+        w("| training sites | val AP | test AP original 17 | test AP new 6 |\n|---|---|---|---|")
+        for k in ("17_sites", "23_sites"):
+            r = sc[k]
+            w(f"| {k.split('_')[0]} | {fx(r['val_mean'], 4)} ± {fx(r['val_sd'], 4)} | {fx(r['test17_mean'])} | {fx(r['test_new6_mean'])} |")
+        w(f"\nDecision: **{sc['decision']['adopted']}** (val gain {fx(sc['decision']['gain'], 4)} < 0.005). The test set favours 23 sites on all "
+          "five seeds; validation (one 10-month window) does not. No decision is reversed after seeing the test; a prospective "
+          "test on months after 2025-10 is planned (PROJECT_LOG R-020b).\n")
 
 shap = pd.read_csv(RES / "shap_importance.csv", index_col=0).iloc[:, 0]
 w("\n## 5. Individual predictors (mean |SHAP| share, operational model, top 20)\n")

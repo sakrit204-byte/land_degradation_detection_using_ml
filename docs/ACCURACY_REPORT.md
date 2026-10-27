@@ -126,6 +126,39 @@ Within-site univariate AUC of each new feature on validation rows (0.5 = no sign
 Decision: **5000_px_per_site** (validation did not improve; evaluation rows identical for both).
 
 
+### 4d. Label cleaning and seed ensemble (5 seeds each; D-026, D-027)
+
+| variant | val AP (mean of 5) | test AP | gain | decision |
+|---|---|---|---|---|
+| original training labels | 0.1397 ± 0.0059 | 0.148 | | |
+| confident-learning cleaned labels (2,588 of 16,987 positives, 22,103 negatives removed) | 0.1392 ± 0.0026 | 0.150 | -0.0005 | original |
+| single model (mean of 5 seeds) | 0.1407 | 0.148 | | |
+| 5-seed prediction ensemble | 0.1448 | 0.156 | 0.0041 | single |
+
+## 4e. Six new sites never used in training (E-008, D-025)
+
+The operational 17-site model applied to six NEW Nepal/India sites chosen before any result (independent transfer test, test period):
+
+| new site | landscape | PR-AUC | lift | ROC-AUC | base rate |
+|---|---|---|---|---|---|
+| IND_singrauli | Mining landscape | 0.294 | 6.8 | 0.876 | 0.0433 |
+| NPL_sindhupalchok | Himalayan foothill forest | 0.324 | 9.8 | 0.873 | 0.0331 |
+| NPL_chure_udayapur | Himalayan foothill forest | 0.174 | 7.0 | 0.844 | 0.0249 |
+| NPL_chure_kailali | Himalayan foothill forest | 0.124 | 10.1 | 0.803 | 0.0123 |
+| IND_shivalik | Himalayan foothill forest | 0.193 | 12.7 | 0.782 | 0.0152 |
+| IND_marathwada | Semi-arid Indian cropland | 0.029 | 1.7 | 0.597 | 0.0174 |
+| **all six** | | **0.217** | **8.6** | **0.839** | 0.0253 |
+
+Should the six sites also be used for TRAINING? (5 seeds each; validation = original-17 rows)
+
+| training sites | val AP | test AP original 17 | test AP new 6 |
+|---|---|---|---|
+| 17 | 0.1397 ± 0.0059 | 0.148 | 0.210 |
+| 23 | 0.1388 ± 0.0092 | 0.167 | 0.254 |
+
+Decision: **17_sites** (val gain -0.0008 < 0.005). The test set favours 23 sites on all five seeds; validation (one 10-month window) does not. No decision is reversed after seeing the test; a prospective test on months after 2025-10 is planned (PROJECT_LOG R-020b).
+
+
 ## 5. Individual predictors (mean |SHAP| share, operational model, top 20)
 
 | rank | feature | share |
