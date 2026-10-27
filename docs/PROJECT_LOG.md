@@ -751,6 +751,19 @@ Sibling leave-one-site-out (held-out site test PR-AUC / ROC, without → with th
 protocol used since D-026 is applied symmetrically (`python -m care_ew.train sites5`). Until a test adopts them,
 E-008 sites are excluded from training by default (`TRAIN_EXCLUDE_DEFAULT`) and serve as independent test sites.
 
+#### R-020b — 5-seed check of D-025 and a weakness of the selection protocol
+Five seeds each (validation = original-17 val rows): 17 sites 0.1397 ± 0.0059, 23 sites 0.1388 ± 0.0092 → gain
+−0.0008. **Rejected; the operational model stays the 17-site A6.** Reported only: test original-17 AP 0.148 → 0.167
+(+0.019, all five seeds), new-6 test AP 0.210 → 0.254 (+0.044).
+**Observation (threat to validity, added to §11):** across R-016 … R-020 the test set moved in favour of several
+rejected changes (ensemble +0.008, 23 sites +0.019) while validation did not. The validation window is a single
+10-month period (2023-03 … 2023-12) and therefore a noisy, single-year selector; its seed noise (± 0.006) is as
+large as the decision margin. Changing the selection rule now, after seeing which way the test moved, would be a
+forking path, so no decision is reversed. **Plan (D-028, to be pre-registered before the data exist):** a
+*prospective* test — as months after 2025-10 receive labels (each month needs 11 months of look-ahead), compare
+the 17-site A6, the 23-site A6 and the 5-seed ensemble on those genuinely future months; adopt whichever wins by
+≥ 0.005 AP averaged over 5 seeds.
+
 ## 12. Ground-reference inventory (2026-10-19; three search agents; all endpoints actually queried)
 Files: `data/ground_ref/` — `photo_sources_inventory.json`, `field_sources_inventory.json`,
 `vhr_sources_inventory.json`, per-source subfolders, `inventory_queries.py` (re-runnable).
@@ -938,6 +951,8 @@ and before/after chips, pixel inspector, river-flow before/now, model card). All
 ---
 
 ## 11. Known issues / threats to validity (keep honest; reviewers start here)
+
+* **Model selection uses a single-year validation window** (2023-03 … 2023-12); seed noise ≈ the 0.005 decision margin. Several rejected changes improved the test set (R-019, R-020b). Decisions were not reversed; a prospective test is planned (R-020b / D-028).
 1. **EO proxies ≠ field truth.** Labels are persistent, climate-unexplained NDVI declines. They include
    true degradation, but also land-use change (cropland fallowing, conversion), fire scars, and harvest.
    Land-cover-stratified results and independent-sensor corroboration are reported, but no field data.
