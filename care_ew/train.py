@@ -33,7 +33,12 @@ LGB_PARAMS = dict(objective="binary", metric="average_precision", learning_rate=
 NEG_KEEP = 0.5   # D-022: keep this share of TRAINING-PERIOD negatives (weight 1/NEG_KEEP); val/cal/test untouched
 
 
-def load_all(aois=None, neg_keep=None):
+import os
+TABLE = os.environ.get("CAREEW_TABLE", "table.parquet")   # D-024: "table_plus.parquet" = 10 000 pixels per site
+META = ["aoi", "pix", "time", "country", "row", "col", "block", "y", "months_to_onset", "batch"]
+
+
+def load_all(aois=None, neg_keep=None, table=None, columns=None, side_tables=True):
     """Memory-aware loader (I-031): AOI tables are read one by one, cast to float32 and, inside the training
     period only, negatives are deterministically down-sampled (hash of aoi/pixel/month) and re-weighted by
     1/neg_keep. All rows of the validation, calibration and test periods are kept, so evaluation is unchanged."""
@@ -42,11 +47,16 @@ def load_all(aois=None, neg_keep=None):
     for a in AOIS:
         if aois and a.key not in aois:
             continue
-        f = PROC / a.key / "table.parquet"
+        f = PROC / a.key / (table or TABLE)
         if not f.exists():
             continue
-        d = pd.read_parquet(f)
-        for extra in ("texture.parquet", "rededge.parquet"):          # A10a / A10b side tables (D-023)
+        if columns is not None:
+            import pyarrow.parquet as pq
+            names = pq.ParquetFile(f).schema.names
+            d = pd.read_parquet(f, columns=[c for c in names if c in set(columns) | set(META)])
+        else:
+            d = pd.read_parquet(f)
+        for extra in (("texture.parquet", "rededge.parquet") if side_tables and (table or TABLE) == "table.parquet" else ()):   # A10a/A10b (D-023)
             fx = PROC / a.key / extra
             if fx.exists():
                 d = d.merge(pd.read_parquet(fx), on=["pix", "time"], how="left")
@@ -492,9 +502,63 @@ def a10(df, log):
     print("A10 decision", out["decision"], flush=True)
 
 
+def plus(log):
+    """D-024 (pre-registered): does doubling the training pixels (5 000 -> 10 000 per site) help? Both models use
+    the A6 features, splits and parameters; both are scored on the SAME validation/test rows (all 10 000 pixels).
+    Adopt the larger training set only if validation AP >= +0.005."""
+    cols_all = [c for g in ("A1_state", "A2_change", "A4_residual", "A5_resilience", "A6_spatial") for c in FEATURE_GROUPS[g]]
+    probe = load_all(aois=[AOIS[0].key], table="table_plus.parquet")
+    cols_all += [c for c in probe.columns if c.startswith("clim_")]
+    del probe
+    df = load_all(table="table_plus.parquet", columns=cols_all)
+    tr, es, cal, te = splits(df)
+    cols = feature_set(df, "A6_spatial")
+    out = {}
+    for name, trn in (("5000_px_per_site", tr[tr.batch == 0]), ("10000_px_per_site", tr)):
+        m, ev = fit_lgb(trn, es, cols)
+        p = m.predict(te[cols], num_iteration=m.best_iteration)
+        r = metrics(te.y, p)
+        r.update(cluster_bootstrap(te, p))
+        r.update(train_rows=int(len(trn)), train_pos=int(trn.y.sum()), best_iter=int(m.best_iteration),
+                 val_pr_auc=float(max(ev["val"]["average_precision"])),
+                 test_on_original_pixels=metrics(te.y[te.batch.values == 0], p[te.batch.values == 0]))
+        out[name] = r
+        print("PLUS", name, "train rows", len(trn), "val", round(r["val_pr_auc"], 4), "test", round(r["pr_auc"], 4), "roc", round(r["roc_auc"], 3), flush=True)
+    a, b = out["5000_px_per_site"]["val_pr_auc"], out["10000_px_per_site"]["val_pr_auc"]
+    out["decision"] = dict(rule="adopt 10 000 px/site only if val AP >= 5 000-px val AP + 0.005", val_5000=a, val_10000=b,
+                           adopted="10000_px_per_site" if b >= a + 0.005 else "5000_px_per_site")
+    log["plus_pixels"] = out
+    print("PLUS decision", out["decision"], flush=True)
+
+
+def a10_seeds(df, log, seeds=(1, 2, 3, 4, 5)):
+    """Post-hoc stability check of the marginal D-023 pass (added AFTER the test numbers were seen; VALIDATION only):
+    refit A6 and A6+A10a+A10b with 5 LightGBM seeds (bagging/feature sampling/extra-trees change) and compare val AP."""
+    tr, es, cal, te = splits(df)
+    base = feature_set(df, "A6_spatial")
+    both = base + [c for c in FEATURE_GROUPS["A10a_texture"] + FEATURE_GROUPS["A10b_rededge"] if c in df]
+    out = {}
+    for name, cols in (("A6_spatial", base), ("A6+A10a+A10b", both)):
+        v = []
+        for sd in seeds:
+            m, ev = fit_lgb(tr, es, cols, params=dict(seed=sd))
+            v.append(float(max(ev["val"]["average_precision"])))
+        out[name] = dict(val_ap=v, mean=float(np.mean(v)), sd=float(np.std(v, ddof=1)))
+        print("SEEDS", name, np.round(v, 4), round(np.mean(v), 4), flush=True)
+    d = out["A6+A10a+A10b"]["mean"] - out["A6_spatial"]["mean"]
+    out["mean_gain"] = d
+    out["paired_gain_per_seed"] = [b - a for a, b in zip(out["A6_spatial"]["val_ap"], out["A6+A10a+A10b"]["val_ap"])]
+    log.setdefault("a10", {})["seed_check"] = out
+    print("SEEDS mean gain", round(d, 4), flush=True)
+
+
 def main(what=("ablation", "final", "loco", "lc", "vc", "wf")):
     """Pieces can be run in separate processes (memory): 'ablation final' starts a fresh metrics.json; any other
     piece (vc, lc, wf, loco, sens) loads the existing file and adds its section (D-022)."""
+    if tuple(what) == ("plus",):
+        log = json.load(open(RES / "metrics.json")); plus(log)
+        json.dump(log, open(RES / "metrics.json", "w"), indent=2, default=str)
+        return log
     df = load_all()
     fresh = "ablation" in what
     if fresh:
@@ -513,6 +577,7 @@ def main(what=("ablation", "final", "loco", "lc", "vc", "wf")):
     if "sens" in what: label_sensitivity(df, log)
     if "loso" in what: loso(df, log)
     if "a10" in what: a10(df, log)
+    if "a10seeds" in what: a10_seeds(df, log)
     json.dump(log, open(RES / "metrics.json", "w"), indent=2, default=str)
     return log
 

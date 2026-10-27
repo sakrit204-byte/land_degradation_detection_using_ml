@@ -197,12 +197,20 @@ def features_for(ctx, idx, need=None, t_from=0):
     return F, R_s
 
 
-def build_aoi(aoi_key, n_sample=PIX_PER_AOI):
-    ctx = aoi_context(aoi_key)
+def build_aoi(aoi_key, n_sample=PIX_PER_AOI, extra=0, out_name="table.parquet"):
+    """extra > 0 (D-024): keep the original n_sample pixels (same RNG draw) and add `extra` NEW pixels drawn from
+    the rest; rows carry batch = 0 (original) / 1 (added) so experiments can compare on identical evaluation rows."""
+    ctx = aoi_context(aoi_key, save_cube=(extra == 0))
     aoi, times, years, N, W = ctx["aoi"], ctx["times"], ctx["years"], ctx["N"], ctx["W"]
     d = PROC / aoi.key
     rng = np.random.default_rng(SEED + sum(map(ord, aoi.key)))
     samp = np.sort(rng.choice(N, size=min(n_sample, N), replace=False))
+    batch_of = {}
+    if extra:
+        rest = np.setdiff1d(np.arange(N), samp)
+        add = np.sort(np.random.default_rng(SEED + 1000 + sum(map(ord, aoi.key))).choice(rest, size=min(extra, len(rest)), replace=False))
+        batch_of = dict.fromkeys(add.tolist(), 1)
+        samp = np.sort(np.concatenate([samp, add]))
     F, R_s = features_for(ctx, samp)
     y, eligible, nxt, rr, cc = ctx["y"], ctx["eligible"], ctx["nxt"], ctx["rr"], ctx["cc"]
     tsel = times >= FEAT_START
@@ -215,7 +223,11 @@ def build_aoi(aoi_key, n_sample=PIX_PER_AOI):
     df["block"] = ((df["row"] // BLOCK_PX) * (W // BLOCK_PX + 1) + df["col"] // BLOCK_PX).astype(np.int16)
     df["y"] = y[ti, samp[pi]].astype(np.int8)
     df["months_to_onset"] = nxt[ti, samp[pi]]
-    df.to_parquet(d / "table.parquet", index=False)
+    df["batch"] = np.array([batch_of.get(int(p), 0) for p in samp], np.int8)[pi]
+    df.to_parquet(d / out_name, index=False)
+    if extra:
+        print(f"[{aoi.key}] {out_name} rows={len(df)} pixels={len(samp)}", flush=True)
+        return dict(rows=int(len(df)))
     lab_ok = np.isfinite(y) & eligible
     lcf = ctx["lcf"]
     info = dict(aoi=aoi.key, country=aoi.country, n_pixels=int(N), n_sampled=int(len(samp)), rows=int(len(df)),
@@ -231,5 +243,11 @@ def build_aoi(aoi_key, n_sample=PIX_PER_AOI):
 
 
 if __name__ == "__main__":
-    for a in (sys.argv[1:] or [a.key for a in AOIS]):
-        build_aoi(a)
+    args = sys.argv[1:]
+    if args and args[0] == "plus":                 # python -m care_ew.dataset plus 5000 [aoi ...]  (D-024)
+        for a in (args[2:] or [a.key for a in AOIS]):
+            if not (PROC / a / "table_plus.parquet").exists():
+                build_aoi(a, extra=int(args[1]), out_name="table_plus.parquet")
+    else:
+        for a in (args or [a.key for a in AOIS]):
+            build_aoi(a)

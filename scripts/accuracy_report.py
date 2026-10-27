@@ -80,6 +80,20 @@ if "a10" in m:
         for k, v in sorted(uni.items(), key=lambda kv: -abs(kv[1] - 0.5)):
             w(f"| {k} | {v:.3f} | {abs(v - 0.5):.3f} |")
 
+    sc = a10.get("seed_check")
+    if sc:
+        w(f"**Seed stability check (validation only, 5 seeds; added after test numbers were seen):** A6 {fx(sc['A6_spatial']['mean'], 4)} ± "
+          f"{fx(sc['A6_spatial']['sd'], 4)}, A6+A10a+A10b {fx(sc['A6+A10a+A10b']['mean'], 4)} ± {fx(sc['A6+A10a+A10b']['sd'], 4)}; mean gain "
+          f"{fx(sc['mean_gain'], 4)} < 0.005 → the pass is within seed noise; **A6 stays operational** (PROJECT_LOG R-017).\n")
+if "plus_pixels" in m:
+    pp = m["plus_pixels"]
+    w("\n### 4c. More training pixels from the same sites (D-024)\n")
+    w("| training pixels per site | train rows | val AP | test PR-AUC | CI | test ROC |\n|---|---|---|---|---|---|")
+    for k in ("5000_px_per_site", "10000_px_per_site"):
+        r = pp[k]
+        w(f"| {k.split('_')[0]} | {r['train_rows']:,} | {fx(r['val_pr_auc'], 4)} | {fx(r['pr_auc'])} | {fx(r['pr_auc_ci'][0])}–{fx(r['pr_auc_ci'][1])} | {fx(r['roc_auc'])} |")
+    w(f"\nDecision: **{pp['decision']['adopted']}** (validation did not improve; evaluation rows identical for both).\n")
+
 shap = pd.read_csv(RES / "shap_importance.csv", index_col=0).iloc[:, 0]
 w("\n## 5. Individual predictors (mean |SHAP| share, operational model, top 20)\n")
 w("| rank | feature | share |\n|---|---|---|")

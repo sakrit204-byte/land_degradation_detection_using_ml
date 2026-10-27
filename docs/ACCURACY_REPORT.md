@@ -68,6 +68,64 @@ Generated from `outputs/results/metrics.json` (run 2026-10-21 03:29; 4,294,330 p
 | LGB_A8_ecofunc | 77 | 0.132 | 0.139 | 5.5 | 0.801 | 0.153 | 0.021 | 55 |
 | LGB_A9_nonlinear | 96 | 0.138 | 0.147 | 5.8 | 0.808 | 0.164 | 0.026 | 97 |
 
+### 4b. Texture (A10a) and red-edge (A10b) test — D-023
+
+| variant | features | val AP | test PR-AUC | CI | test ROC | lift | gain share of new features | top new features |
+|---|---|---|---|---|---|---|---|---|
+| A6_spatial | 64 | 0.1384 | 0.152 | 0.119–0.192 | 0.805 | 6.1 | 0.0 % | – |
+| A6+A10a_texture | 82 | 0.1341 | 0.154 | 0.121–0.202 | 0.811 | 6.1 | 20.5 % | tx_sd2712, tx_sd312, tx_hom12, tx_ent_chg, tx_ent12, tx_hom_chg |
+| A6+A10b_rededge | 76 | 0.1370 | 0.146 | 0.119–0.181 | 0.789 | 5.8 | 9.8 % | re_ndre_m12, re_ireci, re_ndre_d3, re_ndre, re_ndre_anom, re_cire |
+| A6+A10a+A10b | 94 | 0.1438 | 0.151 | 0.117–0.193 | 0.792 | 6.0 | 22.4 % | tx_sd2712, re_cire_m12, tx_ent12, tx_ndmi_sd12, tx_hom12, re_ndre_m12 |
+
+**Decision (pre-registered):** A6 val AP 0.1384; best A6+A10a+A10b 0.1438; adopted → **A6+A10a+A10b**.
+
+Within-site univariate AUC of each new feature on validation rows (0.5 = no signal; below 0.5 = signal with inverted sign):
+
+| feature | AUC | strength |
+|---|---|---|
+| tx_sd312 | 0.616 | 0.116 |
+| tx_sd2712 | 0.599 | 0.099 |
+| tx_ndmi_sd12 | 0.592 | 0.092 |
+| tx_con12 | 0.591 | 0.091 |
+| tx_bsi_sd12 | 0.588 | 0.088 |
+| tx_ent12 | 0.576 | 0.076 |
+| tx_hom12 | 0.428 | 0.072 |
+| re_ndre_anom | 0.430 | 0.070 |
+| tx_lsr12 | 0.437 | 0.063 |
+| re_cire_anom | 0.440 | 0.060 |
+| tx_sd3_chg | 0.547 | 0.047 |
+| tx_con_chg | 0.543 | 0.043 |
+| tx_cor12 | 0.541 | 0.041 |
+| tx_hom_chg | 0.460 | 0.040 |
+| tx_ent_chg | 0.535 | 0.035 |
+| re_ireci_d3 | 0.535 | 0.035 |
+| re_cire_m12 | 0.468 | 0.032 |
+| re_ndre_d3 | 0.527 | 0.027 |
+| tx_sd27_chg | 0.525 | 0.025 |
+| re_ndre_m12 | 0.475 | 0.025 |
+| re_cire_d3 | 0.524 | 0.024 |
+| re_ireci_m12 | 0.478 | 0.022 |
+| tx_lsr_chg | 0.481 | 0.019 |
+| re_ireci_anom | 0.481 | 0.019 |
+| re_ireci | 0.516 | 0.016 |
+| tx_bsi_sd_chg | 0.490 | 0.010 |
+| tx_ndmi_sd_chg | 0.509 | 0.009 |
+| tx_cor_chg | 0.507 | 0.007 |
+| re_cire | 0.493 | 0.007 |
+| re_ndre | 0.494 | 0.006 |
+**Seed stability check (validation only, 5 seeds; added after test numbers were seen):** A6 0.1397 ± 0.0059, A6+A10a+A10b 0.1427 ± 0.0066; mean gain 0.0031 < 0.005 → the pass is within seed noise; **A6 stays operational** (PROJECT_LOG R-017).
+
+
+### 4c. More training pixels from the same sites (D-024)
+
+| training pixels per site | train rows | val AP | test PR-AUC | CI | test ROC |
+|---|---|---|---|---|---|
+| 5000 | 800,784 | 0.1220 | 0.165 | 0.130–0.212 | 0.812 |
+| 10000 | 1,595,949 | 0.1196 | 0.171 | 0.129–0.225 | 0.812 |
+
+Decision: **5000_px_per_site** (validation did not improve; evaluation rows identical for both).
+
+
 ## 5. Individual predictors (mean |SHAP| share, operational model, top 20)
 
 | rank | feature | share |

@@ -672,6 +672,30 @@ when offered — but this information overlaps the resilience (variance) and nei
 Answer to the user question: pixel texture has been tested at three scales and with GLCM; it corroborates
 but does not add independent predictive skill at 10 m.
 
+#### R-017 — Red-edge (A10b), texture+red-edge, and doubled training pixels (D-023, D-024), run 2026-10-27
+Red-edge composites for all 17 sites (scene counts identical to the base composite in every month).
+| variant (5 000 px/site table) | features | val AP | test PR-AUC (95 % CI) | test ROC |
+|---|---|---|---|---|
+| A6 (operational) | 64 | 0.1384 | 0.152 (0.119–0.192) | 0.805 |
+| A6 + texture | 82 | 0.1341 | 0.154 (0.121–0.202) | 0.811 |
+| A6 + red-edge | 76 | 0.1370 | 0.146 (0.119–0.181) | 0.789 |
+| A6 + texture + red-edge | 94 | 0.1438 | 0.151 (0.117–0.193) | 0.792 |
+* The combined variant passed the literal rule by 0.0004 (0.1438 ≥ 0.1434). Because the margin was tiny, the
+  best of three variants was selected on validation, and the test set did not confirm (ROC −0.013), a seed
+  stability check was run — **added after the test numbers were seen (deviation from D-023, declared here)**,
+  using VALIDATION only: 5 LightGBM seeds each. A6 val AP 0.1397 ± 0.0059, A6+A10a+A10b 0.1427 ± 0.0063; mean gain
+  +0.0031 (< 0.005), per-seed paired gains −0.007, −0.003, +0.013, +0.016, −0.003. **Decision: the pass is within seed
+  noise; A6 stays operational.** A reviewer may prefer the literal rule; both numbers are reported.
+* Red-edge individually: within-site validation AUC 0.43 (NDRE anomaly, inverted = 0.57), 0.44 (CIre anomaly);
+  i.e. chlorophyll loss relative to the 2017–2020 same-month mean is associated with later onsets, but less
+  strongly than the NDVI-based residual (R_mean6 0.755 inverted). At 20 m and monthly medians, red-edge adds
+  little beyond NDVI/NDMI for shrub drying; it cannot separate drought-deciduous dormancy from mortality.
+* D-024 doubled training pixels (5 000 → 10 000 per site; original pixels kept, identical rows verified): on the
+  common 10 000-pixel validation/test rows val AP 0.1220 (5 000) vs 0.1196 (10 000); test 0.165 vs 0.171.
+  **Rejected.** Note the same 5 000-px model scores 0.152 on the original test rows and 0.165 on the doubled
+  set — test-set sampling noise is ≈ ±0.01, so the "still-rising" learning curve (R-0xx) is within noise.
+  Conclusion: more pixels from the SAME 17 sites do not help; new sites/landscapes (R-015) do.
+
 ## 12. Ground-reference inventory (2026-10-19; three search agents; all endpoints actually queried)
 Files: `data/ground_ref/` — `photo_sources_inventory.json`, `field_sources_inventory.json`,
 `vhr_sources_inventory.json`, per-source subfolders, `inventory_queries.py` (re-runnable).
