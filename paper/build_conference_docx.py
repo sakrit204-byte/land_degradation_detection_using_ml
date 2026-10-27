@@ -15,7 +15,8 @@ from docx.shared import Pt, Inches, RGBColor
 
 ROOT = Path(__file__).resolve().parents[1]
 FIG = ROOT / "paper" / "figs"
-OUT = ROOT / "CARE-EW_Conference_Paper.docx"
+import os
+OUT = Path(os.environ.get("PAPER_OUT", ROOT / "CARE-EW_Conference_Paper.docx"))
 FONT = "Times New Roman"
 COLW = 3.5                                   # IEEE US-letter column width (in)
 
@@ -183,8 +184,7 @@ members = [("Ankur Bhattarai", "Reg. No. 24BCE2954"), ("________________", "Reg.
            ("________________", "Reg. No. ____________")]
 for j, (name, reg) in enumerate(members):
     c = auth.cell(0, j); c.width = Inches(2.4); borders(c)
-    lines = [(name, 11, False), (reg, 9, False), ("Department of ____________", 9, True), ("____________ (Institution)", 9, True),
-             ("City, Country", 9, True), ("email: ____________", 9, False)]
+    lines = [(name, 11, False), (reg, 9, False)]
     c.paragraphs[0].alignment = WD_ALIGN_PARAGRAPH.CENTER
     run(c.paragraphs[0], lines[0][0], lines[0][1])
     for text, size, it in lines[1:]:
@@ -259,7 +259,7 @@ para("Large-scale forest products use decision trees on Landsat to map annual tr
 subheading("Resilience and early-warning signals")
 para("Critical-slowing-down theory predicts rising autocorrelation and variance before a transition [6], [7]. "
      "Satellite studies found lower resilience in drought-sensitive tropical forests [8], widespread resilience loss "
-     "since the early 2000s [9], [10], and spatial-pattern indicators of desertification [16]. These are descriptive; "
+     "since the early 2000s [9], [10], declining forest resilience under climate change [34], and spatial-pattern indicators of desertification [16]. These are descriptive; "
      "whether they improve held-out forecasts is rarely tested.")
 table("Comparison of Prior Work",
       ["Work", "Method", "Data / region", "Outcome", "Gap for early warning"],
@@ -288,9 +288,10 @@ para("**Study areas.** The model is trained on 17 areas of 5.12 × 5.12 km (512 
      "foothill forest, semi-arid cropland, rangeland, Mediterranean dryland and a mining landscape. Six further sites "
      "(Udayapur, Kailali and Sindhupalchok in Nepal; Marathwada, Singrauli and Shivalik in India) are used only as "
      "independent test sites.")
-para("**Sources.** All inputs are open: Sentinel-2 L2A [23] (10–20 m, 2017–2026), MODIS MOD13Q1 NDVI (250 m, 2000–), "
-     "ERA5/ERA5-Land [24] climate (precipitation, temperature, soil moisture, reference evapotranspiration), ESA WorldCover "
-     "2021 [17], NASADEM terrain, JRC surface water and HydroRIVERS. Landsat 8/9 is used only to check labels.")
+para("**Sources.** All inputs are open: Sentinel-2 L2A [23] (10–20 m, 2017–2026), MODIS MOD13Q1 NDVI [25] (250 m, 2000–), "
+     "ERA5 [27] / ERA5-Land [24] climate (precipitation, temperature, soil moisture, reference evapotranspiration), ESA WorldCover "
+     "2021 [17], NASADEM terrain, JRC surface water [33] and HydroRIVERS. Landsat 8/9 [28] is used only to check labels. Data are read "
+     "from the Microsoft Planetary Computer catalogue; the same workflow can run on Google Earth Engine [29].")
 para("**Preprocessing.** For each month the four least-cloudy Sentinel-2 scenes of one MGRS tile are used. Duplicate "
      "processings are removed, and the bottom-of-atmosphere offset of processing baseline 04.00 and later is corrected. "
      "Pixels outside the vegetation, soil and water scene classes are masked. NDVI, NDMI, NBR and BSI are computed per scene "
@@ -359,6 +360,7 @@ table("Training Setup and Hyperparameters",
        ["Validation / calibration", "2023-03 … 2023-12; 169,049 / 378,057 rows"],
        ["Test (locked)", "months ≥ 2024-12 on test blocks; 132,230 rows"],
        ["Embargo", "≥ 11-month gaps = label look-ahead (no leakage)"],
+       ["Software", "Python; LightGBM [18], scikit-learn [31], SHAP [32]"],
        ["Hardware", "Intel Core 5 210H, 16 GB RAM, CPU only; final fit 14 s"],
        ["Decision rule", "a change is adopted only if validation AP gains ≥ 0.005 (5 seeds)"]],
       [1.15, 2.3], size=7)
@@ -441,7 +443,9 @@ subheading("Discussion")
 para("The ablation supports the central hypothesis in a falsifiable way. If future degradation could be read from present "
      "greenness or from weather alone, groups A1–A3 would score well; they do not. Skill appears only once each pixel is "
      "compared with what climate and its landscape peers predict, and it grows when the autocorrelation and variance of that "
-     "residual are added. This is the pattern critical-slowing-down theory predicts [6], [7], here tested on held-out data "
+     "residual are added. SHAP attributions [32] agree: the most influential features are the MODIS 5-year variance, the share "
+     "of the last 12 months below expectation and the 24-month AC1. This is the pattern critical-slowing-down theory predicts "
+     "[6], [7], here tested on held-out data "
      "rather than assumed. We do not claim that rising autocorrelation marks a tipping point, only that it improves forecasts.")
 para("Calibration makes the scores usable. A stated 10 % risk corresponds to about 10 % observed onsets (ECE 0.0025), so a "
      "district officer can rank hotspots by expected hectares rather than by an arbitrary score. Abstention is the price of "
@@ -457,7 +461,8 @@ bullets([
     "**No independent visual confirmation yet.** In a blind pilot on 233 before/after pairs of sub-metre imagery, a visible "
     "change was seen at 19.6 % of warnings and 24.5 % of safe pixels (difference −4.9 points, 95 % CI −15 to +6). The "
     "pilot was underpowered and mostly showed abrupt events rather than gradual thinning.",
-    "**Short baseline and coarse climate.** The Sentinel-2 baseline covers only 2017–2020, and climate is at 9–25 km.",
+    "**Short baseline and coarse climate.** The Sentinel-2 baseline covers only 2017–2020, climate is at 9–25 km, and ERA5 "
+    "rainfall is weaker than gauge-blended products such as CHIRPS [26] over convective tropics.",
     "**Single validation year.** Model selection used one validation year, whose seed noise is close to the decision margin.",
 ])
 
@@ -473,7 +478,7 @@ bullets([
     "an independent human review of the 233 image pairs, followed by a power-calculated campaign of at least 300 pairs per "
     "group with same-season imagery taken within six months before the warning;",
     "a prospective test on months after October 2025, comparing the 17-site model, a 23-site model and a seed ensemble;",
-    "Sentinel-1 radar features to fill monsoon cloud gaps.",
+    "Sentinel-1 radar features to fill monsoon cloud gaps, and SoilGrids [30] soil properties to separate erosion-prone soils.",
 ])
 
 # ============================================================================ References
@@ -521,6 +526,23 @@ REFS = [
     "Environ.*, vol. 120, pp. 25–36, 2012.",
     "J. Muñoz-Sabater et al., “ERA5-Land: A state-of-the-art global reanalysis dataset for land applications,” *Earth "
     "Syst. Sci. Data*, vol. 13, pp. 4349–4383, 2021.",
+    "K. Didan, “MOD13Q1 MODIS/Terra vegetation indices 16-day L3 global 250 m SIN grid V061,” NASA EOSDIS Land Processes "
+    "DAAC, 2021, doi: 10.5067/MODIS/MOD13Q1.061.",
+    "C. Funk et al., “The climate hazards infrared precipitation with stations—a new environmental record for monitoring "
+    "extremes,” *Sci. Data*, vol. 2, 150066, 2015.",
+    "H. Hersbach et al., “The ERA5 global reanalysis,” *Q. J. R. Meteorol. Soc.*, vol. 146, no. 730, pp. 1999–2049, 2020.",
+    "M. A. Wulder et al., “Fifty years of Landsat science and impacts,” *Remote Sens. Environ.*, vol. 280, 113195, 2022.",
+    "N. Gorelick et al., “Google Earth Engine: Planetary-scale geospatial analysis for everyone,” *Remote Sens. Environ.*, "
+    "vol. 202, pp. 18–27, 2017.",
+    "L. Poggio et al., “SoilGrids 2.0: Producing soil information for the globe with quantified spatial uncertainty,” *SOIL*, "
+    "vol. 7, pp. 217–240, 2021.",
+    "F. Pedregosa et al., “Scikit-learn: Machine learning in Python,” *J. Mach. Learn. Res.*, vol. 12, pp. 2825–2830, 2011.",
+    "S. M. Lundberg and S.-I. Lee, “A unified approach to interpreting model predictions,” in *Proc. NeurIPS*, 2017, "
+    "pp. 4765–4774.",
+    "J.-F. Pekel, A. Cottam, N. Gorelick, and A. S. Belward, “High-resolution mapping of global surface water and its "
+    "long-term changes,” *Nature*, vol. 540, pp. 418–422, 2016.",
+    "G. Forzieri, V. Dakos, N. G. McDowell, A. Ramdane, and A. Cescatti, “Emerging signals of declining forest resilience "
+    "under climate change,” *Nature*, vol. 608, pp. 534–539, 2022.",
 ]
 for i, r in enumerate(REFS, 1):
     p = doc.add_paragraph(); p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
