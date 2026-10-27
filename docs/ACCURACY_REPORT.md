@@ -323,8 +323,14 @@ Latest month 2026-09. High = risk above the calibrated threshold; abstain = conf
 | USR_My_area_8b6b | User area | 0.0292 | 60.2 | 1113.8 | 626.4 | 15 | 0.0016 | post_drought 10, perennial_loss 5, river_dynamics 3 |
 | USR_hilly_test_861e | User area | 0.0424 | 122.2 | 966.5 | 807.3 | 12 | 0.0006 | post_drought 10, perennial_loss 2, structure_shift 1 |
 | USR_My_area_a348 | User area | 0.0182 | 41.3 | 918.3 | 658.9 | 18 | 0.0011 | perennial_loss 15, post_drought 12, structure_shift 4 |
+| NPL_chure_udayapur | Nepal | 0.0212 | 42.5 | 1041.3 | 655.2 | 10 | 0.0078 | other 10 |
+| NPL_chure_kailali | Nepal | 0.0112 | 9.7 | 539.3 | 735.3 | 9 | 0.0033 | post_drought 8, perennial_loss 1, other 1 |
+| NPL_sindhupalchok | Nepal | 0.0254 | 57.1 | 875.1 | 887.3 | 12 | 0.0040 | other 9, perennial_loss 2, post_drought 1 |
+| IND_marathwada | India | 0.0242 | 33.5 | 993.4 | 884.9 | 10 | 0.0039 | other 9, perennial_loss 1, structure_shift 1 |
+| IND_singrauli | India | 0.0270 | 67.3 | 828.5 | 826.2 | 18 | 0.0034 | rain_use_loss 10, river_dynamics 8, post_drought 5 |
+| IND_shivalik | India | 0.0187 | 24.4 | 999.9 | 587.5 | 12 | 0.0004 | other 7, perennial_loss 5, structure_shift 2 |
 
-All hotspot attributions: post_drought 105, other 87, perennial_loss 71, structure_shift 37, rain_use_loss 33, river_dynamics 20, water_loss 2
+All hotspot attributions: other 124, post_drought 119, perennial_loss 84, rain_use_loss 43, structure_shift 40, river_dynamics 29, water_loss 4
 
 ## 12. Limits (see PROJECT_LOG §11)
 
