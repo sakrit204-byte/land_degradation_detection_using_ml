@@ -37,6 +37,15 @@ tests/              leakage + label tests (pytest)
 app/                FastAPI server + CesiumJS console
 ```
 
+## Demo (one click)
+
+Double-click **`START_DEMO.bat`** (or the *CARE-EW Demo* shortcut on the Desktop). It creates `.venv` and
+installs `requirements.txt` if needed, checks the UI data (falls back to labelled MOCK data if the pipeline
+output is absent), reuses a running server or starts one on the first free port 8765–8775, waits for
+`/api/health`, opens the console in the browser and keeps the PC awake. Press Enter or close the window to
+stop the server. Options: `START_DEMO.bat -Aoi NPL_chure` (deep link), `-Port 8770`, `-NoBrowser`,
+`-InstallShortcut` (re-creates the Desktop shortcut). Script: `scripts/start_demo.ps1`.
+
 ## Run
 ```
 python -m venv .venv && .venv/Scripts/pip install -r requirements.txt

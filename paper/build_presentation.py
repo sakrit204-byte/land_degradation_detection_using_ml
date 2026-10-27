@@ -179,7 +179,7 @@ text(sl, 0.7, 1.7, 6.0, 1.9, "CARE-EW", size=60, bold=True, font=HEAD, color=WHI
 text(sl, 0.7, 2.75, 6.0, 1.5, "Climate-Adjusted, Resilience-Enhanced Early Warning of persistent land degradation "
      "from Sentinel-2 satellite imagery", size=20, color="DCE8E0", margin=0)
 text(sl, 0.7, 4.55, 6.0, 1.4, [[("Ankur Bhattarai", {"bold": True}), ("  ·  24BCE2954", {})],
-                               [("Team member 2  ·  ____________", {})], [("Team member 3  ·  ____________", {})]],
+                               [("Rohit Kumar Chaurasiya  ·  24BDS0451", {})], [("Roshan Jaishwal  ·  24BCE2965", {})]],
      size=15, color=WHITE, space=4, margin=0)
 text(sl, 0.7, 6.15, 6.0, 0.4, "17 landscapes · 9 countries · 4.29 million pixel-months · 10 m resolution", size=13,
      color="9DB3A5", margin=0)
