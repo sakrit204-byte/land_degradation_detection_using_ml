@@ -327,6 +327,51 @@ async def _no_stale_code(request, call_next):
     return resp
 
 
+# ----------------------------------------------------------------------------- blind VHR review (PROJECT_LOG D-029)
+VHR = ROOT / "data" / "vhr"
+_ans_lock = threading.Lock()
+
+
+@app.get("/api/vhr/pairs")
+def vhr_pairs():
+    """Image pairs to review. The warning/control key (data/vhr/key.json) is never served."""
+    f = VHR / "pairs.json"
+    if not f.exists():
+        raise HTTPException(404, "no review campaign yet (python scripts/vhr_campaign.py sample && ... fetch)")
+    d = _load_json(f)
+    return {"pairs": [{k: p[k] for k in ("id", "aoi", "lon", "lat", "t", "before", "after")} for p in d["pairs"]]}
+
+
+@app.get("/api/vhr/answers")
+def vhr_answers(who: str = Query(..., min_length=1, max_length=40)):
+    f = VHR / "answers.json"
+    return (_load_json(f) if f.exists() else {}).get(who, {})
+
+
+@app.post("/api/vhr/answer")
+def vhr_answer(body: dict):
+    who, pid, a = str(body.get("who", ""))[:40].strip(), str(body.get("id", ""))[:16], body.get("answer")
+    if not who or a not in ("yes", "no", "unsure", "nodata"):
+        raise HTTPException(400, "need who and answer in yes/no/unsure/nodata")
+    f = VHR / "answers.json"
+    with _ans_lock:
+        d = _load_json(f) if f.exists() else {}
+        d.setdefault(who, {})[pid] = a
+        f.write_text(json.dumps(d, indent=1), encoding="utf-8")
+    return {"ok": True, "n": len(d[who])}
+
+
+@app.get("/api/vhr/chip/{name}", include_in_schema=False)
+def vhr_chip(name: str):
+    import re as _re
+    if not _re.fullmatch(r"[0-9a-f]{8}_[ab]\.png", name):
+        raise HTTPException(404, "bad chip name")
+    f = VHR / "chips" / name
+    if not f.exists():
+        raise HTTPException(404, "chip not found")
+    return FileResponse(f)
+
+
 # ----------------------------------------------------------------------------- static app
 @app.get("/", include_in_schema=False)
 def index():

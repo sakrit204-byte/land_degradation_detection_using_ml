@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CARE-EW blind review</title>
+<style>
+  :root { --bg: #070b10; --panel: #0f161f; --line: #1f2b39; --text: #e6edf3; --muted: #7f8fa0; --accent: #00c2ff;
+    --good: #35c27f; --bad: #ff3b30; --warn: #ff9f1c; --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace; color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 Inter, 'Segoe UI', system-ui, sans-serif; }
+  header { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; padding: 12px 16px;
+    border-bottom: 1px solid var(--line); background: var(--panel); }
+  h1 { font-size: 16px; margin: 0; }
+  h1 small { color: var(--muted); font-weight: 500; }
+  .bar { flex: 1 1 200px; max-width: 360px; height: 6px; background: #1b2633; border-radius: 3px; overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .2s; }
+  .who input { background: #0b1118; border: 1px solid var(--line); color: var(--text); border-radius: 6px; padding: 5px 8px; width: 160px; }
+  main { max-width: 1120px; margin: 0 auto; padding: 16px; }
+  .q { color: var(--muted); margin: 0 0 12px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  figure { margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  figure img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; background: #111; }
+  figcaption { padding: 8px 10px; font: 12px var(--mono); color: var(--muted); display: flex; justify-content: space-between; gap: 8px; }
+  figcaption b { color: var(--text); }
+  .meta { margin: 10px 0; font: 12px var(--mono); color: var(--muted); }
+  .btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  button { font: 600 14px Inter, system-ui, sans-serif; padding: 10px 16px; border-radius: 8px; border: 1px solid var(--line);
+    background: #131c27; color: var(--text); cursor: pointer; }
+  button:hover { border-color: var(--accent); }
+  button.sel { outline: 2px solid var(--accent); }
+  button kbd { font: 11px var(--mono); color: var(--muted); margin-left: 6px; }
+  .yes { border-color: #8f2b24; } .no { border-color: #1f6b47; }
+  .nav { margin-left: auto; display: flex; gap: 8px; }
+  .note { color: var(--muted); font-size: 12px; margin-top: 16px; }
+  .done { padding: 40px; text-align: center; }
+  @media (max-width: 700px) { .pair { grid-template-columns: 1fr; } .nav { margin-left: 0; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Blind image review <small>PROJECT_LOG D-029</small></h1>
+  <div class="bar" title="answered"><i id="prog"></i></div>
+  <span id="count" style="font-family:var(--mono);color:var(--muted)">–</span>
+  <label class="who">Reviewer <input id="who" placeholder="your name" maxlength="40"></label>
+</header>
+<main id="main">
+  <p class="q">Look at the area inside the yellow square, a 10 m cell, and its close surroundings. <b>Between the two images, is there visible
+    loss of vegetation, exposed soil, erosion, clearing, mining or new structures?</b> You are not told why a point was chosen.</p>
+  <div class="pair">
+    <figure><img id="ia" alt="before"><figcaption><span><b>Before</b> <span id="da"></span></span><span id="sa"></span></figcaption></figure>
+    <figure><img id="ib" alt="after"><figcaption><span><b>After</b> <span id="db"></span></span><span id="sb"></span></figcaption></figure>
+  </div>
+  <div class="meta" id="meta"></div>
+  <div class="btns">
+    <button class="yes" data-a="yes">Yes, visible change<kbd>Y</kbd></button>
+    <button class="no" data-a="no">No change<kbd>N</kbd></button>
+    <button data-a="unsure">Unsure<kbd>U</kbd></button>
+    <button data-a="nodata">Image unusable<kbd>X</kbd></button>
+    <div class="nav"><button id="prev">← Prev</button><button id="next">Next →</button></div>
+  </div>
+  <p class="note">Imagery: Esri World Imagery Wayback; acquisition dates from Esri metadata. Seasonal colour differences (dry vs green
+    season) on their own are not "change". Answers are saved on the server per reviewer name.</p>
+</main>
+<script>
+(async () => {
+  const $ = id => document.getElementById(id);
+  let pairs = [], ans = {}, i = 0;
+  const who = () => $('who').value.trim();
+  try { $('who').value = localStorage.getItem('vhr_who') || ''; } catch (e) {}
+  const r = await fetch('/api/vhr/pairs');
+  if (!r.ok) { $('main').innerHTML = '<p class="done">No review campaign yet.</p>'; return; }
+  pairs = (await r.json()).pairs;
+  const fmt = d => d && d.length === 8 ? `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6)}` : (d || '?');
+
+  async function loadAns() {
+    ans = who() ? await (await fetch('/api/vhr/answers?who=' + encodeURIComponent(who()))).json() : {};
+    const first = pairs.findIndex(p => !ans[p.id]);
+    i = first < 0 ? 0 : first; show();
+  }
+  function show() {
+    const p = pairs[i];
+    $('ia').src = `/api/vhr/chip/${p.id}_a.png`; $('ib').src = `/api/vhr/chip/${p.id}_b.png`;
+    $('da').textContent = fmt(p.before.date); $('db').textContent = fmt(p.after.date);
+    $('sa').textContent = `${p.before.src || ''} ${p.before.res ? p.before.res + ' m' : ''}`;
+    $('sb').textContent = `${p.after.src || ''} ${p.after.res ? p.after.res + ' m' : ''}`;
+    $('meta').textContent = `#${i + 1} / ${pairs.length} · ${p.id} · ${p.aoi} · ${p.lat.toFixed(5)}, ${p.lon.toFixed(5)}`;
+    document.querySelectorAll('[data-a]').forEach(b => b.classList.toggle('sel', ans[p.id] === b.dataset.a));
+    const n = pairs.filter(q => ans[q.id]).length;
+    $('count').textContent = `${n} / ${pairs.length}`; $('prog').style.width = (100 * n / pairs.length) + '%';
+  }
+  async function answer(a) {
+    if (!who()) { $('who').focus(); $('who').placeholder = 'enter your name first'; return; }
+    const p = pairs[i];
+    const res = await fetch('/api/vhr/answer', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ who: who(), id: p.id, answer: a }) });
+    if (!res.ok) return;
+    ans[p.id] = a;
+    if (i < pairs.length - 1) i++;
+    show();
+  }
+  document.querySelectorAll('[data-a]').forEach(b => b.onclick = () => answer(b.dataset.a));
+  $('prev').onclick = () => { if (i > 0) { i--; show(); } };
+  $('next').onclick = () => { if (i < pairs.length - 1) { i++; show(); } };
+  $('who').onchange = () => { try { localStorage.setItem('vhr_who', who()); } catch (e) {} loadAns(); };
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+    const k = { y: 'yes', n: 'no', u: 'unsure', x: 'nodata' }[e.key.toLowerCase()];
+    if (k) answer(k);
+    else if (e.key === 'ArrowLeft') $('prev').click();
+    else if (e.key === 'ArrowRight') $('next').click();
+  });
+  loadAns();
+})();
+</script>
+</body>
+</html>

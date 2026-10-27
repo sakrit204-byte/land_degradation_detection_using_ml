@@ -764,6 +764,24 @@ forking path, so no decision is reversed. **Plan (D-028, to be pre-registered be
 the 17-site A6, the 23-site A6 and the 5-seed ensemble on those genuinely future months; adopt whichever wins by
 ≥ 0.005 AP averaged over 5 seeds.
 
+#### D-029 — Blind very-high-resolution (VHR) check of warnings (pre-registered 2026-10-27, before any image is viewed)
+Question: when the operational A6 raises a warning, is a land-cover change visible on sub-metre imagery
+afterwards more often than at pixels it called safe? Source: Esri World Imagery Wayback (197 archived releases
+2014-02 … 2026-09; acquisition date and sensor per release from its metadata layer; research display use, as the
+UI basemap). Sample (`scripts/vhr_campaign.py`, seed 29): for each of the 23 fixed sites, 6 **warnings** (first
+month with status = 1, onset t in 2023-01 … 2024-06) and 6 **controls** (status = 0 in every month 2023-01 … 2024-06,
+same land-cover class mix not enforced), each control given the onset month of a randomly paired warning of the
+same site. Pixels within 100 m of each other are not both drawn. Per point: "before" = the most recent distinct
+image acquired ≤ t, "after" = the most recent distinct image acquired ≥ t + 6 months; points without such a pair are
+dropped *before* review and counted. Chips: 256 × 256 px at zoom 17 (≈ 1.2 m/px, ≈ 300 m across), target marked.
+Order shuffled; the key (warning/control) is stored separately and not shown. Interpreter answers per pair: visible
+loss of vegetation / soil exposure / new structure-mining-clearing in the marked 10 m cell's surroundings? —
+`yes` / `no` / `unsure` / `no usable image` (`/review.html`, answers → `data/vhr/answers.json`).
+**Primary statistic:** yes-rate(warnings) − yes-rate(controls) over usable pairs, 95 % CI by bootstrap over points;
+Fisher exact test. **Success criterion:** difference > 0 with CI excluding 0. Also reported: precision proxy =
+yes-rate among warnings. The first pass is by the AI assistant (pilot only, labelled as such); a human interpreter
+pass (e.g. a forest officer) is the result of record. No model or threshold is changed on the basis of this check.
+
 ## 12. Ground-reference inventory (2026-10-19; three search agents; all endpoints actually queried)
 Files: `data/ground_ref/` — `photo_sources_inventory.json`, `field_sources_inventory.json`,
 `vhr_sources_inventory.json`, per-source subfolders, `inventory_queries.py` (re-runnable).
