@@ -735,6 +735,22 @@ Validation AP: single models 0.1407 (mean of 5), ensemble 0.1448 → gain +0.004
 pre-registered rule.** Test (reported only): single 0.1484, ensemble 0.1561. The ensemble is the closest of all
 attempts (R-016 … R-019); a future pre-registered test on the 23-site data may revisit it, but it is not adopted now.
 
+#### R-020 — Six new sites (E-008 / D-025), run 2026-10-27 18:05–18:16
+**Independent transfer test (the strongest accuracy evidence so far):** the operational 17-site model, which
+never saw these places, on their test period (all blocks): ROC-AUC Sindhupalchok 0.873 (×9.8), Singrauli 0.876
+(×6.8), Chure-Udayapur 0.844 (×7.0), Chure-Kailali 0.803 (×10.1), Shivalik 0.782 (×12.7), Marathwada 0.597
+(×1.7); **all six together ROC 0.839, lift ×8.6, PR-AUC 0.217** — better than the original test set (0.805, ×5.7).
+Intensive cropland (Marathwada) remains the weak case, consistent with the land-cover results.
+**Pre-registered comparison (single seed):** val AP on the original 17 sites' rows 0.1384 (17 sites) vs 0.1332
+(23 sites) → **rejected**. Test (reported only): original-17 PR-AUC 0.152 → 0.166 (CI 0.119–0.192 → 0.129–0.217),
+ROC 0.805 → 0.801; new-6 PR-AUC 0.217 → 0.258.
+Sibling leave-one-site-out (held-out site test PR-AUC / ROC, without → with the new sibling): Chure 0.120/0.814 →
+0.147/0.814; Kavre 0.320/0.886 → 0.271/0.876; Surkhet 0.101/0.785 → 0.102/0.796; Bundelkhand 0.093/0.725 →
+0.075/0.736; Jharia 0.034/0.699 → 0.033/0.686. Mixed: siblings do not reliably help at n = 1 sibling.
+**Declared check:** D-025 used one seed although seed noise (≈ 0.006, R-017) exceeds the 0.005 margin; the 5-seed
+protocol used since D-026 is applied symmetrically (`python -m care_ew.train sites5`). Until a test adopts them,
+E-008 sites are excluded from training by default (`TRAIN_EXCLUDE_DEFAULT`) and serve as independent test sites.
+
 ## 12. Ground-reference inventory (2026-10-19; three search agents; all endpoints actually queried)
 Files: `data/ground_ref/` — `photo_sources_inventory.json`, `field_sources_inventory.json`,
 `vhr_sources_inventory.json`, per-source subfolders, `inventory_queries.py` (re-runnable).

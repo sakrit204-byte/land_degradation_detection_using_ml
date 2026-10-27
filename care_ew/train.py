@@ -38,14 +38,21 @@ TABLE = os.environ.get("CAREEW_TABLE", "table.parquet")   # D-024: "table_plus.p
 META = ["aoi", "pix", "time", "country", "row", "col", "block", "y", "months_to_onset", "batch"]
 
 
-def load_all(aois=None, neg_keep=None, table=None, columns=None, side_tables=True):
+TRAIN_EXCLUDE_DEFAULT = True   # R-020: E-008 sites are independent EVALUATION sites unless a test adopts them
+
+
+def load_all(aois=None, neg_keep=None, table=None, columns=None, side_tables=True, include_new=None):
     """Memory-aware loader (I-031): AOI tables are read one by one, cast to float32 and, inside the training
     period only, negatives are deterministically down-sampled (hash of aoi/pixel/month) and re-weighted by
     1/neg_keep. All rows of the validation, calibration and test periods are kept, so evaluation is unchanged."""
     neg_keep = NEG_KEEP if neg_keep is None else neg_keep
+    from .config import NEW_SITES_E008
+    include_new = (not TRAIN_EXCLUDE_DEFAULT) if include_new is None else include_new
     dfs = []
     for a in AOIS:
         if aois and a.key not in aois:
+            continue
+        if not include_new and not aois and a.key in NEW_SITES_E008:
             continue
         f = PROC / a.key / (table or TABLE)
         if not f.exists():
@@ -667,6 +674,32 @@ def seed_ensemble(df, log, seeds=(1, 2, 3, 4, 5)):
           "ensemble test", round(out["ensemble_test"]["pr_auc"], 4), out["decision"], flush=True)
 
 
+def sites5(df, log, seeds=(1, 2, 3, 4, 5)):
+    """Declared check (R-020): D-025 was decided on ONE seed while seed noise is ~0.006 (R-017). Same comparison with
+    5 seeds, the protocol used since D-026; adopt 23 sites only if the mean val AP gain (original 17 val rows) >= 0.005."""
+    from .config import NEW_SITES_E008
+    new = set(NEW_SITES_E008)
+    tr, es, cal, te = splits(df)
+    old = lambda d: d[~d.aoi.isin(new)]
+    cols = feature_set(df, "A6_spatial")
+    es0, t0, t1 = old(es), old(te), te[te.aoi.isin(new)]
+    out = {}
+    for name, trn in (("17_sites", old(tr)), ("23_sites", tr)):
+        v, a17, an = [], [], []
+        for sd in seeds:
+            m, ev = fit_lgb(trn, es0, cols, params=dict(seed=sd))
+            v.append(float(max(ev["val"]["average_precision"])))
+            a17.append(float(average_precision_score(t0.y, m.predict(t0[cols], num_iteration=m.best_iteration))))
+            an.append(float(average_precision_score(t1.y, m.predict(t1[cols], num_iteration=m.best_iteration))))
+        out[name] = dict(val=v, val_mean=float(np.mean(v)), val_sd=float(np.std(v, ddof=1)), test17=a17, test17_mean=float(np.mean(a17)),
+                         test_new6=an, test_new6_mean=float(np.mean(an)))
+        print("SITES5", name, "val", round(np.mean(v), 4), "+-", round(np.std(v, ddof=1), 4), "test17", round(np.mean(a17), 4), "new6", round(np.mean(an), 4), flush=True)
+    g = out["23_sites"]["val_mean"] - out["17_sites"]["val_mean"]
+    out["decision"] = dict(rule="adopt 23 if mean val AP gain over 5 seeds >= 0.005", gain=g, adopted="23_sites" if g >= 0.005 else "17_sites")
+    log.setdefault("sites_e008", {})["seed_check"] = out
+    print("SITES5 decision", out["decision"], flush=True)
+
+
 def main(what=("ablation", "final", "loco", "lc", "vc", "wf")):
     """Pieces can be run in separate processes (memory): 'ablation final' starts a fresh metrics.json; any other
     piece (vc, lc, wf, loco, sens) loads the existing file and adds its section (D-022)."""
@@ -674,7 +707,7 @@ def main(what=("ablation", "final", "loco", "lc", "vc", "wf")):
         log = json.load(open(RES / "metrics.json")); plus(log)
         json.dump(log, open(RES / "metrics.json", "w"), indent=2, default=str)
         return log
-    df = load_all()
+    df = load_all(include_new=any(k in what for k in ("sites", "sites5")))
     fresh = "ablation" in what
     if fresh:
         log = dict(created=time.strftime("%Y-%m-%d %H:%M"), rows=int(len(df)), aois=sorted(df.aoi.unique().tolist()),
@@ -694,6 +727,7 @@ def main(what=("ablation", "final", "loco", "lc", "vc", "wf")):
     if "a10" in what: a10(df, log)
     if "a10seeds" in what: a10_seeds(df, log)
     if "sites" in what: sites(df, log)
+    if "sites5" in what: sites5(df, log)
     if "clean" in what: label_clean(df, log)
     if "ens" in what: seed_ensemble(df, log)
     json.dump(log, open(RES / "metrics.json", "w"), indent=2, default=str)
