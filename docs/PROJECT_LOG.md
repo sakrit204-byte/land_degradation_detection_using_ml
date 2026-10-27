@@ -658,6 +658,20 @@ period, all blocks); landscape groups assigned by hand (`LANDSCAPE` dict). ROC o
   test set is reported regardless and is not used to choose.** If rejected, the features may still be used
   for hotspot attribution (as A8).
 
+#### R-016 — A10a texture test (D-023), run 2026-10-27
+All 17 sites (texture.parquet, ~4–5 min/site). Same rows, splits and parameters as A6:
+| variant | features | val AP | test PR-AUC | test ROC |
+|---|---|---|---|---|
+| A6 (operational) | 64 | 0.1384 | 0.1522 | 0.805 |
+| A6 + A10a texture | 82 | 0.1341 | 0.1535 | 0.811 |
+**Rejected** by the pre-registered rule (val −0.004 < +0.005); the small test gain is not used to choose.
+Texture is informative on its own — within-site univariate validation AUC: local NDVI SD 3×3 0.616, SD 27×27
+0.599, NDMI SD 0.592, GLCM contrast 0.591, BSI SD 0.588, entropy 0.576, homogeneity 0.428 (inverted) — i.e.
+heterogeneous / patchy pixels are more likely to degrade, and the texture features take 21 % of the model's gain
+when offered — but this information overlaps the resilience (variance) and neighbourhood features already in A6.
+Answer to the user question: pixel texture has been tested at three scales and with GLCM; it corroborates
+but does not add independent predictive skill at 10 m.
+
 ## 12. Ground-reference inventory (2026-10-19; three search agents; all endpoints actually queried)
 Files: `data/ground_ref/` — `photo_sources_inventory.json`, `field_sources_inventory.json`,
 `vhr_sources_inventory.json`, per-source subfolders, `inventory_queries.py` (re-runnable).
