@@ -336,10 +336,22 @@ _ans_lock = threading.Lock()
 def vhr_pairs():
     """Image pairs to review. The warning/control key (data/vhr/key.json) is never served."""
     f = VHR / "pairs.json"
-    if not f.exists():
+    if f.exists():
+        d = _load_json(f)
+        return {"pairs": [{k: p[k] for k in ("id", "aoi", "lon", "lat", "t", "before", "after")} for p in d["pairs"]]}
+    # fetch still running: serve the pairs finished so far (from its log; no class information there)
+    import re as _re
+    log, pts = ROOT / "logs" / "vhr_fetch.log", VHR / "points.json"
+    if not (log.exists() and pts.exists()):
         raise HTTPException(404, "no review campaign yet (python scripts/vhr_campaign.py sample && ... fetch)")
-    d = _load_json(f)
-    return {"pairs": [{k: p[k] for k in ("id", "aoi", "lon", "lat", "t", "before", "after")} for p in d["pairs"]]}
+    info = {p["id"]: p for p in _load_json(pts)}
+    out = []
+    for m in _re.finditer(r"\] ([0-9a-f]{8}) before (\d+) after (\d+)", log.read_text(encoding="utf-8")):
+        p = info.get(m.group(1))
+        if p and (VHR / "chips" / f"{p['id']}_b.png").exists():
+            out.append(dict(id=p["id"], aoi=p["aoi"], lon=p["lon"], lat=p["lat"], t=p["t"],
+                            before=dict(date=m.group(2)), after=dict(date=m.group(3))))
+    return {"pairs": out, "partial": True}
 
 
 @app.get("/api/vhr/answers")

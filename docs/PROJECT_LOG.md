@@ -825,11 +825,39 @@ events (protocol to be written), (b) spatial agreement with expert maps (IND atl
 visits. A "combined satellite + field-imagery" model can be trained with permissively licensed VHR only in
 ESP and BRA unless NICFI or Esri permission is obtained.
 
+#### R-021 — Blind VHR check (D-029), AI pilot pass: no detectable difference (2026-10-27)
+Imagery: 276 points drawn; **233 usable pairs**, 43 dropped before review for lack of an image ≥ 6 months after
+onset (22 warnings, 21 controls). Median gap onset − "before" image 14.5 months (warnings) / 15.2 (controls);
+"after" image 28.7 / 28.6 months after onset. Answers by the AI assistant, blind (key opened only after all 233
+answers were saved; SHA-256 of answers.json before unblinding `12f5c7de…733a3c`, key.json `c2a76470…3e1f`).
+| | yes | no | unsure | nodata |
+|---|---|---|---|---|
+| warnings (116) | 21 | 86 | 9 | 0 |
+| controls (117) | 26 | 80 | 10 | 1 |
+**Visible-change rate: warnings 19.6 %, controls 24.5 %; difference −4.9 pp (95 % bootstrap CI −15.3 … +6.4),
+one-sided Fisher p = 0.85. The pre-registered success criterion is not met.** Nothing is changed in the model.
+Reported only (not decisions): restricting to pairs whose "before" image is ≤ 12 months before onset, warnings
+20 % vs controls 16 % (n = 45 / 45); by region warnings − controls: Nepal +9 pp, India −7, Africa −10, other −24.
+**Interpretation, stated with its limits.** (1) *Power:* with ~107 usable pairs per arm and a 22 % base rate the
+check had ≈ 13 % / 38 % / 68 % power to detect a true +5 / +10 / +15 pp difference; a power analysis should have
+been part of D-029 and was not. Given the model's measured precision (≈ 22 %), the expected difference is small, so
+a null was a likely outcome even for a useful model. (2) *Construct mismatch:* the labels are persistent,
+climate-unexplained NDVI declines (gradual thinning, drying, degradation), while most visible "yes" answers were
+discrete events — new tracks, buildings, clearings, mine-dump reshaping — which also happen at control pixels
+(e.g. cropland conversion at Matopiba controls). (3) *Image dates:* "before" images are often 1–3 years before
+onset and the two images are frequently from different seasons and sensors, so seasonal greenness differences
+dominate many pairs. (4) *Single interpreter, and it is the system's own builder (AI).* This remains a pilot; the
+independent human pass is the result of record. **Honest summary:** sub-metre imagery does **not** yet provide
+independent confirmation that warnings mark visible change more often than safe pixels. A better-powered design
+(≥ 300 pairs per arm, "before" ≤ 6 months before onset and same season, and an interpreter question aimed at
+gradual canopy/shrub thinning) is the next step if this validation is to be decisive.
+
 ## Open to-do list (kept current; newest first)
 - [ ] **Independent human pass of the blind VHR check (D-029) — result of record.** A reviewer who did not build the
       model (e.g. a forest officer) opens `/review.html`, enters their name and answers every pair (Y/N/U/X); then
       `python scripts/vhr_campaign.py analyze`. The AI assistant's pass is a pilot only.
-- [ ] AI pilot pass of D-029 (blind: key.json not opened until all answers are saved), then analysis and report.
+- [x] AI pilot pass of D-029 — done, R-021: no detectable difference (−4.9 pp, CI −15 … +6; underpowered).
+- [ ] Better-powered VHR design (≥ 300 pairs/arm, same-season images ≤ 6 months before onset, question aimed at gradual thinning) — pre-register before drawing.
 - [ ] Prospective test D-028 once months after 2025-10 have labels (17-site vs 23-site vs ensemble, 5 seeds).
 - [ ] Paper draft update with the A8–A10, LOSO, label-cleaning, new-site and VHR results.
 - [ ] Optional: crop-aware labels / more cropland sites; Landsat thermal, burned area, glacier, livestock modules.

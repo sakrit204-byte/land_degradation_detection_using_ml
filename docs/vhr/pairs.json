@@ -1,0 +1,4648 @@
+{
+"pairs": [
+{
+"id": "69b364b0",
+"aoi": "IND_singrauli",
+"lon": 82.665766,
+"lat": 24.143088,
+"t": "2023-07",
+"before": {
+"date": "20220304",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250425",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "b184ff40",
+"aoi": "ETH_tigray",
+"lon": 39.481146,
+"lat": 13.615955,
+"t": "2023-07",
+"before": {
+"date": "20221115",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260103",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "a336622f",
+"aoi": "BRA_matopiba",
+"lon": -45.934775,
+"lat": -12.179567,
+"t": "2023-03",
+"before": {
+"date": "20210719",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-06-29"
+},
+"after": {
+"date": "20250915",
+"res": "0.31",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "49c1aa96",
+"aoi": "IND_thar",
+"lon": 72.658083,
+"lat": 26.577505,
+"t": "2024-04",
+"before": {
+"date": "20231216",
+"res": "0.5",
+"src": "Maxar",
+"release": "2024-12-12"
+},
+"after": {
+"date": "20250401",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "db95fd53",
+"aoi": "MNG_steppe",
+"lon": 106.494732,
+"lat": 46.413389,
+"t": "2023-01",
+"before": {
+"date": "20211026",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20240520",
+"res": "0.5",
+"src": "Maxar",
+"release": "2024-12-12"
+}
+},
+{
+"id": "f76fea36",
+"aoi": "KEN_baringo",
+"lon": 35.992789,
+"lat": 0.445194,
+"t": "2023-01",
+"before": {
+"date": "20210521",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250920",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "512d2552",
+"aoi": "IND_marathwada",
+"lon": 75.656017,
+"lat": 18.736099,
+"t": "2023-05",
+"before": {
+"date": "20190329",
+"res": "0.46",
+"src": "Maxar",
+"release": "2020-12-16"
+},
+"after": {
+"date": "20260315",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "8276458d",
+"aoi": "IND_thar",
+"lon": 72.706494,
+"lat": 26.590928,
+"t": "2023-01",
+"before": {
+"date": "20221016",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20250409",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "99f8ffa2",
+"aoi": "NPL_chure_dang",
+"lon": 82.451799,
+"lat": 27.945425,
+"t": "2023-09",
+"before": {
+"date": "20190110",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260120",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "8a74d9a1",
+"aoi": "AUS_murraydarling",
+"lon": 146.025205,
+"lat": -31.507911,
+"t": "2023-01",
+"before": {
+"date": "20201225",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-06-29"
+},
+"after": {
+"date": "20250104",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "93ca5aa5",
+"aoi": "NPL_kavre",
+"lon": 85.633579,
+"lat": 27.538768,
+"t": "2023-09",
+"before": {
+"date": "20220326",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260121",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "54d357b3",
+"aoi": "IND_singrauli",
+"lon": 82.664376,
+"lat": 24.164864,
+"t": "2023-10",
+"before": {
+"date": "20220304",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250425",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "92b3af13",
+"aoi": "MNG_steppe",
+"lon": 106.478504,
+"lat": 46.40991,
+"t": "2023-11",
+"before": {
+"date": "20211026",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20240520",
+"res": "0.5",
+"src": "Maxar",
+"release": "2024-12-12"
+}
+},
+{
+"id": "42365c94",
+"aoi": "MNG_steppe",
+"lon": 106.475022,
+"lat": 46.430385,
+"t": "2023-01",
+"before": {
+"date": "20211026",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20240520",
+"res": "0.5",
+"src": "Maxar",
+"release": "2024-12-12"
+}
+},
+{
+"id": "88556faa",
+"aoi": "NPL_chure_sarlahi",
+"lon": 85.533345,
+"lat": 27.138597,
+"t": "2023-08",
+"before": {
+"date": "20190306",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20250508",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "7687c975",
+"aoi": "IND_marathwada",
+"lon": 75.656565,
+"lat": 18.755347,
+"t": "2023-04",
+"before": {
+"date": "20190329",
+"res": "0.46",
+"src": "Maxar",
+"release": "2020-12-16"
+},
+"after": {
+"date": "20260315",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "3b3adde9",
+"aoi": "IND_shivalik",
+"lon": 78.083092,
+"lat": 30.033697,
+"t": "2023-01",
+"before": {
+"date": "20221128",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20241220",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "68390a84",
+"aoi": "NPL_chure_udayapur",
+"lon": 86.754029,
+"lat": 26.902996,
+"t": "2023-03",
+"before": {
+"date": "20190116",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260204",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "b1b4dcbc",
+"aoi": "ETH_tigray",
+"lon": 39.494343,
+"lat": 13.605079,
+"t": "2023-07",
+"before": {
+"date": "20221115",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260103",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "46133532",
+"aoi": "NPL_surkhet",
+"lon": 81.663623,
+"lat": 28.534693,
+"t": "2023-11",
+"before": {
+"date": "20221116",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260208",
+"res": "0.31",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "4ea48edf",
+"aoi": "NPL_chure_dang",
+"lon": 82.467958,
+"lat": 27.967909,
+"t": "2023-09",
+"before": {
+"date": "20211103",
+"res": "0.31",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260120",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "0c863b96",
+"aoi": "MNG_steppe",
+"lon": 106.443633,
+"lat": 46.400006,
+"t": "2023-01",
+"before": {
+"date": "20211026",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20231026",
+"res": "0.46",
+"src": "Maxar",
+"release": "2024-12-12"
+}
+},
+{
+"id": "883d7dd4",
+"aoi": "NPL_chure_udayapur",
+"lon": 86.720009,
+"lat": 26.895891,
+"t": "2023-03",
+"before": {
+"date": "20190116",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260204",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "7dc075e2",
+"aoi": "NPL_chure_dang",
+"lon": 82.462638,
+"lat": 27.950275,
+"t": "2023-08",
+"before": {
+"date": "20190110",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260120",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "ca8a888b",
+"aoi": "ETH_tigray",
+"lon": 39.49976,
+"lat": 13.631471,
+"t": "2023-03",
+"before": {
+"date": "20220912",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20251216",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "b7b20162",
+"aoi": "IND_banni",
+"lon": 69.655858,
+"lat": 23.636667,
+"t": "2023-02",
+"before": {
+"date": "20220908",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260420",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "3ab866af",
+"aoi": "IND_shivalik",
+"lon": 78.072022,
+"lat": 30.029482,
+"t": "2023-01",
+"before": {
+"date": "20221128",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20241220",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "a652f6fe",
+"aoi": "AUS_murraydarling",
+"lon": 145.993456,
+"lat": -31.483306,
+"t": "2023-02",
+"before": {
+"date": "20230213",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-06-29"
+},
+"after": {
+"date": "20251022",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "49e0f532",
+"aoi": "NPL_chure_dang",
+"lon": 82.446294,
+"lat": 27.959473,
+"t": "2023-05",
+"before": {
+"date": "20211103",
+"res": "0.31",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260120",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "6d21696a",
+"aoi": "IND_banni",
+"lon": 69.663476,
+"lat": 23.630764,
+"t": "2024-02",
+"before": {
+"date": "20220908",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260420",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "1c82ac4d",
+"aoi": "NPL_surkhet",
+"lon": 81.653158,
+"lat": 28.544763,
+"t": "2023-08",
+"before": {
+"date": "20221116",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260208",
+"res": "0.31",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "399a1f6c",
+"aoi": "MNG_steppe",
+"lon": 106.47033,
+"lat": 46.396246,
+"t": "2023-02",
+"before": {
+"date": "20211026",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20231026",
+"res": "0.46",
+"src": "Maxar",
+"release": "2024-12-12"
+}
+},
+{
+"id": "043d925e",
+"aoi": "NPL_sindhupalchok",
+"lon": 85.7177,
+"lat": 27.844933,
+"t": "2023-02",
+"before": {
+"date": "20220325",
+"res": "0.46",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20251020",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "1c05f72f",
+"aoi": "AUS_murraydarling",
+"lon": 145.985523,
+"lat": -31.496506,
+"t": "2023-01",
+"before": {
+"date": "20210812",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-06-29"
+},
+"after": {
+"date": "20251022",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "721fc61d",
+"aoi": "SEN_ferlo",
+"lon": -14.902569,
+"lat": 15.396782,
+"t": "2023-07",
+"before": {
+"date": "20220323",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260403",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "bcdc3836",
+"aoi": "NPL_sindhupalchok",
+"lon": 85.736227,
+"lat": 27.840952,
+"t": "2023-01",
+"before": {
+"date": "20220325",
+"res": "0.46",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20251020",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "ecab0668",
+"aoi": "KEN_baringo",
+"lon": 36.007158,
+"lat": 0.468588,
+"t": "2023-02",
+"before": {
+"date": "20210521",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260112",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "02187cf0",
+"aoi": "IND_banni",
+"lon": 69.663355,
+"lat": 23.645668,
+"t": "2023-02",
+"before": {
+"date": "20220908",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260420",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "2a590c8e",
+"aoi": "NPL_surkhet",
+"lon": 81.668291,
+"lat": 28.545502,
+"t": "2024-05",
+"before": {
+"date": "20231109",
+"res": "0.5",
+"src": "Maxar",
+"release": "2024-12-12"
+},
+"after": {
+"date": "20260208",
+"res": "0.31",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "ee400b34",
+"aoi": "NPL_kavre",
+"lon": 85.601115,
+"lat": 27.551533,
+"t": "2023-09",
+"before": {
+"date": "20220326",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260121",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "30bfbffe",
+"aoi": "IND_shivalik",
+"lon": 78.066458,
+"lat": 30.035401,
+"t": "2023-01",
+"before": {
+"date": "20221128",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20241220",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "39d31ca8",
+"aoi": "MNG_steppe",
+"lon": 106.450527,
+"lat": 46.429438,
+"t": "2023-02",
+"before": {
+"date": "20211026",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20240520",
+"res": "0.5",
+"src": "Maxar",
+"release": "2024-12-12"
+}
+},
+{
+"id": "ebc03472",
+"aoi": "IND_chambal",
+"lon": 78.338904,
+"lat": 26.63957,
+"t": "2023-11",
+"before": {
+"date": "20231026",
+"res": "0.31",
+"src": "Maxar",
+"release": "2024-12-12"
+},
+"after": {
+"date": "20250329",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "efaa345f",
+"aoi": "IND_chambal",
+"lon": 78.31443,
+"lat": 26.651381,
+"t": "2023-12",
+"before": {
+"date": "20231026",
+"res": "0.31",
+"src": "Maxar",
+"release": "2024-12-12"
+},
+"after": {
+"date": "20250329",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "c095d062",
+"aoi": "NPL_chure_sarlahi",
+"lon": 85.546363,
+"lat": 27.107139,
+"t": "2023-05",
+"before": {
+"date": "20190306",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20250508",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "d3f5b519",
+"aoi": "NPL_chure_udayapur",
+"lon": 86.73847,
+"lat": 26.924998,
+"t": "2023-03",
+"before": {
+"date": "20190116",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260204",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "ecc143cb",
+"aoi": "NPL_chure_sarlahi",
+"lon": 85.546967,
+"lat": 27.107236,
+"t": "2023-08",
+"before": {
+"date": "20190306",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20250508",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "e7659488",
+"aoi": "ETH_tigray",
+"lon": 39.489632,
+"lat": 13.606716,
+"t": "2023-08",
+"before": {
+"date": "20221115",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260103",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "fb8143f0",
+"aoi": "NPL_chure_sarlahi",
+"lon": 85.525871,
+"lat": 27.123806,
+"t": "2024-06",
+"before": {
+"date": "20190306",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20250508",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "fbe86ee9",
+"aoi": "NPL_chure_sarlahi",
+"lon": 85.528708,
+"lat": 27.107407,
+"t": "2023-05",
+"before": {
+"date": "20190306",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20250508",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "e6cb218b",
+"aoi": "IND_marathwada",
+"lon": 75.67636,
+"lat": 18.747143,
+"t": "2023-04",
+"before": {
+"date": "20190329",
+"res": "0.46",
+"src": "Maxar",
+"release": "2020-12-16"
+},
+"after": {
+"date": "20260315",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "72dca672",
+"aoi": "KEN_baringo",
+"lon": 35.993866,
+"lat": 0.447362,
+"t": "2023-01",
+"before": {
+"date": "20210521",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250920",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "21642419",
+"aoi": "NPL_chure_dang",
+"lon": 82.455047,
+"lat": 27.967865,
+"t": "2023-08",
+"before": {
+"date": "20211103",
+"res": "0.31",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260120",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "31269843",
+"aoi": "KEN_baringo",
+"lon": 35.996019,
+"lat": 0.444199,
+"t": "2023-03",
+"before": {
+"date": "20210521",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250920",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "708316a9",
+"aoi": "AUS_murraydarling",
+"lon": 145.983969,
+"lat": -31.47466,
+"t": "2023-02",
+"before": {
+"date": "20230213",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-06-29"
+},
+"after": {
+"date": "20251022",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "88473a26",
+"aoi": "NPL_surkhet",
+"lon": 81.657972,
+"lat": 28.529937,
+"t": "2023-08",
+"before": {
+"date": "20221116",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260208",
+"res": "0.31",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "8b6376ba",
+"aoi": "IND_chambal",
+"lon": 78.330365,
+"lat": 26.639771,
+"t": "2023-11",
+"before": {
+"date": "20231026",
+"res": "0.31",
+"src": "Maxar",
+"release": "2024-12-12"
+},
+"after": {
+"date": "20250329",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "47b17f5f",
+"aoi": "IND_chambal",
+"lon": 78.334586,
+"lat": 26.656904,
+"t": "2023-11",
+"before": {
+"date": "20231026",
+"res": "0.31",
+"src": "Maxar",
+"release": "2024-12-12"
+},
+"after": {
+"date": "20250329",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "794a7523",
+"aoi": "MNG_steppe",
+"lon": 106.454195,
+"lat": 46.400952,
+"t": "2023-03",
+"before": {
+"date": "20211026",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20231026",
+"res": "0.46",
+"src": "Maxar",
+"release": "2024-12-12"
+}
+},
+{
+"id": "1bf3e6a0",
+"aoi": "ETH_tigray",
+"lon": 39.478827,
+"lat": 13.612253,
+"t": "2023-11",
+"before": {
+"date": "20221115",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260103",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "1eacac97",
+"aoi": "NPL_chure_sarlahi",
+"lon": 85.544369,
+"lat": 27.105404,
+"t": "2024-01",
+"before": {
+"date": "20190306",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20250508",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "3912696a",
+"aoi": "AUS_murraydarling",
+"lon": 145.991859,
+"lat": -31.475174,
+"t": "2023-01",
+"before": {
+"date": "20210203",
+"res": "0.31",
+"src": "Maxar",
+"release": "2022-06-29"
+},
+"after": {
+"date": "20251022",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "a3682409",
+"aoi": "KEN_baringo",
+"lon": 35.99226,
+"lat": 0.467962,
+"t": "2023-01",
+"before": {
+"date": "20210521",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250920",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "7b67c075",
+"aoi": "IND_shivalik",
+"lon": 78.100176,
+"lat": 30.012971,
+"t": "2024-01",
+"before": {
+"date": "20221128",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20241220",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "db4bae4e",
+"aoi": "IND_banni",
+"lon": 69.65536,
+"lat": 23.635134,
+"t": "2023-01",
+"before": {
+"date": "20220908",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260420",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "03514a1e",
+"aoi": "NPL_chure_dang",
+"lon": 82.438528,
+"lat": 27.956396,
+"t": "2023-01",
+"before": {
+"date": "20190110",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260120",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "3a5c7837",
+"aoi": "IND_thar",
+"lon": 72.707672,
+"lat": 26.55196,
+"t": "2024-06",
+"before": {
+"date": "20240107",
+"res": "0.5",
+"src": "Maxar",
+"release": "2024-12-12"
+},
+"after": {
+"date": "20250409",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "696284fb",
+"aoi": "NPL_kavre",
+"lon": 85.603894,
+"lat": 27.531974,
+"t": "2023-05",
+"before": {
+"date": "20220326",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260121",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "da65d714",
+"aoi": "NPL_kavre",
+"lon": 85.610975,
+"lat": 27.54062,
+"t": "2023-09",
+"before": {
+"date": "20220326",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260121",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "c9809298",
+"aoi": "NPL_chure_sarlahi",
+"lon": 85.529894,
+"lat": 27.132423,
+"t": "2023-05",
+"before": {
+"date": "20190306",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20250508",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "839c6d2c",
+"aoi": "BRA_matopiba",
+"lon": -45.943273,
+"lat": -12.191474,
+"t": "2023-05",
+"before": {
+"date": "20210719",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-06-29"
+},
+"after": {
+"date": "20250915",
+"res": "0.31",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "631bd8da",
+"aoi": "NPL_chure",
+"lon": 85.936899,
+"lat": 27.047535,
+"t": "2023-02",
+"before": {
+"date": "20220221",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250424",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "c3f651bd",
+"aoi": "IND_jharia",
+"lon": 86.416765,
+"lat": 23.730532,
+"t": "2024-02",
+"before": {
+"date": "20221125",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20250215",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "28641323",
+"aoi": "IND_jharia",
+"lon": 86.415625,
+"lat": 23.722128,
+"t": "2023-09",
+"before": {
+"date": "20221125",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20250215",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "ddb77cd2",
+"aoi": "IND_shivalik",
+"lon": 78.077069,
+"lat": 30.037621,
+"t": "2023-01",
+"before": {
+"date": "20221128",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20241220",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "aa7e26c3",
+"aoi": "BRA_matopiba",
+"lon": -45.929828,
+"lat": -12.184286,
+"t": "2023-03",
+"before": {
+"date": "20210719",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-06-29"
+},
+"after": {
+"date": "20250915",
+"res": "0.31",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "4ade2084",
+"aoi": "IND_marathwada",
+"lon": 75.633855,
+"lat": 18.745665,
+"t": "2023-05",
+"before": {
+"date": "20190329",
+"res": "0.46",
+"src": "Maxar",
+"release": "2020-12-16"
+},
+"after": {
+"date": "20260315",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "af5cb797",
+"aoi": "NPL_surkhet",
+"lon": 81.631011,
+"lat": 28.550735,
+"t": "2023-11",
+"before": {
+"date": "20221116",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260208",
+"res": "0.31",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "bc12cd01",
+"aoi": "NPL_kavre",
+"lon": 85.610373,
+"lat": 27.55623,
+"t": "2023-07",
+"before": {
+"date": "20220326",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260121",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "4c37ccd3",
+"aoi": "NPL_chure_sarlahi",
+"lon": 85.502073,
+"lat": 27.11543,
+"t": "2024-06",
+"before": {
+"date": "20190306",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260220",
+"res": "0.31",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "35ac1edc",
+"aoi": "NPL_sindhupalchok",
+"lon": 85.747763,
+"lat": 27.844487,
+"t": "2023-09",
+"before": {
+"date": "20220325",
+"res": "0.46",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20251020",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "7bcbe5be",
+"aoi": "NPL_surkhet",
+"lon": 81.659167,
+"lat": 28.541304,
+"t": "2023-10",
+"before": {
+"date": "20221116",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260208",
+"res": "0.31",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "d7979f77",
+"aoi": "IND_marathwada",
+"lon": 75.643218,
+"lat": 18.738132,
+"t": "2023-02",
+"before": {
+"date": "20190329",
+"res": "0.46",
+"src": "Maxar",
+"release": "2020-12-16"
+},
+"after": {
+"date": "20260315",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "0e929a1b",
+"aoi": "IND_singrauli",
+"lon": 82.676907,
+"lat": 24.152266,
+"t": "2023-06",
+"before": {
+"date": "20220304",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250425",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "bd5d81fa",
+"aoi": "NPL_chure",
+"lon": 85.963566,
+"lat": 27.042137,
+"t": "2023-07",
+"before": {
+"date": "20211102",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250424",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "bcbc55bd",
+"aoi": "NPL_surkhet",
+"lon": 81.670584,
+"lat": 28.552441,
+"t": "2023-02",
+"before": {
+"date": "20221116",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260208",
+"res": "0.31",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "5dc4b431",
+"aoi": "IND_thar",
+"lon": 72.70521,
+"lat": 26.589914,
+"t": "2023-01",
+"before": {
+"date": "20221016",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20250409",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "276b3967",
+"aoi": "NPL_surkhet",
+"lon": 81.670811,
+"lat": 28.523736,
+"t": "2023-10",
+"before": {
+"date": "20221116",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260208",
+"res": "0.31",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "a5e7e5b1",
+"aoi": "BRA_matopiba",
+"lon": -45.922241,
+"lat": -12.196338,
+"t": "2023-04",
+"before": {
+"date": "20210719",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-06-29"
+},
+"after": {
+"date": "20260116",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "1b0caff2",
+"aoi": "NPL_sindhupalchok",
+"lon": 85.727774,
+"lat": 27.860551,
+"t": "2023-06",
+"before": {
+"date": "20220325",
+"res": "0.46",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20251020",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "fc0869e7",
+"aoi": "NPL_chure_udayapur",
+"lon": 86.76021,
+"lat": 26.932711,
+"t": "2023-08",
+"before": {
+"date": "20190116",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260204",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "507a5893",
+"aoi": "NPL_surkhet",
+"lon": 81.669095,
+"lat": 28.511017,
+"t": "2023-02",
+"before": {
+"date": "20221116",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260208",
+"res": "0.31",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "71737066",
+"aoi": "NPL_chure_sarlahi",
+"lon": 85.521588,
+"lat": 27.104263,
+"t": "2024-06",
+"before": {
+"date": "20190306",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20250508",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "6b6da575",
+"aoi": "MNG_steppe",
+"lon": 106.451574,
+"lat": 46.414935,
+"t": "2023-02",
+"before": {
+"date": "20211026",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20240520",
+"res": "0.5",
+"src": "Maxar",
+"release": "2024-12-12"
+}
+},
+{
+"id": "b8f5c25c",
+"aoi": "IND_chambal",
+"lon": 78.326334,
+"lat": 26.670554,
+"t": "2023-11",
+"before": {
+"date": "20231026",
+"res": "0.31",
+"src": "Maxar",
+"release": "2024-12-12"
+},
+"after": {
+"date": "20250329",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "46d95a9d",
+"aoi": "IND_banni",
+"lon": 69.663257,
+"lat": 23.665178,
+"t": "2024-03",
+"before": {
+"date": "20240323",
+"res": "0.46",
+"src": "Maxar",
+"release": "2024-12-12"
+},
+"after": {
+"date": "20260420",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "3cd1143a",
+"aoi": "AUS_murraydarling",
+"lon": 145.980235,
+"lat": -31.479232,
+"t": "2023-12",
+"before": {
+"date": "20230213",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-06-29"
+},
+"after": {
+"date": "20251022",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "9ccc6b8e",
+"aoi": "IND_marathwada",
+"lon": 75.649015,
+"lat": 18.740733,
+"t": "2023-12",
+"before": {
+"date": "20190329",
+"res": "0.46",
+"src": "Maxar",
+"release": "2020-12-16"
+},
+"after": {
+"date": "20260315",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "1e0bc418",
+"aoi": "SEN_ferlo",
+"lon": -14.857768,
+"lat": 15.361227,
+"t": "2023-01",
+"before": {
+"date": "20220323",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260403",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "58a43846",
+"aoi": "NPL_chure",
+"lon": 85.915833,
+"lat": 27.057395,
+"t": "2023-02",
+"before": {
+"date": "20220221",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250424",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "6ec02ab8",
+"aoi": "SEN_ferlo",
+"lon": -14.8968,
+"lat": 15.378969,
+"t": "2023-08",
+"before": {
+"date": "20220323",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260403",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "7c53d80d",
+"aoi": "NPL_kavre",
+"lon": 85.615116,
+"lat": 27.517193,
+"t": "2023-07",
+"before": {
+"date": "20220326",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260121",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "910d95d0",
+"aoi": "MNG_steppe",
+"lon": 106.449322,
+"lat": 46.413434,
+"t": "2023-01",
+"before": {
+"date": "20211026",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20240520",
+"res": "0.5",
+"src": "Maxar",
+"release": "2024-12-12"
+}
+},
+{
+"id": "170cf4a1",
+"aoi": "IND_marathwada",
+"lon": 75.638969,
+"lat": 18.718083,
+"t": "2023-12",
+"before": {
+"date": "20231227",
+"res": "0.5",
+"src": "Maxar",
+"release": "2024-12-12"
+},
+"after": {
+"date": "20260315",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "0e6d0883",
+"aoi": "BRA_matopiba",
+"lon": -45.914279,
+"lat": -12.179907,
+"t": "2023-02",
+"before": {
+"date": "20210719",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-06-29"
+},
+"after": {
+"date": "20260109",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "d2848cc2",
+"aoi": "NPL_sindhupalchok",
+"lon": 85.709387,
+"lat": 27.843772,
+"t": "2023-02",
+"before": {
+"date": "20220325",
+"res": "0.46",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20251020",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "44266cca",
+"aoi": "BRA_matopiba",
+"lon": -45.910887,
+"lat": -12.18245,
+"t": "2023-04",
+"before": {
+"date": "20210719",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-06-29"
+},
+"after": {
+"date": "20260109",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "3e4997ed",
+"aoi": "NPL_sindhupalchok",
+"lon": 85.715438,
+"lat": 27.847259,
+"t": "2023-09",
+"before": {
+"date": "20220325",
+"res": "0.46",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20251020",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "eeb6d59e",
+"aoi": "IND_thar",
+"lon": 72.679137,
+"lat": 26.588589,
+"t": "2023-04",
+"before": {
+"date": "20221016",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20250401",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "16113ea5",
+"aoi": "IND_marathwada",
+"lon": 75.667569,
+"lat": 18.755037,
+"t": "2024-03",
+"before": {
+"date": "20190329",
+"res": "0.46",
+"src": "Maxar",
+"release": "2020-12-16"
+},
+"after": {
+"date": "20260315",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "edb2a8b4",
+"aoi": "IND_chambal",
+"lon": 78.325335,
+"lat": 26.666023,
+"t": "2023-07",
+"before": {
+"date": "20230413",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20250329",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "8532a5d2",
+"aoi": "IND_banni",
+"lon": 69.656611,
+"lat": 23.650032,
+"t": "2024-02",
+"before": {
+"date": "20220908",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260420",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "211c7b4e",
+"aoi": "BRA_matopiba",
+"lon": -45.92107,
+"lat": -12.176629,
+"t": "2023-04",
+"before": {
+"date": "20210719",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-06-29"
+},
+"after": {
+"date": "20260116",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "f3bdc733",
+"aoi": "ETH_tigray",
+"lon": 39.496356,
+"lat": 13.595129,
+"t": "2023-08",
+"before": {
+"date": "20221115",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260103",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "cfba1d76",
+"aoi": "NPL_chure",
+"lon": 85.943953,
+"lat": 27.058692,
+"t": "2023-02",
+"before": {
+"date": "20220221",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250424",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "389bd1f0",
+"aoi": "SEN_ferlo",
+"lon": -14.880869,
+"lat": 15.373717,
+"t": "2023-02",
+"before": {
+"date": "20220323",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260403",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "57057aeb",
+"aoi": "MNG_steppe",
+"lon": 106.463967,
+"lat": 46.435567,
+"t": "2023-01",
+"before": {
+"date": "20211026",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20240520",
+"res": "0.5",
+"src": "Maxar",
+"release": "2024-12-12"
+}
+},
+{
+"id": "dd385636",
+"aoi": "NPL_kavre",
+"lon": 85.610533,
+"lat": 27.543504,
+"t": "2023-02",
+"before": {
+"date": "20220326",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260121",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "c015b47f",
+"aoi": "IND_chambal",
+"lon": 78.306639,
+"lat": 26.641037,
+"t": "2023-07",
+"before": {
+"date": "20221029",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20250329",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "21be94a5",
+"aoi": "SEN_ferlo",
+"lon": -14.859991,
+"lat": 15.38148,
+"t": "2023-07",
+"before": {
+"date": "20230311",
+"res": "0.31",
+"src": "Vantor",
+"release": "2025-12-18"
+},
+"after": {
+"date": "20260403",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "02cc64af",
+"aoi": "SEN_ferlo",
+"lon": -14.893996,
+"lat": 15.396236,
+"t": "2023-02",
+"before": {
+"date": "20220323",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260403",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "aeb38378",
+"aoi": "AUS_murraydarling",
+"lon": 145.996669,
+"lat": -31.478189,
+"t": "2023-01",
+"before": {
+"date": "20210203",
+"res": "0.31",
+"src": "Maxar",
+"release": "2022-06-29"
+},
+"after": {
+"date": "20251022",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "d4f53cd8",
+"aoi": "NPL_chure",
+"lon": 85.914131,
+"lat": 27.035174,
+"t": "2023-03",
+"before": {
+"date": "20220221",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250424",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "93594d3f",
+"aoi": "KEN_baringo",
+"lon": 35.986603,
+"lat": 0.462092,
+"t": "2023-01",
+"before": {
+"date": "20210521",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250920",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "a9513a16",
+"aoi": "ETH_tigray",
+"lon": 39.495429,
+"lat": 13.593955,
+"t": "2023-03",
+"before": {
+"date": "20221115",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260103",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "d92bb680",
+"aoi": "IND_banni",
+"lon": 69.677162,
+"lat": 23.661414,
+"t": "2023-01",
+"before": {
+"date": "20220908",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260420",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "d046d5df",
+"aoi": "ETH_tigray",
+"lon": 39.513148,
+"lat": 13.623306,
+"t": "2023-02",
+"before": {
+"date": "20221115",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20251216",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "3f6024eb",
+"aoi": "IND_chambal",
+"lon": 78.30654,
+"lat": 26.666661,
+"t": "2024-01",
+"before": {
+"date": "20231026",
+"res": "0.31",
+"src": "Maxar",
+"release": "2024-12-12"
+},
+"after": {
+"date": "20250329",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "688a8869",
+"aoi": "NPL_chure_sarlahi",
+"lon": 85.548863,
+"lat": 27.116643,
+"t": "2023-08",
+"before": {
+"date": "20190306",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20250508",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "4b10dbf4",
+"aoi": "SEN_ferlo",
+"lon": -14.87601,
+"lat": 15.395865,
+"t": "2023-02",
+"before": {
+"date": "20220323",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260403",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "83afef4b",
+"aoi": "NPL_chure",
+"lon": 85.95683,
+"lat": 27.04001,
+"t": "2023-07",
+"before": {
+"date": "20220221",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250424",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "5fe4fee8",
+"aoi": "IND_shivalik",
+"lon": 78.070592,
+"lat": 30.01466,
+"t": "2023-02",
+"before": {
+"date": "20221128",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20241220",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "78e63d2c",
+"aoi": "SEN_ferlo",
+"lon": -14.893725,
+"lat": 15.378244,
+"t": "2023-01",
+"before": {
+"date": "20220323",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260403",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "759514e3",
+"aoi": "NPL_chure_udayapur",
+"lon": 86.741337,
+"lat": 26.904328,
+"t": "2023-03",
+"before": {
+"date": "20190116",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260204",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "bbe663ba",
+"aoi": "NPL_chure_dang",
+"lon": 82.459621,
+"lat": 27.945162,
+"t": "2023-08",
+"before": {
+"date": "20190110",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260120",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "24463223",
+"aoi": "IND_shivalik",
+"lon": 78.054529,
+"lat": 30.018179,
+"t": "2023-01",
+"before": {
+"date": "20221128",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20241220",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "82bccdd6",
+"aoi": "NPL_chure_udayapur",
+"lon": 86.722208,
+"lat": 26.902215,
+"t": "2023-01",
+"before": {
+"date": "20190116",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260204",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "7b3b89d1",
+"aoi": "NPL_sindhupalchok",
+"lon": 85.711713,
+"lat": 27.844516,
+"t": "2023-09",
+"before": {
+"date": "20220325",
+"res": "0.46",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20251020",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "54c68a6f",
+"aoi": "IND_shivalik",
+"lon": 78.052696,
+"lat": 30.027608,
+"t": "2023-11",
+"before": {
+"date": "20221128",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20241220",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "db7b8c2f",
+"aoi": "NPL_sindhupalchok",
+"lon": 85.719745,
+"lat": 27.861018,
+"t": "2023-02",
+"before": {
+"date": "20220325",
+"res": "0.46",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20251020",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "ae399043",
+"aoi": "IND_thar",
+"lon": 72.686446,
+"lat": 26.58952,
+"t": "2024-06",
+"before": {
+"date": "20231216",
+"res": "0.5",
+"src": "Maxar",
+"release": "2024-12-12"
+},
+"after": {
+"date": "20250409",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "2f180537",
+"aoi": "NPL_chure",
+"lon": 85.919897,
+"lat": 27.033051,
+"t": "2023-03",
+"before": {
+"date": "20220221",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250424",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "e39260b0",
+"aoi": "ETH_tigray",
+"lon": 39.48235,
+"lat": 13.616857,
+"t": "2023-03",
+"before": {
+"date": "20221115",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260103",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "61f263cb",
+"aoi": "NPL_sindhupalchok",
+"lon": 85.72446,
+"lat": 27.874692,
+"t": "2023-09",
+"before": {
+"date": "20211215",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20251020",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "abcc1e68",
+"aoi": "NPL_chure",
+"lon": 85.95755,
+"lat": 27.038481,
+"t": "2023-06",
+"before": {
+"date": "20220221",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250424",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "ae2407d6",
+"aoi": "NPL_chure",
+"lon": 85.945451,
+"lat": 27.060148,
+"t": "2023-07",
+"before": {
+"date": "20220221",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250424",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "01a76351",
+"aoi": "BRA_matopiba",
+"lon": -45.906827,
+"lat": -12.177671,
+"t": "2023-03",
+"before": {
+"date": "20210719",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-06-29"
+},
+"after": {
+"date": "20260109",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "9fbe9f11",
+"aoi": "IND_shivalik",
+"lon": 78.050532,
+"lat": 30.03766,
+"t": "2023-08",
+"before": {
+"date": "20221128",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20241220",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "09866ba5",
+"aoi": "ETH_tigray",
+"lon": 39.513612,
+"lat": 13.6243,
+"t": "2023-08",
+"before": {
+"date": "20221115",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20251216",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "554d2b65",
+"aoi": "NPL_kavre",
+"lon": 85.598415,
+"lat": 27.540855,
+"t": "2023-05",
+"before": {
+"date": "20220326",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260121",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "ceedc157",
+"aoi": "NPL_chure_udayapur",
+"lon": 86.718557,
+"lat": 26.912952,
+"t": "2023-08",
+"before": {
+"date": "20190116",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260204",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "5c7cb51f",
+"aoi": "IND_singrauli",
+"lon": 82.668277,
+"lat": 24.131863,
+"t": "2023-10",
+"before": {
+"date": "20220304",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250425",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "9cd0d6d4",
+"aoi": "NPL_chure",
+"lon": 85.94058,
+"lat": 27.063451,
+"t": "2023-06",
+"before": {
+"date": "20220221",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250424",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "50e7f7f4",
+"aoi": "NPL_chure",
+"lon": 85.919974,
+"lat": 27.046052,
+"t": "2023-06",
+"before": {
+"date": "20220221",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250424",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "484e3ba1",
+"aoi": "IND_marathwada",
+"lon": 75.655788,
+"lat": 18.75056,
+"t": "2023-06",
+"before": {
+"date": "20190329",
+"res": "0.46",
+"src": "Maxar",
+"release": "2020-12-16"
+},
+"after": {
+"date": "20260315",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "f16db413",
+"aoi": "IND_jharia",
+"lon": 86.394474,
+"lat": 23.734963,
+"t": "2023-01",
+"before": {
+"date": "20221125",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20240228",
+"res": "0.31",
+"src": "Maxar",
+"release": "2024-12-12"
+}
+},
+{
+"id": "4ac67fc6",
+"aoi": "SEN_ferlo",
+"lon": -14.865213,
+"lat": 15.375607,
+"t": "2023-10",
+"before": {
+"date": "20220323",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260403",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "96c3798f",
+"aoi": "IND_marathwada",
+"lon": 75.674958,
+"lat": 18.75248,
+"t": "2024-03",
+"before": {
+"date": "20190329",
+"res": "0.46",
+"src": "Maxar",
+"release": "2020-12-16"
+},
+"after": {
+"date": "20260315",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "c4f77194",
+"aoi": "IND_chambal",
+"lon": 78.30189,
+"lat": 26.655113,
+"t": "2023-11",
+"before": {
+"date": "20231026",
+"res": "0.31",
+"src": "Maxar",
+"release": "2024-12-12"
+},
+"after": {
+"date": "20250329",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "3003cf7e",
+"aoi": "IND_banni",
+"lon": 69.688947,
+"lat": 23.664885,
+"t": "2023-01",
+"before": {
+"date": "20220908",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260420",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "e8fddd01",
+"aoi": "IND_singrauli",
+"lon": 82.642909,
+"lat": 24.156248,
+"t": "2023-10",
+"before": {
+"date": "20220304",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250425",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "aa2add3e",
+"aoi": "IND_chambal",
+"lon": 78.319867,
+"lat": 26.650762,
+"t": "2023-12",
+"before": {
+"date": "20231026",
+"res": "0.31",
+"src": "Maxar",
+"release": "2024-12-12"
+},
+"after": {
+"date": "20250329",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "d8cd36f7",
+"aoi": "BRA_matopiba",
+"lon": -45.911199,
+"lat": -12.192938,
+"t": "2023-02",
+"before": {
+"date": "20210719",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-06-29"
+},
+"after": {
+"date": "20260109",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "707a205a",
+"aoi": "KEN_baringo",
+"lon": 36.01101,
+"lat": 0.452234,
+"t": "2023-03",
+"before": {
+"date": "20180514",
+"res": "0.5",
+"src": "Maxar",
+"release": "2020-06-10"
+},
+"after": {
+"date": "20260112",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "d8b8b567",
+"aoi": "IND_singrauli",
+"lon": 82.658445,
+"lat": 24.162852,
+"t": "2023-07",
+"before": {
+"date": "20220304",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250425",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "4bf5c83b",
+"aoi": "BRA_matopiba",
+"lon": -45.943752,
+"lat": -12.197079,
+"t": "2023-02",
+"before": {
+"date": "20210719",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-06-29"
+},
+"after": {
+"date": "20250915",
+"res": "0.31",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "4144984f",
+"aoi": "NPL_chure_dang",
+"lon": 82.477533,
+"lat": 27.939465,
+"t": "2023-05",
+"before": {
+"date": "20190110",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260120",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "8825f6d3",
+"aoi": "NPL_chure_dang",
+"lon": 82.439892,
+"lat": 27.928943,
+"t": "2023-08",
+"before": {
+"date": "20190110",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260120",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "9364c6ec",
+"aoi": "IND_banni",
+"lon": 69.681738,
+"lat": 23.636104,
+"t": "2023-12",
+"before": {
+"date": "20220908",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260420",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "d6a55884",
+"aoi": "IND_banni",
+"lon": 69.660552,
+"lat": 23.634209,
+"t": "2023-12",
+"before": {
+"date": "20220908",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260420",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "9ece3e58",
+"aoi": "AUS_murraydarling",
+"lon": 145.986751,
+"lat": -31.49002,
+"t": "2023-01",
+"before": {
+"date": "20210812",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-06-29"
+},
+"after": {
+"date": "20251022",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "50902941",
+"aoi": "KEN_baringo",
+"lon": 35.997645,
+"lat": 0.470038,
+"t": "2023-02",
+"before": {
+"date": "20210521",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250920",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "bf3b8e56",
+"aoi": "NPL_kavre",
+"lon": 85.619689,
+"lat": 27.548289,
+"t": "2023-02",
+"before": {
+"date": "20220326",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260121",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "9124570c",
+"aoi": "NPL_chure_udayapur",
+"lon": 86.73664,
+"lat": 26.932128,
+"t": "2023-03",
+"before": {
+"date": "20190116",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260204",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "0bfe90cf",
+"aoi": "IND_singrauli",
+"lon": 82.66016,
+"lat": 24.135654,
+"t": "2023-02",
+"before": {
+"date": "20220304",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250425",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "68b84ddb",
+"aoi": "IND_shivalik",
+"lon": 78.072474,
+"lat": 30.038782,
+"t": "2023-01",
+"before": {
+"date": "20221128",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20241220",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "66eb871f",
+"aoi": "IND_shivalik",
+"lon": 78.054804,
+"lat": 30.047406,
+"t": "2023-02",
+"before": {
+"date": "20221128",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20241220",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "1c327b2a",
+"aoi": "ETH_tigray",
+"lon": 39.513319,
+"lat": 13.616795,
+"t": "2023-02",
+"before": {
+"date": "20221115",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20251216",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "81e772e3",
+"aoi": "MNG_steppe",
+"lon": 106.468244,
+"lat": 46.425162,
+"t": "2023-01",
+"before": {
+"date": "20211026",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20240520",
+"res": "0.5",
+"src": "Maxar",
+"release": "2024-12-12"
+}
+},
+{
+"id": "f6dcfc3f",
+"aoi": "IND_chambal",
+"lon": 78.334785,
+"lat": 26.678563,
+"t": "2023-11",
+"before": {
+"date": "20231026",
+"res": "0.31",
+"src": "Maxar",
+"release": "2024-12-12"
+},
+"after": {
+"date": "20250329",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "fc4ce8f6",
+"aoi": "ETH_tigray",
+"lon": 39.514321,
+"lat": 13.609831,
+"t": "2023-02",
+"before": {
+"date": "20221115",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20251216",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "788bce0b",
+"aoi": "IND_thar",
+"lon": 72.706438,
+"lat": 26.573599,
+"t": "2023-05",
+"before": {
+"date": "20221016",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20250409",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "7bae47d5",
+"aoi": "IND_banni",
+"lon": 69.701176,
+"lat": 23.659501,
+"t": "2023-01",
+"before": {
+"date": "20220908",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260420",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "3eb99bc9",
+"aoi": "NPL_chure_udayapur",
+"lon": 86.72906,
+"lat": 26.900784,
+"t": "2023-01",
+"before": {
+"date": "20190116",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260204",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "ff685621",
+"aoi": "AUS_murraydarling",
+"lon": 146.001608,
+"lat": -31.479039,
+"t": "2023-01",
+"before": {
+"date": "20210203",
+"res": "0.31",
+"src": "Maxar",
+"release": "2022-06-29"
+},
+"after": {
+"date": "20251022",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "6d55d591",
+"aoi": "NPL_sindhupalchok",
+"lon": 85.710642,
+"lat": 27.840625,
+"t": "2023-09",
+"before": {
+"date": "20220325",
+"res": "0.46",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20251020",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "b699c49f",
+"aoi": "IND_banni",
+"lon": 69.653295,
+"lat": 23.633697,
+"t": "2023-02",
+"before": {
+"date": "20220908",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260420",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "ce0bdfe1",
+"aoi": "IND_chambal",
+"lon": 78.334144,
+"lat": 26.662941,
+"t": "2023-11",
+"before": {
+"date": "20231026",
+"res": "0.31",
+"src": "Maxar",
+"release": "2024-12-12"
+},
+"after": {
+"date": "20250329",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "a691d53e",
+"aoi": "NPL_surkhet",
+"lon": 81.650811,
+"lat": 28.528798,
+"t": "2023-08",
+"before": {
+"date": "20221116",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260208",
+"res": "0.31",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "0ed362ab",
+"aoi": "IND_marathwada",
+"lon": 75.653532,
+"lat": 18.7559,
+"t": "2023-12",
+"before": {
+"date": "20190329",
+"res": "0.46",
+"src": "Maxar",
+"release": "2020-12-16"
+},
+"after": {
+"date": "20260315",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "04c43379",
+"aoi": "IND_thar",
+"lon": 72.689295,
+"lat": 26.582617,
+"t": "2023-03",
+"before": {
+"date": "20221016",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20250409",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "2ab58738",
+"aoi": "BRA_matopiba",
+"lon": -45.925295,
+"lat": -12.175802,
+"t": "2023-02",
+"before": {
+"date": "20210719",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-06-29"
+},
+"after": {
+"date": "20260116",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "3c1acd70",
+"aoi": "NPL_sindhupalchok",
+"lon": 85.713443,
+"lat": 27.861411,
+"t": "2023-01",
+"before": {
+"date": "20220325",
+"res": "0.46",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20251020",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "58a87d9a",
+"aoi": "KEN_baringo",
+"lon": 36.009483,
+"lat": 0.44844,
+"t": "2023-01",
+"before": {
+"date": "20180514",
+"res": "0.5",
+"src": "Maxar",
+"release": "2021-06-30"
+},
+"after": {
+"date": "20260112",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "15f506d0",
+"aoi": "NPL_kavre",
+"lon": 85.615844,
+"lat": 27.556104,
+"t": "2024-04",
+"before": {
+"date": "20220326",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260121",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "a6b896cb",
+"aoi": "NPL_chure_sarlahi",
+"lon": 85.544501,
+"lat": 27.102968,
+"t": "2024-06",
+"before": {
+"date": "20190306",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20250508",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "fe7e02a4",
+"aoi": "IND_shivalik",
+"lon": 78.048729,
+"lat": 30.049524,
+"t": "2024-01",
+"before": {
+"date": "20221128",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20241220",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "1e22bf78",
+"aoi": "AUS_murraydarling",
+"lon": 146.023993,
+"lat": -31.513044,
+"t": "2023-01",
+"before": {
+"date": "20201225",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-06-29"
+},
+"after": {
+"date": "20250104",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "729f8e85",
+"aoi": "NPL_chure_udayapur",
+"lon": 86.75193,
+"lat": 26.895589,
+"t": "2023-01",
+"before": {
+"date": "20190116",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260204",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "14c7ba4d",
+"aoi": "IND_singrauli",
+"lon": 82.65367,
+"lat": 24.166515,
+"t": "2023-02",
+"before": {
+"date": "20220304",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250425",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "44432603",
+"aoi": "IND_thar",
+"lon": 72.676665,
+"lat": 26.591707,
+"t": "2023-05",
+"before": {
+"date": "20221016",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20250401",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "c1500f14",
+"aoi": "NPL_chure_sarlahi",
+"lon": 85.520492,
+"lat": 27.103258,
+"t": "2023-05",
+"before": {
+"date": "20190306",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20250508",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "5deb572c",
+"aoi": "BRA_matopiba",
+"lon": -45.917474,
+"lat": -12.200242,
+"t": "2023-05",
+"before": {
+"date": "20210719",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-06-29"
+},
+"after": {
+"date": "20260109",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "25568690",
+"aoi": "NPL_chure_dang",
+"lon": 82.439414,
+"lat": 27.969564,
+"t": "2023-08",
+"before": {
+"date": "20211103",
+"res": "0.31",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260120",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "d92a78e6",
+"aoi": "IND_marathwada",
+"lon": 75.673612,
+"lat": 18.747785,
+"t": "2023-05",
+"before": {
+"date": "20190329",
+"res": "0.46",
+"src": "Maxar",
+"release": "2020-12-16"
+},
+"after": {
+"date": "20260315",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "3fc77681",
+"aoi": "NPL_kavre",
+"lon": 85.606463,
+"lat": 27.545088,
+"t": "2024-04",
+"before": {
+"date": "20220326",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260121",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "8a36ead2",
+"aoi": "SEN_ferlo",
+"lon": -14.900524,
+"lat": 15.385299,
+"t": "2023-02",
+"before": {
+"date": "20220323",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260403",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "0cbf83c1",
+"aoi": "NPL_kavre",
+"lon": 85.629041,
+"lat": 27.553617,
+"t": "2023-07",
+"before": {
+"date": "20220326",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260121",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "8dbdc6b5",
+"aoi": "NPL_surkhet",
+"lon": 81.642396,
+"lat": 28.55691,
+"t": "2023-02",
+"before": {
+"date": "20221116",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260208",
+"res": "0.31",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "94c9aa11",
+"aoi": "IND_thar",
+"lon": 72.683942,
+"lat": 26.559337,
+"t": "2023-01",
+"before": {
+"date": "20221016",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20250409",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "f3c00c10",
+"aoi": "IND_jharia",
+"lon": 86.401042,
+"lat": 23.757479,
+"t": "2023-02",
+"before": {
+"date": "20221125",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20240228",
+"res": "0.31",
+"src": "Maxar",
+"release": "2024-12-12"
+}
+},
+{
+"id": "dbaeeb46",
+"aoi": "AUS_murraydarling",
+"lon": 145.997353,
+"lat": -31.483156,
+"t": "2023-12",
+"before": {
+"date": "20230213",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-06-29"
+},
+"after": {
+"date": "20251022",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "dc649cfd",
+"aoi": "IND_thar",
+"lon": 72.686165,
+"lat": 26.583559,
+"t": "2023-04",
+"before": {
+"date": "20221016",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20250409",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "5c18a517",
+"aoi": "NPL_chure_dang",
+"lon": 82.473896,
+"lat": 27.971004,
+"t": "2023-01",
+"before": {
+"date": "20211103",
+"res": "0.31",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260120",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "0ad131e1",
+"aoi": "SEN_ferlo",
+"lon": -14.889259,
+"lat": 15.366218,
+"t": "2023-08",
+"before": {
+"date": "20220323",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260403",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "fe01b827",
+"aoi": "MNG_steppe",
+"lon": 106.434782,
+"lat": 46.414697,
+"t": "2023-11",
+"before": {
+"date": "20211026",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20240520",
+"res": "0.5",
+"src": "Maxar",
+"release": "2024-12-12"
+}
+},
+{
+"id": "656c0087",
+"aoi": "NPL_sindhupalchok",
+"lon": 85.701347,
+"lat": 27.853806,
+"t": "2023-04",
+"before": {
+"date": "20220325",
+"res": "0.46",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20251020",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "f9afc991",
+"aoi": "AUS_murraydarling",
+"lon": 145.992407,
+"lat": -31.482937,
+"t": "2023-02",
+"before": {
+"date": "20230213",
+"res": "0.31",
+"src": "Maxar",
+"release": "2023-06-29"
+},
+"after": {
+"date": "20251022",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "0dd23505",
+"aoi": "NPL_chure_udayapur",
+"lon": 86.72956,
+"lat": 26.901959,
+"t": "2023-03",
+"before": {
+"date": "20190116",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260204",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "b3c0e6c8",
+"aoi": "IND_jharia",
+"lon": 86.374905,
+"lat": 23.744098,
+"t": "2023-04",
+"before": {
+"date": "20221125",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20240228",
+"res": "0.31",
+"src": "Maxar",
+"release": "2024-12-12"
+}
+},
+{
+"id": "d4cc1c04",
+"aoi": "IND_singrauli",
+"lon": 82.665453,
+"lat": 24.134061,
+"t": "2023-06",
+"before": {
+"date": "20220304",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250425",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "b0e750ce",
+"aoi": "KEN_baringo",
+"lon": 35.986509,
+"lat": 0.451341,
+"t": "2023-03",
+"before": {
+"date": "20210521",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250920",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "a2924c12",
+"aoi": "IND_jharia",
+"lon": 86.403331,
+"lat": 23.728946,
+"t": "2024-02",
+"before": {
+"date": "20221125",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20250215",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "de5aa2d7",
+"aoi": "NPL_chure_dang",
+"lon": 82.477471,
+"lat": 27.942354,
+"t": "2023-01",
+"before": {
+"date": "20190110",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260120",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "ab1bc4f9",
+"aoi": "SEN_ferlo",
+"lon": -14.860562,
+"lat": 15.364303,
+"t": "2023-08",
+"before": {
+"date": "20220323",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20260403",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "f5602ce6",
+"aoi": "NPL_chure",
+"lon": 85.956493,
+"lat": 27.0438,
+"t": "2023-07",
+"before": {
+"date": "20220221",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250424",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "e51c28e9",
+"aoi": "NPL_chure_udayapur",
+"lon": 86.747417,
+"lat": 26.932779,
+"t": "2023-03",
+"before": {
+"date": "20190116",
+"res": "0.5",
+"src": "DigitalGlobe",
+"release": "2019-12-12"
+},
+"after": {
+"date": "20260204",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "fddde7fd",
+"aoi": "IND_thar",
+"lon": 72.671198,
+"lat": 26.549382,
+"t": "2023-03",
+"before": {
+"date": "20221016",
+"res": "0.46",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20250401",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "b2c42036",
+"aoi": "IND_jharia",
+"lon": 86.378284,
+"lat": 23.735079,
+"t": "2023-02",
+"before": {
+"date": "20221125",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20240228",
+"res": "0.31",
+"src": "Maxar",
+"release": "2024-12-12"
+}
+},
+{
+"id": "5c461628",
+"aoi": "IND_singrauli",
+"lon": 82.641246,
+"lat": 24.156988,
+"t": "2023-10",
+"before": {
+"date": "20220304",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250425",
+"res": "0.34",
+"src": "Vantor",
+"release": "2025-12-18"
+}
+},
+{
+"id": "d30145c0",
+"aoi": "KEN_baringo",
+"lon": 35.992161,
+"lat": 0.447272,
+"t": "2023-03",
+"before": {
+"date": "20210521",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250920",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+},
+{
+"id": "ef2b057d",
+"aoi": "NPL_surkhet",
+"lon": 81.638269,
+"lat": 28.550611,
+"t": "2023-02",
+"before": {
+"date": "20221116",
+"res": "0.5",
+"src": "Maxar",
+"release": "2023-12-07"
+},
+"after": {
+"date": "20260208",
+"res": "0.31",
+"src": "Vantor",
+"release": "2026-06-30"
+}
+},
+{
+"id": "47c7004d",
+"aoi": "KEN_baringo",
+"lon": 35.979237,
+"lat": 0.446013,
+"t": "2023-01",
+"before": {
+"date": "20210521",
+"res": "0.5",
+"src": "Maxar",
+"release": "2022-12-14"
+},
+"after": {
+"date": "20250920",
+"res": "0.34",
+"src": "Vantor",
+"release": "2026-09-24"
+}
+}
+],
+"dropped": [
+{
+"id": "7d7a1a94",
+"reason": "no after",
+"n_versions": 5
+},
+{
+"id": "1e2b20a7",
+"reason": "no after",
+"n_versions": 5
+},
+{
+"id": "ac317f5c",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "3a6fad99",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "12ef273d",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "7c72872f",
+"reason": "no after",
+"n_versions": 3
+},
+{
+"id": "301aa057",
+"reason": "no after",
+"n_versions": 2
+},
+{
+"id": "a807c2b3",
+"reason": "no after",
+"n_versions": 7
+},
+{
+"id": "3b2e81ff",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "01d5a7a5",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "11faacb1",
+"reason": "no after",
+"n_versions": 3
+},
+{
+"id": "55b5f0d3",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "2ed07932",
+"reason": "no after",
+"n_versions": 7
+},
+{
+"id": "8946f8ff",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "b523ee10",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "c1500905",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "b2e31f7d",
+"reason": "no after",
+"n_versions": 6
+},
+{
+"id": "ff0a1490",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "72a71e69",
+"reason": "no after",
+"n_versions": 3
+},
+{
+"id": "ffa4cf7c",
+"reason": "no after",
+"n_versions": 3
+},
+{
+"id": "efd95874",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "f2df0044",
+"reason": "no after",
+"n_versions": 5
+},
+{
+"id": "1915971f",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "82c8adb8",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "f2c36efd",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "af809a87",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "92837a37",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "ee7b6036",
+"reason": "no after",
+"n_versions": 5
+},
+{
+"id": "27735892",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "c8b6d019",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "dd0fd628",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "6d2aa970",
+"reason": "no after",
+"n_versions": 5
+},
+{
+"id": "422fbd61",
+"reason": "no after",
+"n_versions": 3
+},
+{
+"id": "c626b24e",
+"reason": "no after",
+"n_versions": 2
+},
+{
+"id": "ad6928fd",
+"reason": "no after",
+"n_versions": 3
+},
+{
+"id": "ad056365",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "0c7f239f",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "99b69d94",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "98dae373",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "3dc8705d",
+"reason": "no after",
+"n_versions": 5
+},
+{
+"id": "b3834e7d",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "942b36f0",
+"reason": "no after",
+"n_versions": 4
+},
+{
+"id": "7a30b8ba",
+"reason": "no after",
+"n_versions": 6
+}
+]
+}
