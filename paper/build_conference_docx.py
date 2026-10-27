@@ -216,19 +216,19 @@ run(p, "—land degradation, early warning, Sentinel-2, gradient boosting, confo
 
 # ============================================================================ I. Introduction
 heading("Introduction")
-para("Land degradation affects a large share of the world's drylands, forests and croplands and is tracked by "
-     "Sustainable Development Goal indicator 15.3.1 [1], [2]. Operational assessment relies on trends in productivity, "
-     "land cover and soil carbon computed over multi-year windows [2], [3]. These products answer the question "
+para("Land degradation affects a large share of the world's drylands, forests and croplands, and artificial intelligence is increasingly used to map it and "
+     "predict its drivers [1]. It is tracked by Sustainable Development Goal indicator 15.3.1 [2], [3]. Operational assessment relies on trends in productivity, "
+     "land cover and soil carbon computed over multi-year windows [3], [4]. These products answer the question "
      "*where has degradation already occurred?* A forest department or district office needs a different answer: "
      "*where is degradation likely to start in the next few months*, with an honest statement of uncertainty, so that "
      "field teams can be sent before damage becomes persistent.")
 para("Two lines of research point toward such a warning system, but neither delivers it. Residual-trend methods "
-     "separate rainfall-driven from human-driven vegetation change [4], [5], yet they are retrospective. Studies of "
+     "separate rainfall-driven from human-driven vegetation change [5], [6], yet they are retrospective. Studies of "
      "resilience show that ecosystems approaching a transition recover more slowly from disturbance, visible as rising "
-     "lag-1 autocorrelation and variance of their time series [6], [7]. Satellite records have been used to map these "
-     "indicators at continental and global scale [8]–[10], but not to issue calibrated, pixel-level forecasts with a "
+     "lag-1 autocorrelation and variance of their time series [7], [8]. Satellite records have been used to map these "
+     "indicators at continental and global scale [9]–[11], but not to issue calibrated, pixel-level forecasts with a "
      "measured lead time and a controlled false-alarm rate. Machine-learning studies in remote sensing also tend to "
-     "overstate accuracy because spatially and temporally autocorrelated samples leak between training and test sets [11], [12].")
+     "overstate accuracy because spatially and temporally autocorrelated samples leak between training and test sets [12], [13].")
 para("This paper makes the following contributions:", after=2)
 bullets([
     "**A forecasting target.** The label is the onset of a persistent (at least six months), climate-unexplained decline "
@@ -249,29 +249,29 @@ para("Section II reviews related work. Section III describes the data, the syste
 heading("Related Work")
 subheading("Retrospective trend and residual methods")
 para("Time-series residual trend analysis regresses vegetation index on climate and attributes the remaining trend to human "
-     "activity; applied to global drylands it separates climate-driven from human-driven desertification [4]. Machine-learning "
-     "classifiers on Sentinel-2 indices map current desertification classes with high accuracy [5], transformer networks on "
-     "Sentinel-2 time series detect forest disturbance after it occurs [13], and global syntheses trace multiple degradation "
-     "pathways from such indicators [3]. All are designed to detect change that has already happened.")
+     "activity; applied to global drylands it separates climate-driven from human-driven desertification [5]. Machine-learning "
+     "classifiers on Sentinel-2 indices map current desertification classes with high accuracy [6], transformer networks on "
+     "Sentinel-2 time series detect forest disturbance after it occurs [14], and global syntheses trace multiple degradation "
+     "pathways from such indicators [4]. All are designed to detect change that has already happened.")
 subheading("Machine-learning disturbance mapping")
-para("Spatio-temporal deep learning on Landsat time series classifies land use after deforestation across the tropics [14], and radar alerts from "
-     "Sentinel-1 flag disturbance in humid tropical forests within weeks [15]. These systems are accurate for abrupt "
+para("Spatio-temporal deep learning on Landsat time series classifies land use after deforestation across the tropics [15], and radar alerts from "
+     "Sentinel-1 flag disturbance in humid tropical forests within weeks [16]. These systems are accurate for abrupt "
      "clearing but react to disturbance under way and are mostly limited to forests.")
 subheading("Resilience and early-warning signals")
 para("Critical-slowing-down theory predicts rising autocorrelation and variance before a transition, and deep networks can "
-     "learn such signals from time series [6], [7]. "
-     "A satellite resilience-sensing system for the biosphere has been proposed [8], and studies found widespread resilience loss "
-     "since the early 2000s [9], [10], declining forest resilience under climate change [34], and aridity thresholds beyond which drylands shift abruptly [16]. These are descriptive; "
+     "learn such signals from time series [7], [8]. "
+     "A satellite resilience-sensing system for the biosphere has been proposed [9], and studies found widespread resilience loss "
+     "since the early 2000s [10], [11], declining forest resilience under climate change [35], and aridity thresholds beyond which drylands shift abruptly [17]. These are descriptive; "
      "whether they improve held-out forecasts is rarely tested.")
 table("Comparison of Prior Work",
       ["Work", "Method", "Data / region", "Outcome", "Gap for early warning"],
-      [["[4]", "Climate–NDVI residual trend", "GIMMS NDVI, global drylands", "Separates human vs. climate effects", "Retrospective, annual"],
-       ["[5]", "RF / XGBoost classifiers", "Sentinel-2, Turkmenistan", "Desertification classes mapped", "Current state only"],
-       ["[13]", "Transformer, time series", "Sentinel-2, C. Europe", "Forest disturbance maps", "Detects after change"],
-       ["[14]", "Deep learning (CNN + LSTM)", "Landsat, pan-tropical", "Land use after deforestation", "Forest only, after loss"],
-       ["[15]", "Radar change detection", "Sentinel-1, tropics", "Near-real-time alerts", "Disturbance under way"],
-       ["[8]", "Resilience sensing (AC1)", "Satellite, global", "Monitoring framework", "No pixel forecast"],
-       ["[9]", "AC1 trends", "AVHRR/MODIS, global", "Resilience loss mapped", "Descriptive"],
+      [["[5]", "Climate–NDVI residual trend", "GIMMS NDVI, global drylands", "Separates human vs. climate effects", "Retrospective, annual"],
+       ["[6]", "RF / XGBoost classifiers", "Sentinel-2, Turkmenistan", "Desertification classes mapped", "Current state only"],
+       ["[14]", "Transformer, time series", "Sentinel-2, C. Europe", "Forest disturbance maps", "Detects after change"],
+       ["[15]", "Deep learning (CNN + LSTM)", "Landsat, pan-tropical", "Land use after deforestation", "Forest only, after loss"],
+       ["[16]", "Radar change detection", "Sentinel-1, tropics", "Near-real-time alerts", "Disturbance under way"],
+       ["[9]", "Resilience sensing (AC1)", "Satellite, global", "Monitoring framework", "No pixel forecast"],
+       ["[10]", "AC1 trends", "AVHRR/MODIS, global", "Resilience loss mapped", "Descriptive"],
        ["**Ours**", "LightGBM + residual + resilience + conformal", "Sentinel-2, 23 sites, 9 countries",
         "ROC 0.805, PR-AUC 0.144 (5.7×) on space–time hold-out", "Precision 0.22; cropland weak"]],
       [0.42, 0.78, 0.74, 0.86, 0.7], size=6.5)
@@ -290,10 +290,10 @@ para("**Study areas.** The model is trained on 17 areas of 5.12 × 5.12 km (512 
      "foothill forest, semi-arid cropland, rangeland, Mediterranean dryland and a mining landscape. Six further sites "
      "(Udayapur, Kailali and Sindhupalchok in Nepal; Marathwada, Singrauli and Shivalik in India) are used only as "
      "independent test sites.")
-para("**Sources.** All inputs are open: Sentinel-2 L2A [23] (10–20 m, 2017–2026), MODIS MOD13Q1 NDVI [25] (250 m, 2000–), "
-     "ERA5 [27] / ERA5-Land [24] climate (precipitation, temperature, soil moisture, reference evapotranspiration), ESA WorldCover "
-     "2021 [17] (the deep-learning Dynamic World product [35] is an alternative), NASADEM terrain, JRC surface water (Landsat-based water mapping [33]) and HydroRIVERS. Landsat 8/9 [28] is used only to check labels. Data are read "
-     "from the Microsoft Planetary Computer catalogue [37]; the same workflow can run on Google Earth Engine [29].")
+para("**Sources.** All inputs are open: Sentinel-2 L2A [24] (10–20 m, 2017–2026), MODIS MOD13Q1 NDVI [26] (250 m, 2000–), "
+     "ERA5 [28] / ERA5-Land [25] climate (precipitation, temperature, soil moisture, reference evapotranspiration), ESA WorldCover "
+     "2021 [18] (the deep-learning Dynamic World product [36] is an alternative), NASADEM terrain, JRC surface water (Landsat-based water mapping [34]) and HydroRIVERS. Landsat 8/9 [29] is used only to check labels. Data are read "
+     "from the Microsoft Planetary Computer catalogue [38]; the same workflow can run on Google Earth Engine [30].")
 para("**Preprocessing.** For each month the four least-cloudy Sentinel-2 scenes of one MGRS tile are used. Duplicate "
      "processings are removed, and the bottom-of-atmosphere offset of processing baseline 04.00 and later is corrected. "
      "Pixels outside the vegetation, soil and water scene classes are masked. NDVI, NDMI, NBR and BSI are computed per scene "
@@ -343,13 +343,13 @@ equation("AC1 = Σ(x", ("t", True, "sub"), " − x̄)(x", ("t−1", True, "sub")
 para("together with months since the last dip, recovery fraction and MODIS 60-month variance and autocorrelation.", indent=False)
 subheading("Model, calibration and abstention")
 para("LightGBM, a gradient-boosted tree ensemble (tree ensembles remain the strongest model family on tabular "
-     "data [18]), minimises the weighted logistic loss with an L2 penalty on leaf values *v*:")
+     "data [19]), minimises the weighted logistic loss with an L2 penalty on leaf values *v*:")
 equation("L = −Σ", ("i", True, "sub"), " w", ("i", True, "sub"), "[y", ("i", True, "sub"), " ln p", ("i", True, "sub"),
          " + (1−y", ("i", True, "sub"), ")ln(1−p", ("i", True, "sub"), ")] + ½λΣ", ("j", True, "sub"), " v",
          ("j", True, "sub"), ("2", False, "sup"))
 para("Each pixel contributes about 40 strongly autocorrelated monthly rows, so deep trees memorise pixels. Trees are "
-     "therefore kept small (Table III). Scores are calibrated by isotonic regression [19] on a disjoint calibration set. A "
-     "Mondrian split-conformal predictor [20], [21], as used for land-cover maps [36], with α = 0.10 returns the prediction set:")
+     "therefore kept small (Table III). Scores are calibrated by isotonic regression [20] on a disjoint calibration set. A "
+     "Mondrian split-conformal predictor [21], [22], as used for land-cover maps [37], with α = 0.10 returns the prediction set:")
 equation("Γ(x) = {y : s", ("y", True, "sub"), "(x) ≤ q̂", ("y", True, "sub"), "}")
 para("A set {0, 1} is reported as *abstain*. The warning threshold maximises F1 on the calibration set.", indent=False)
 subheading("Training setup")
@@ -363,7 +363,7 @@ table("Training Setup and Hyperparameters",
        ["Validation / calibration", "2023-03 … 2023-12; 169,049 / 378,057 rows"],
        ["Test (locked)", "months ≥ 2024-12 on test blocks; 132,230 rows"],
        ["Embargo", "≥ 11-month gaps = label look-ahead (no leakage)"],
-       ["Software", "Python; LightGBM, scikit-learn, SHAP [32]"],
+       ["Software", "Python; LightGBM, scikit-learn, SHAP [33]"],
        ["Hardware", "Intel Core 5 210H, 16 GB RAM, CPU only; final fit 14 s"],
        ["Decision rule", "a change is adopted only if validation AP gains ≥ 0.005 (5 seeds)"]],
       [1.15, 2.3], size=7)
@@ -399,7 +399,7 @@ para("Fig. 3 and Fig. 4 compare CARE-EW with three non-deep baselines on the sam
 figure(FIG / "ablation.png", "Cumulative ablation on the locked test set (uncalibrated scores). Grey: baselines; light blue: "
        "groups that add no skill; dark blue: residual, resilience and context.")
 para("Further pre-registered experiments were rejected because they did not raise validation AP by at least 0.005: "
-     "GLCM texture (a hand-crafted stand-in for the spatial filters a CNN learns [31]), red-edge chlorophyll indices, doubling the pixels per site, confident-learning label cleaning [22], "
+     "GLCM texture (a hand-crafted stand-in for the spatial filters a CNN learns [32]), red-edge chlorophyll indices, doubling the pixels per site, confident-learning label cleaning [23], "
      "a five-seed ensemble and training on all 23 sites.")
 subheading("Over- and under-fitting")
 para("Fig. 5(a) varies tree size from 3 to 255 leaves. Validation PR-AUC stays within 0.13–0.15 and training AP never runs "
@@ -446,9 +446,9 @@ subheading("Discussion")
 para("The ablation supports the central hypothesis in a falsifiable way. If future degradation could be read from present "
      "greenness or from weather alone, groups A1–A3 would score well; they do not. Skill appears only once each pixel is "
      "compared with what climate and its landscape peers predict, and it grows when the autocorrelation and variance of that "
-     "residual are added. SHAP attributions [32] agree: the most influential features are the MODIS 5-year variance, the share "
+     "residual are added. SHAP attributions [33] agree: the most influential features are the MODIS 5-year variance, the share "
      "of the last 12 months below expectation and the 24-month AC1. This is the pattern critical-slowing-down theory predicts "
-     "[6], [7], here tested on held-out data "
+     "[7], [8], here tested on held-out data "
      "rather than assumed. We do not claim that rising autocorrelation marks a tipping point, only that it improves forecasts.")
 para("Calibration makes the scores usable. A stated 10 % risk corresponds to about 10 % observed onsets (ECE 0.0025), so a "
      "district officer can rank hotspots by expected hectares rather than by an arbitrary score. Abstention is the price of "
@@ -465,7 +465,7 @@ bullets([
     "change was seen at 19.6 % of warnings and 24.5 % of safe pixels (difference −4.9 points, 95 % CI −15 to +6). The "
     "pilot was underpowered and mostly showed abrupt events rather than gradual thinning.",
     "**Short baseline and coarse climate.** The Sentinel-2 baseline covers only 2017–2020, climate is at 9–25 km, and ERA5 "
-    "rainfall is weaker than gauge-blended products over convective tropics, where deep-learning retrievals are improving [26].",
+    "rainfall is weaker than gauge-blended products over convective tropics, where deep-learning retrievals are improving [27].",
     "**Single validation year.** Model selection used one validation year, whose seed noise is close to the decision margin.",
 ])
 
@@ -481,12 +481,13 @@ bullets([
     "an independent human review of the 233 image pairs, followed by a power-calculated campaign of at least 300 pairs per "
     "group with same-season imagery taken within six months before the warning;",
     "a prospective test on months after October 2025, comparing the 17-site model, a 23-site model and a seed ensemble;",
-    "Sentinel-1 radar features to fill monsoon cloud gaps, and SoilGrids [30] soil properties to separate erosion-prone soils.",
+    "Sentinel-1 radar features to fill monsoon cloud gaps, and SoilGrids [31] soil properties to separate erosion-prone soils.",
 ])
 
 # ============================================================================ References
 heading("References", numbered=False)
 REFS = [
+    "S. Ghosh and J. V. Sharma, “Artificial intelligence for restoring land: A review of land degradation mapping, climate change prediction and ecosystem service valuation,” *Int. J. Environ. Clim. Change*, vol. 16, no. 5, pp. 352–375, 2026.",
     'UNCCD, *Global Land Outlook*, 2nd ed., “Land Restoration for Recovery and Resilience.” Bonn, Germany: United Nations Convention to Combat Desertification, 2022.',
     'N. C. Sims et al., “Good practice guidance: SDG indicator 15.3.1, version 2.0,” UNCCD, Bonn, Germany, 2021.',
     'R. Prăvălie, “Exploring the multiple land degradation pathways across the planet,” *Earth-Sci. Rev.*, vol. 220, Art. no. 103689, 2021, doi: 10.1016/j.earscirev.2021.103689.',

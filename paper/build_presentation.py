@@ -678,5 +678,8 @@ for c in range(2):
          size=8.5, space=2.5, margin=0)
 
 assert N[0] <= 20, N[0]
+# slide 21 (added by the team in PowerPoint): plagiarism-check screenshot, full width, no title
+sl = prs.slides.add_slide(BLANK)
+sl.shapes.add_picture(str(PF / "plagiarism_check.png"), 0, 0, prs.slide_width, int(prs.slide_width * 883 / 1737))
 prs.save(OUT)
 print("saved", OUT, N[0], "slides")
