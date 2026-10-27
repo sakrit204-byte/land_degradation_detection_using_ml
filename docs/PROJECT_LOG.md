@@ -696,6 +696,18 @@ Red-edge composites for all 17 sites (scene counts identical to the base composi
   set — test-set sampling noise is ≈ ±0.01, so the "still-rising" learning curve (R-0xx) is within noise.
   Conclusion: more pixels from the SAME 17 sites do not help; new sites/landscapes (R-015) do.
 
+#### D-025 — Pre-registration (2026-10-27): six new sites (E-008), user request "do that and raise accuracy"
+R-016/R-017 showed that more features or more pixels from the same sites do not help, while R-015 showed that a
+same-landscape sibling in training raises transfer (median ROC 0.754 → 0.804). New sites, chosen BEFORE any
+result and screened for land cover (data/candidates/screen_v2.json): NPL_chure_udayapur, NPL_chure_kailali,
+NPL_sindhupalchok, IND_shivalik (Himalayan foothill forest), IND_marathwada (semi-arid Indian cropland),
+IND_singrauli (mining; sibling for Jharia). Same pipeline, label rule, splits and LightGBM parameters.
+* Primary comparison (`python -m care_ew.train sites`): A6 trained on the 17 original sites vs on all 23,
+  scored on the SAME validation rows of the 17 original sites. **Adopt the 23-site model only if its validation
+  AP ≥ the 17-site model's + 0.005.** Test metrics on the 17 original sites and on the 6 new sites are reported
+  regardless. Secondary (reported, not used to choose): leave-one-site-out ROC for Jharia with/without
+  Singrauli and for the Nepal sites.
+
 ## 12. Ground-reference inventory (2026-10-19; three search agents; all endpoints actually queried)
 Files: `data/ground_ref/` — `photo_sources_inventory.json`, `field_sources_inventory.json`,
 `vhr_sources_inventory.json`, per-source subfolders, `inventory_queries.py` (re-runnable).

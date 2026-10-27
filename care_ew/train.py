@@ -438,6 +438,9 @@ LANDSCAPE = {   # landscape types (user question: does the model transfer to new
     "KEN_baringo": "Arid grassland / rangeland", "MNG_steppe": "Arid grassland / rangeland",
     "IND_jharia": "Mining landscape", "ESP_murcia": "Mediterranean dryland", "ETH_tigray": "Highland cropland / shrub",
     "BRA_matopiba": "Cerrado cropland frontier", "AUS_murraydarling": "Semi-arid woodland",
+    "NPL_chure_udayapur": "Himalayan foothill forest", "NPL_chure_kailali": "Himalayan foothill forest",
+    "NPL_sindhupalchok": "Himalayan foothill forest", "IND_shivalik": "Himalayan foothill forest",
+    "IND_marathwada": "Semi-arid Indian cropland", "IND_singrauli": "Mining landscape",
 }
 
 

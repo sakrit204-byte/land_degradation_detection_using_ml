@@ -87,7 +87,22 @@ AOIS += [
         "Chambal ravines (Morena): one of Asia's largest gully-erosion badlands."),
     AOI("IND_thar", "India", "Thar desert margin", 72.70, 26.55,
         "Western Rajasthan (Jodhpur): desertification, wind erosion, overgrazing."),
+    # ---- E-008 expansion (D-025): siblings for priority / poorly transferring landscapes; screened in
+    # data/candidates/screen_v2.json (WorldCover usable share 0.96-1.00, no lakes or towns)
+    AOI("NPL_chure_udayapur", "Nepal", "Eastern Chure foothills, Udayapur", 86.75, 26.90,
+        "Eastern Chure: forest degradation, river-bed mining and erosion toward the Koshi/Terai."),
+    AOI("NPL_chure_kailali", "Nepal", "Far-western Chure foothills, Kailali", 80.75, 28.85,
+        "Far-western Chure: encroachment, fuelwood extraction and erosion feeding Terai rivers."),
+    AOI("NPL_sindhupalchok", "Nepal", "Middle-hills forest/terraces and landslide slopes", 85.70, 27.85,
+        "Sindhupalchok mid-hills: landslides (2015 earthquake legacy), terrace abandonment."),
+    AOI("IND_marathwada", "India", "Marathwada semi-arid rainfed cropland", 75.65, 18.75,
+        "Marathwada (Beed): recurrent drought, soil erosion, groundwater depletion."),
+    AOI("IND_singrauli", "India", "Singrauli coalfield", 82.65, 24.15,
+        "Singrauli: large open-cast coal mines and power plants; second mining landscape after Jharia."),
+    AOI("IND_shivalik", "India", "Shivalik foothill forest, Uttarakhand", 78.05, 30.05,
+        "Shivalik hills near Dehradun: foothill forest and scrub, same range as Nepal's Chure."),
 ]
+NEW_SITES_E008 = ["NPL_chure_udayapur", "NPL_chure_kailali", "NPL_sindhupalchok", "IND_marathwada", "IND_singrauli", "IND_shivalik"]
 AOI_BY_KEY = {a.key: a for a in AOIS}
 
 # User-drawn areas (app "Draw box" tool, care_ew/ondemand.py). They are ONLY prediction targets: they are added

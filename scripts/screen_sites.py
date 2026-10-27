@@ -32,10 +32,27 @@ CANDIDATES = [
         "Chambal ravines (Morena/Bhind): one of the largest gully-erosion landscapes in Asia."),
 ]
 
+# ---- E-008 expansion (D-025, 2026-10-27): siblings for the landscapes that matter most / transfer worst
+CANDIDATES_V2 = [
+    AOI("NPL_chure_udayapur", "Nepal", "Eastern Chure foothills, Udayapur", 86.75, 26.90,
+        "Eastern Chure: forest degradation, river-bed mining and erosion toward the Koshi/Terai."),
+    AOI("NPL_chure_kailali", "Nepal", "Far-western Chure foothills, Kailali", 80.75, 28.85,
+        "Far-western Chure: encroachment, fuelwood extraction and erosion feeding Terai rivers."),
+    AOI("NPL_sindhupalchok", "Nepal", "Middle-hills terraced farmland and landslide slopes", 85.70, 27.85,
+        "Sindhupalchok mid-hills: landslides (2015 earthquake legacy), terrace abandonment."),
+    AOI("IND_marathwada", "India", "Marathwada semi-arid rainfed cropland", 75.65, 18.75,
+        "Marathwada (Beed): recurrent drought, soil erosion, groundwater depletion."),
+    AOI("IND_singrauli", "India", "Singrauli coalfield - mining-driven degradation", 82.65, 24.15,
+        "Singrauli: large open-cast coal mines and power plants; second mining landscape after Jharia."),
+    AOI("IND_shivalik", "India", "Shivalik foothill forest, Uttarakhand", 78.05, 30.05,
+        "Shivalik hills near Dehradun/Rajaji: foothill forest and scrub, same range as Nepal's Chure."),
+]
+
 if __name__ == "__main__":
     import care_ew.config as C
     out = {}
-    for a in CANDIDATES:
+    v2 = len(sys.argv) > 1 and sys.argv[1] == "v2"
+    for a in (CANDIDATES_V2 if v2 else CANDIDATES):
         C.AOI_BY_KEY[a.key] = a
         (PROC / a.key).mkdir(parents=True, exist_ok=True)
         try:
@@ -51,4 +68,4 @@ if __name__ == "__main__":
             out[a.key] = dict(error=str(e)[:200])
         print(a.key, out[a.key], flush=True)
     (PROC.parent / "candidates").mkdir(exist_ok=True)
-    json.dump(out, open(PROC.parent / "candidates" / "screen.json", "w"), indent=1)
+    json.dump(out, open(PROC.parent / "candidates" / ("screen_v2.json" if v2 else "screen.json"), "w"), indent=1)
