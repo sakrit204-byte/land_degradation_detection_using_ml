@@ -730,6 +730,11 @@ Average the predictions of 5 A6 models that differ only in seed (bagging / featu
 Comparison on the same validation rows, AP of the averaged score vs the mean AP of the 5 single models.
 **Adopt only if the gain ≥ 0.005.** Test reported regardless.
 
+#### R-019 — 5-seed prediction ensemble (D-027), run 2026-10-27
+Validation AP: single models 0.1407 (mean of 5), ensemble 0.1448 → gain +0.0041 < 0.005. **Rejected by the
+pre-registered rule.** Test (reported only): single 0.1484, ensemble 0.1561. The ensemble is the closest of all
+attempts (R-016 … R-019); a future pre-registered test on the 23-site data may revisit it, but it is not adopted now.
+
 ## 12. Ground-reference inventory (2026-10-19; three search agents; all endpoints actually queried)
 Files: `data/ground_ref/` — `photo_sources_inventory.json`, `field_sources_inventory.json`,
 `vhr_sources_inventory.json`, per-source subfolders, `inventory_queries.py` (re-runnable).
